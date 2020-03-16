@@ -4,10 +4,10 @@ This project offers a Kotlin DSL for Terraform. Kotlin brings the advantages of 
 ## Building
 <pre>
 cd terraform2kotlin
-gradle 
+gradle build
 </pre>
-___Beware___ these tests create cloud resources that cost money !  
-For the tests to work you need to define these:
+___Beware___ the tests create cloud resources that cost money !  
+For the tests to work you need to:
  * create admin CLI AWS user see: https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html - its worth considering restricted access rights of this user as much as possible
  * define environment variables:
    *  __awsTestAccessKey__ (format: AKIA42VZ2QKNI5LJAYWV)
