@@ -6,7 +6,8 @@ import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.URL
 
-
+//TODO use unique names for resources so that previous test runs cant interfere
+//TODO auto clean up - terraform destroy
 class SecurityGroupEc2_test {
     @Test
     fun test() {

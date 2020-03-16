@@ -19,7 +19,8 @@ fun compareLineByLineIgnoreEmptyLinesIgnoreWhiteSpaceWidth(str1: String, str2: S
    for (i in 0 until (Math.max(lines1.size, lines2.size))) {
        var line1 = if (i>=lines1.size) null else lines1[i]
        var line2 = if (i>=lines2.size) null else lines2[i]
-       val matches = line1 != null && line2 != null && line1.equals(line2)
+       val matches = (line1.isNullOrEmpty() && line2.isNullOrEmpty())
+               || (line1 != null && line2 != null && line1.equals(line2))
        result.add(LineComparison(matches, line1, line2))
    }
    return result
