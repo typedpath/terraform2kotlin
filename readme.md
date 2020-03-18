@@ -23,6 +23,7 @@ For the tests to work you need to:
 | --- | --- | ----- |
 | [BasicEc2_test](terraform2kotlin/src/test/kotlin/com/typedpath/terraform2kotlin/BasicEc2_test.kt) | [BasicEc2Template.kt](terraform2kotlin/src/test/kotlin/com/typedpath/terraform2kotlin/BasicEc2Template.kt) [BasicEc2Template.tf](docs/templates/BasicEc2Template.tf) | create terraform template for EC2 instance  |
 | [SecurityGroupEc2_test](terraform2kotlin/src/test/kotlin/com/typedpath/terraform2kotlin/SecurityGroupEc2_test.kt) | [SecurityGroupEc2Template.kt](terraform2kotlin/src/test/kotlin/com/typedpath/terraform2kotlin/SecurityGroupEc2Template.kt) [SecurityGroupEc2Template.tf](docs/templates/SecurityGroupEc2Template.tf) | create an EC2 instance + security group, install webserver, check a web page is viewable |
+| [IamRole_test](terraform2kotlin/src/test/kotlin/com/typedpath/terraform2kotlin/IamRole_test.kt) | [IamRoleTemplate.kt](terraform2kotlin/src/test/kotlin/com/typedpath/terraform2kotlin/IamRoleTemplate.kt) [IamRoleTemplate.tf](docs/templates/IamRoleTemplate.tf) | create an IamRole then check its got an arn |
 
 ## Templates
 The examples listed above create templates by extension e.g.:

@@ -15,18 +15,24 @@ class SecurityGroupEc2_test {
         val template = SecurityGroupEc2Template(webGreeting)
         println("template:\r\n ${toTerraform(template)}")
         val runner = terraformAwsRunnerFromEnvironment(SecurityGroupEc2Template(webGreeting))
-        val outputs = runner.initApply()
-        println("outputs:")
-        outputs.forEach { println("'${it.key}'=>'${it.value}'") }
-        val webaddressOutput = "webaddress"
-        Assert.assertTrue("apply should return $webaddressOutput output", outputs.containsKey(webaddressOutput))
-        val webaddress = outputs.get(webaddressOutput)
-        val response = waitForConnectionRead(webaddress!!, 120)
-        println("response: $response")
-        Assert.assertTrue(
-            "web response should contain '$webGreeting' : '$response' ",
-            response != null && response!!.contains(webGreeting)
-        )
+
+        try {
+            val outputs = runner.initApply()
+            println("outputs:")
+            outputs.forEach { println("'${it.key}'=>'${it.value}'") }
+            val webaddressOutput = "webaddress"
+            Assert.assertTrue("apply should return $webaddressOutput output", outputs.containsKey(webaddressOutput))
+            val webaddress = outputs.get(webaddressOutput)
+            val response = waitForConnectionRead(webaddress!!, 120)
+            println("response: $response")
+            Assert.assertTrue(
+                "web response should contain '$webGreeting' : '$response' ",
+                response != null && response!!.contains(webGreeting)
+            )
+        } finally {
+            val destroyresult = runner.destroy()
+            println(destroyresult)
+        }
     }
 
     fun waitForConnectionRead(strUrl: String, timeoutSeconds: Int): String? {
@@ -35,7 +41,6 @@ class SecurityGroupEc2_test {
         while (System.currentTimeMillis() < endTime) {
             val response = readURL(url)
             if (response != null) {
-
                 return response
             }
             Thread.sleep(1000)
@@ -50,7 +55,6 @@ class SecurityGroupEc2_test {
             null
         }
     }
-
 
 }
 

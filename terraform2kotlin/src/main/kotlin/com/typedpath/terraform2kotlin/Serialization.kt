@@ -5,13 +5,28 @@ import kotlin.reflect.full.memberProperties
 
 fun toTerraform(template: TerraformTemplate) : String {
 return (
-"""${printResourceProperties(template, Resource::class.java)}
-${printOutputProperties(template, Output::class.java)}    
+"""${printDataProperties(template)}
+${printResourceProperties(template)}
+${printOutputProperties(template)}    
 """)
 }
 
-private fun printResourceProperties(template: TerraformTemplate, theClass: Class<*>) : String {
-    val properties = getTemplateProperties(template, theClass)
+private fun printDataProperties(template: TerraformTemplate) : String {
+    fun isResource (o: Any) = o is Resource && "data".equals(o.typestring())
+    val properties = getTemplateProperties(template, ::isResource)
+    return (
+            """${properties.entries.map{(
+                    """
+data "${it.value?.javaClass?.simpleName}" "${it.key}" ${printValue(it.value!!, indentStep)}
+""")}.joinToString (
+                """
+""" )
+            }""")
+}
+
+private fun printResourceProperties(template: TerraformTemplate) : String {
+    fun isResource (o: Any) = o is Resource && "resource".equals(o.typestring())
+    val properties = getTemplateProperties(template, ::isResource)
     return (
             """${properties.entries.map{(
                     """
@@ -22,8 +37,9 @@ resource "${it.value?.javaClass?.simpleName}" "${it.key}" ${printValue(it.value!
             }""")
 }
 
-private fun printOutputProperties(template: TerraformTemplate, theClass: Class<*>) : String {
-    val properties = getTemplateProperties(template, theClass)
+private fun printOutputProperties(template: TerraformTemplate) : String {
+    fun isOutput (o: Any) = o is Output
+    val properties = getTemplateProperties(template, ::isOutput)
     return (
             """${properties.entries.map{(
                     """
@@ -35,7 +51,7 @@ output "${it.key}" ${printValue(it.value!!, indentStep)}
 }
 
 private fun isComplex(value: Any?): Boolean = value != null &&
-        value.javaClass.name.startsWith("com.typedpath")
+        value.javaClass.name.startsWith("com.typedpath") && !value.javaClass.isEnum
 
 private fun printMap(map: Map<*,*>, indent: String) : String {
     return (
@@ -55,7 +71,7 @@ private fun printObject(o: Any,  indent: String) : String {
 }
 
 private fun printSimpleValue(o: Any) : String {
-    return if (o is String) """"$o"""" else  "$o"
+    return if (o is String || o.javaClass.isEnum) """"$o"""" else  "$o"
 }
 
 private val indentStep = "  "
@@ -80,7 +96,7 @@ $indent}""" }.joinToString("")
     }
 }
 
-private fun getProperties(resource: Any) : Map<String, Any> {
+fun getProperties(resource: Any) : Map<String, Any> {
     return resource.javaClass.kotlin.memberProperties
         .filter { p ->
             p.visibility == KVisibility.PUBLIC
@@ -91,11 +107,13 @@ private fun getProperties(resource: Any) : Map<String, Any> {
         .toMap()
 }
 
-private fun getTemplateProperties(template: TerraformTemplate, theClass: Class<*>) : Map<String, Any> {
+private fun getTemplateProperties(template: TerraformTemplate, filter: (Any)->Boolean) : Map<String, Any> {
     var resources = mutableMapOf<String, Any>()
     template.javaClass.kotlin.memberProperties.map { Pair(it, it.get(template)) }
         .filter { it.second != null }
-        .filter { theClass.isAssignableFrom(it.second?.javaClass)!! }
+        .filter { filter(it.second!!)}
+        //.filter {it.second is Resource && (it.second as Resource).typestring().equals(terraformType)}
+        //.filter { theClass.isAssignableFrom(it.second?.javaClass)!! }
         .map { Pair(it.first.name, it.second as Any)}
         .toMap(resources)
     return resources

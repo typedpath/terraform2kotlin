@@ -1,4 +1,4 @@
 package com.typedpath.terraform2kotlin
-open class Resource {
-
+abstract class Resource {
+    abstract fun typestring() : String
 }

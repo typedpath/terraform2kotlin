@@ -14,5 +14,7 @@ open class TerraformTemplate {
             .replace("\n","\\n")
             .replace("\r","")
 
+    fun format(iamPolicy: IamPolicy) = "<<POLICY${System.lineSeparator()}${toJson(iamPolicy)}${ System.lineSeparator()}POLICY"
+
 
 }

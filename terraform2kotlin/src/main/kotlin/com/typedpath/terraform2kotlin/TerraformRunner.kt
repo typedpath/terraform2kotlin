@@ -28,7 +28,8 @@ class TerraformAWSRunner(val template: TerraformTemplate, val accessKey: String,
     }
 
     fun destroy() {
-        //TODO
+        val destroyResult  = "terraform destroy -auto-approve".runCommand(tempDir!!)
+        println(destroyResult)
     }
 
 }

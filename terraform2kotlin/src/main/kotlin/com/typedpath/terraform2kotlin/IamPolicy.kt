@@ -1,4 +1,4 @@
-package com.typedpath.awscloudformation
+package com.typedpath.terraform2kotlin
 
 /* https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html */
 class IamPolicy() {
