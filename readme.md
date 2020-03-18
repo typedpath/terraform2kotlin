@@ -8,7 +8,7 @@ gradle build
 </pre>
 ___Beware___ the tests create cloud resources that cost money !  
 For the tests to work you need to:
- * create admin CLI AWS user see: https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html - its worth considering restricted access rights of this user as much as possible
+ * create admin CLI AWS user, see: https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html - its worth considering restricted access rights of this user as much as possible
  * define environment variables:
    *  __awsTestAccessKey__ (format: AKIA42VZ2QKNI5LJAYWV)
    * __awsTestSecretKey__ (format: 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)
@@ -22,7 +22,7 @@ For the tests to work you need to:
 | Test | Kotlin Template, Generated .tf | Test Description |
 | --- | --- | ----- |
 | [BasicEc2_test](terraform2kotlin/src/test/kotlin/com/typedpath/terraform2kotlin/BasicEc2_test.kt) | [BasicEc2Template.kt](terraform2kotlin/src/test/kotlin/com/typedpath/terraform2kotlin/BasicEc2Template.kt) [BasicEc2Template.tf](docs/templates/BasicEc2Template.tf) | create terraform template for EC2 instance  |
-| [SecurityGroupEc2_test](terraform2kotlin/src/test/kotlin/com/typedpath/terraform2kotlin/SecurityGroupEc2_test.kt) | [SecurityGroupEc2_test.kt](terraform2kotlin/src/test/kotlin/com/typedpath/terraform2kotlin/SecurityGroupEc2_test.kt) [SecurityGroupEc2Template.tf](docs/templates/SecurityGroupEc2Template.tf) | create an EC2 instance + security group, install webserver, check a web page is viewable |
+| [SecurityGroupEc2_test](terraform2kotlin/src/test/kotlin/com/typedpath/terraform2kotlin/SecurityGroupEc2_test.kt) | [SecurityGroupEc2Template.kt](terraform2kotlin/src/test/kotlin/com/typedpath/terraform2kotlin/SecurityGroupEc2Template.kt) [SecurityGroupEc2Template.tf](docs/templates/SecurityGroupEc2Template.tf) | create an EC2 instance + security group, install webserver, check a web page is viewable |
 
 ## Templates
 The examples listed above create templates by extension e.g.:
