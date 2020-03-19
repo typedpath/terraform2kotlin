@@ -1,5 +1,5 @@
 # Terraform2Kotlin
-This project offers a Kotlin DSL for Terraform. Kotlin brings the advantages of type safety, IDE autocomplete and the ability to embed code within templates + many other possibilities.  This is a an experiment in its early stages  - only a small subset of AWS resources coverered - please provide feedback!  
+This project offers a Kotlin DSL for Terraform. Kotlin brings the advantages of type safety, IDE autocomplete and the ability to embed code within templates + many other possibilities.  This is a an experiment in its early stages - there is a mapping of AWS resources only (in com.typedpath.terraform2kotlin.aws)   - please provide feedback!  
 
 ## Building
 <pre>
