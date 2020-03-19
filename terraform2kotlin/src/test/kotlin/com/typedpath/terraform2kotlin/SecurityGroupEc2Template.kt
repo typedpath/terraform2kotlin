@@ -1,6 +1,9 @@
 package com.typedpath.terraform2kotlin
 
 import com.typedpath.terraform2kotlin.aws.schema.*
+import com.typedpath.terraform2kotlin.aws.schema.aws_security_group.Ingress
+import com.typedpath.terraform2kotlin.aws.schema.aws_security_group.Egress
+
 
 class SecurityGroupEc2Template(webgreeting: String) : TerraformTemplate() {
     val securityGroupName = "Allow HTTPS"
@@ -22,17 +25,17 @@ echo '<h1>$webgreeting</h1>' | sudo tee /var/www/html/index.html""")
     val web_traffic = aws_security_group().apply {
         name = securityGroupName
         ingress = listOf(
-            ingress(to_port = 443, from_port = 443, protocol = "TCP").apply {
+            Ingress(to_port = 443, from_port = 443, protocol = "TCP").apply {
                 cidr_blocks = listOf("0.0.0.0/0")
             },
-            ingress(to_port = 80, from_port = 80, protocol = "TCP").apply {
+            Ingress(to_port = 80, from_port = 80, protocol = "TCP").apply {
                 cidr_blocks = listOf("0.0.0.0/0")
             })
         egress = listOf(
-            egress(from_port = 443, to_port = 443, protocol = "TCP").apply {
+            Egress(from_port = 443, to_port = 443, protocol = "TCP").apply {
                 cidr_blocks = listOf("0.0.0.0/0")
             },
-            egress(from_port = 80, to_port = 80, protocol = "TCP").apply {
+            Egress(from_port = 80, to_port = 80, protocol = "TCP").apply {
                 cidr_blocks = listOf("0.0.0.0/0")
             })
     }

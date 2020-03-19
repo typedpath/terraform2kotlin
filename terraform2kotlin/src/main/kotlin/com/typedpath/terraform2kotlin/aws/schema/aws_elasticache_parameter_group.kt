@@ -1,0 +1,15 @@
+package com.typedpath.terraform2kotlin.aws.schema
+
+class aws_elasticache_parameter_group(val name : String, val family : String) :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="resource"
+	  var description: String? = null
+  var parameter: List<Parameter>? = null
+ 
+
+
+class Parameter(val name : String, val value : String) :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	 
+
+}
+}
