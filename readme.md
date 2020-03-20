@@ -47,7 +47,7 @@ val template = SecurityGroupEc2Template(webGreeting)
 println("template:\r\n ${toTerraform(template)}")
 ```
 In this example this will give this .tf:
-```json
+```terraform
 resource "aws_instance" "myec2"   {
     ami =  "ami-0389b2a3c4948b1a0"
 . . . .
