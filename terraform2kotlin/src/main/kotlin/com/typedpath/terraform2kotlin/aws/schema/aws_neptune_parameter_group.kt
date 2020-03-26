@@ -1,4 +1,5 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
 class aws_neptune_parameter_group(val name : String, val family : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"

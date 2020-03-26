@@ -1,4 +1,5 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
 class aws_api_gateway_method_response(val rest_api_id : String, val resource_id : String, val http_method : Http_method, val status_code : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"

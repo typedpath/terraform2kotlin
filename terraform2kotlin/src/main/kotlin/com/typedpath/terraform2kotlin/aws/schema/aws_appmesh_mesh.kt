@@ -1,9 +1,10 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
 class aws_appmesh_mesh(val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var tags: Map<String, String>? = null
-  var spec: List<Spec>? = null
+	  var spec: List<Spec>? = null
+  var tags: Map<String, String>? = null
  
 
 

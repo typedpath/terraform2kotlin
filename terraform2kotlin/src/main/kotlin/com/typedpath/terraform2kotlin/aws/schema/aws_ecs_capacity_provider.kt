@@ -1,4 +1,5 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
 class aws_ecs_capacity_provider(val name : String, val auto_scaling_group_provider : List<Auto_scaling_group_provider>) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"

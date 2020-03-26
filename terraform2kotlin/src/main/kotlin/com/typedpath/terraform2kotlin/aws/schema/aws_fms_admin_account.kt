@@ -1,4 +1,5 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
 class aws_fms_admin_account() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"

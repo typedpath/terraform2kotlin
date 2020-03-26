@@ -1,6 +1,7 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
-class aws_dynamodb_global_table(val name : String, val replica : List<Replica>) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_dynamodb_global_table(val replica : List<Replica>, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
 	 
 

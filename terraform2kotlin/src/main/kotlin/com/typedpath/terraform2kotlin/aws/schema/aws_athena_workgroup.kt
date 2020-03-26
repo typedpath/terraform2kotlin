@@ -1,4 +1,5 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
 class aws_athena_workgroup(val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
@@ -15,10 +16,10 @@ enum class State(val theValue: String ) {
 
 class Configuration() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var result_configuration: List<Result_configuration>? = null
-  var bytes_scanned_cutoff_per_query: Int? = null
+	  var bytes_scanned_cutoff_per_query: Int? = null
   var enforce_workgroup_configuration: Boolean? = null
   var publish_cloudwatch_metrics_enabled: Boolean? = null
+  var result_configuration: List<Result_configuration>? = null
  
 
 

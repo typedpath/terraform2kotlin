@@ -1,4 +1,5 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
 class aws_s3_bucket_notification(val bucket : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
@@ -17,7 +18,7 @@ class Topic(val topic_arn : String, val events : List<String>) :  com.typedpath.
 
 }
 
-class Queue(val events : List<String>, val queue_arn : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Queue(val queue_arn : String, val events : List<String>) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	  var id: String? = null
   var filter_prefix: String? = null

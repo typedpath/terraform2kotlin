@@ -1,4 +1,5 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
 class aws_globalaccelerator_listener(val accelerator_arn : String, val protocol : Protocol, val port_range : List<Port_range>) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"

@@ -1,4 +1,5 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
 class aws_datasync_location_s3(val subdirectory : String, val s3_bucket_arn : String, val s3_config : List<S3_config>) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"

@@ -1,4 +1,5 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
 class aws_ssm_resource_data_sync(val name : String, val s3_destination : List<S3_destination>) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"

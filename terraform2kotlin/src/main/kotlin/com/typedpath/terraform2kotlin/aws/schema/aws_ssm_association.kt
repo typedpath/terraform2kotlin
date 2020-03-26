@@ -1,18 +1,19 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
 class aws_ssm_association(val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var max_concurrency: String? = null
-  var compliance_severity: Compliance_severity? = null
+	  var automation_target_parameter_name: String? = null
+  var association_name: String? = null
+  var max_concurrency: String? = null
   var parameters: Map<String, String>? = null
   var schedule_expression: String? = null
-  var output_location: List<Output_location>? = null
-  var association_name: String? = null
+  var targets: List<Targets>? = null
+  var compliance_severity: Compliance_severity? = null
   var instance_id: String? = null
   var document_version: String? = null
   var max_errors: String? = null
-  var targets: List<Targets>? = null
-  var automation_target_parameter_name: String? = null
+  var output_location: List<Output_location>? = null
  
 
 enum class Compliance_severity(val theValue: String ) {

@@ -1,5 +1,6 @@
 package com.typedpath.terraform2kotlin
 import org.junit.Assert
+import java.io.File
 
 
 class LineComparison(val matches: Boolean, val line1: String?, val line2: String?) {
@@ -40,13 +41,16 @@ fun assertCompareLineByLineIgnoreEmptyLinesIgnoreWhiteSpaceWidth(str1: String, s
         diffCount == 0)
 }
 
-fun terraformAwsRunnerFromEnvironment(template: TerraformTemplate) : TerraformAWSRunner{
+fun terraformAwsRunnerFromEnvironment( context: Any, vararg templates: TerraformTemplate) : TerraformAWSRunner{
     val accessKeyPropertyName = "awsTestAccessKey"
     val secretKeyPropertyName = "awsTestSecretKey"
     val regionPropertyName = "awsTestRegion"
+    val terraformTestDirPropertyName = "terraformTestDir"
     val accessKey = System.getenv(accessKeyPropertyName)
     val secretKey = System.getenv(secretKeyPropertyName)
     val region = System.getenv(regionPropertyName)
+    val terraformTestDir= System.getenv(terraformTestDirPropertyName)
+
     if (accessKey == null) {
         throw Exception("system property $accessKeyPropertyName not specified e.g. AKIA42VZ2QKNI5LJAYWV")
     }
@@ -56,7 +60,14 @@ fun terraformAwsRunnerFromEnvironment(template: TerraformTemplate) : TerraformAW
     if (region == null) {
         throw Exception("system property $regionPropertyName not specified e.g. eu-west-2")
     }
-    return TerraformAWSRunner(template, accessKey, secretKey, region)
+    val runDir = if (null==terraformTestDir) {
+        createTempDir("terraformTest")
+    } else {
+        File(terraformTestDir + "/" + context.javaClass.simpleName)
+    }
+    runDir.mkdirs()
+
+    return TerraformAWSRunner(accessKey, secretKey, region, runDir, *templates)
 }
 
 

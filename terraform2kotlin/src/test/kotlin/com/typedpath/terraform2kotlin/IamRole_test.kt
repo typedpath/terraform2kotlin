@@ -7,8 +7,9 @@ class IamRole_test {
 @Test
 fun test() {
     val template = IamRoleTemplate()
+    autoTag(template)
     println(toTerraform(template))
-    val runner = terraformAwsRunnerFromEnvironment(template)
+    val runner = terraformAwsRunnerFromEnvironment(this, template)
     try {
         val outputs = runner.initApply()
         Assert.assertTrue(outputs.containsKey("roleArn"))

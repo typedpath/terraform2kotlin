@@ -1,4 +1,5 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
 class aws_lb_listener(val default_action : List<Default_action>, val load_balancer_arn : String, val port : Int) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
@@ -73,13 +74,13 @@ enum class On_unauthenticated_request(val theValue: String ) {
 	}
 }
 
-class Authenticate_oidc(val client_id : String, val issuer : String, val authorization_endpoint : String, val client_secret : String, val token_endpoint : String, val user_info_endpoint : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Authenticate_oidc(val token_endpoint : String, val client_id : String, val issuer : String, val user_info_endpoint : String, val authorization_endpoint : String, val client_secret : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	  var authentication_request_extra_params: Map<String, String>? = null
-  var on_unauthenticated_request: On_unauthenticated_request? = null
-  var session_timeout: Int? = null
-  var scope: String? = null
   var session_cookie_name: String? = null
+  var session_timeout: Int? = null
+  var on_unauthenticated_request: On_unauthenticated_request? = null
+  var scope: String? = null
  
 
 enum class On_unauthenticated_request(val theValue: String ) {
@@ -88,4 +89,11 @@ enum class On_unauthenticated_request(val theValue: String ) {
 	}
 }
 }
+fun arnRef(subPath: String = "") = ref(this, "arn", subPath)
+fun load_balancer_arnRef(subPath: String = "") = ref(this, "load_balancer_arn", subPath)
+fun portRef(subPath: String = "") = ref(this, "port", subPath)
+fun protocolRef(subPath: String = "") = ref(this, "protocol", subPath)
+fun ssl_policyRef(subPath: String = "") = ref(this, "ssl_policy", subPath)
+fun certificate_arnRef(subPath: String = "") = ref(this, "certificate_arn", subPath)
+fun default_actionRef(subPath: String = "") = ref(this, "default_action", subPath)
 }

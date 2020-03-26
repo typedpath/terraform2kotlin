@@ -1,6 +1,7 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
-class aws_cognito_identity_pool_roles_attachment(val roles : Map<String, String>, val identity_pool_id : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_cognito_identity_pool_roles_attachment(val identity_pool_id : String, val roles : Map<String, String>) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
 	  var role_mapping: List<Role_mapping>? = null
  
@@ -21,7 +22,7 @@ enum class Ambiguous_role_resolution(val theValue: String ) {
 	override fun toString() = theValue
 	}
 
-class Mapping_rule(val claim : String, val match_type : Match_type, val role_arn : String, val value : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Mapping_rule(val value : String, val claim : String, val match_type : Match_type, val role_arn : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	 
 

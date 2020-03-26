@@ -1,19 +1,20 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
 class aws_dynamodb_table(val name : String, val hash_key : String, val attribute : List<Attribute>) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var global_secondary_index: List<Global_secondary_index>? = null
-  var stream_enabled: Boolean? = null
-  var write_capacity: Int? = null
-  var range_key: String? = null
-  var billing_mode: Billing_mode? = null
-  var tags: Map<String, String>? = null
-  var server_side_encryption: List<Server_side_encryption>? = null
-  var point_in_time_recovery: List<Point_in_time_recovery>? = null
-  var read_capacity: Int? = null
+	  var write_capacity: Int? = null
   var ttl: List<Ttl>? = null
+  var billing_mode: Billing_mode? = null
   var local_secondary_index: List<Local_secondary_index>? = null
   var stream_view_type: Stream_view_type? = null
+  var point_in_time_recovery: List<Point_in_time_recovery>? = null
+  var range_key: String? = null
+  var global_secondary_index: List<Global_secondary_index>? = null
+  var stream_enabled: Boolean? = null
+  var tags: Map<String, String>? = null
+  var server_side_encryption: List<Server_side_encryption>? = null
+  var read_capacity: Int? = null
  
 
 enum class Billing_mode(val theValue: String ) {
@@ -42,12 +43,6 @@ class Server_side_encryption(val enabled : Boolean) :  com.typedpath.terraform2k
 
 }
 
-class Point_in_time_recovery(val enabled : Boolean) :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	 
-
-}
-
 class Ttl(val attribute_name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	  var enabled: Boolean? = null
@@ -62,13 +57,37 @@ class Local_secondary_index(val name : String, val range_key : String, val proje
 
 }
 
-class Global_secondary_index(val name : String, val hash_key : String, val projection_type : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Point_in_time_recovery(val enabled : Boolean) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var write_capacity: Int? = null
+	 
+
+}
+
+class Global_secondary_index(val hash_key : String, val projection_type : String, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	  var non_key_attributes: List<String>? = null
+  var write_capacity: Int? = null
   var read_capacity: Int? = null
   var range_key: String? = null
-  var non_key_attributes: List<String>? = null
  
 
 }
+fun stream_enabledRef(subPath: String = "") = ref(this, "stream_enabled", subPath)
+fun billing_modeRef(subPath: String = "") = ref(this, "billing_mode", subPath)
+fun nameRef(subPath: String = "") = ref(this, "name", subPath)
+fun attributeRef(subPath: String = "") = ref(this, "attribute", subPath)
+fun local_secondary_indexRef(subPath: String = "") = ref(this, "local_secondary_index", subPath)
+fun range_keyRef(subPath: String = "") = ref(this, "range_key", subPath)
+fun tagsRef(subPath: String = "") = ref(this, "tags", subPath)
+fun hash_keyRef(subPath: String = "") = ref(this, "hash_key", subPath)
+fun read_capacityRef(subPath: String = "") = ref(this, "read_capacity", subPath)
+fun stream_labelRef(subPath: String = "") = ref(this, "stream_label", subPath)
+fun stream_view_typeRef(subPath: String = "") = ref(this, "stream_view_type", subPath)
+fun arnRef(subPath: String = "") = ref(this, "arn", subPath)
+fun ttlRef(subPath: String = "") = ref(this, "ttl", subPath)
+fun write_capacityRef(subPath: String = "") = ref(this, "write_capacity", subPath)
+fun point_in_time_recoveryRef(subPath: String = "") = ref(this, "point_in_time_recovery", subPath)
+fun global_secondary_indexRef(subPath: String = "") = ref(this, "global_secondary_index", subPath)
+fun stream_arnRef(subPath: String = "") = ref(this, "stream_arn", subPath)
+fun server_side_encryptionRef(subPath: String = "") = ref(this, "server_side_encryption", subPath)
 }

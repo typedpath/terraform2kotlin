@@ -1,6 +1,7 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
-class aws_waf_rate_based_rule(val name : String, val metric_name : String, val rate_key : String, val rate_limit : Int) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_waf_rate_based_rule(val metric_name : String, val rate_key : String, val rate_limit : Int, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
 	  var predicates: List<Predicates>? = null
   var tags: Map<String, String>? = null
@@ -16,4 +17,5 @@ enum class Type(val theValue: String ) {
 	override fun toString() = theValue
 	}
 }
+fun nameRef(subPath: String = "") = ref(this, "name", subPath)
 }

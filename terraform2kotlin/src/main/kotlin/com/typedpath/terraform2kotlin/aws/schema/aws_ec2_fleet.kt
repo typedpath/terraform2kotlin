@@ -1,23 +1,24 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
 class aws_ec2_fleet(val launch_template_config : List<Launch_template_config>, val target_capacity_specification : List<Target_capacity_specification>) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var type: Type? = null
+	  var excess_capacity_termination_policy: Excess_capacity_termination_policy? = null
   var on_demand_options: List<On_demand_options>? = null
   var replace_unhealthy_instances: Boolean? = null
   var spot_options: List<Spot_options>? = null
+  var tags: Map<String, String>? = null
+  var type: Type? = null
   var terminate_instances: Boolean? = null
   var terminate_instances_with_expiration: Boolean? = null
-  var excess_capacity_termination_policy: Excess_capacity_termination_policy? = null
-  var tags: Map<String, String>? = null
  
 
-enum class Type(val theValue: String ) {
-	 maintain ("maintain"), request ("request") ;
-	override fun toString() = theValue
-	}
 enum class Excess_capacity_termination_policy(val theValue: String ) {
 	 no_termination ("no-termination"), termination ("termination") ;
+	override fun toString() = theValue
+	}
+enum class Type(val theValue: String ) {
+	 maintain ("maintain"), request ("request") ;
 	override fun toString() = theValue
 	}
 
@@ -37,12 +38,12 @@ class Launch_template_specification(val version : String) :  com.typedpath.terra
 
 class Override() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var instance_type: String? = null
-  var max_price: String? = null
+	  var max_price: String? = null
   var priority: Float? = null
   var subnet_id: String? = null
   var weighted_capacity: Float? = null
   var availability_zone: String? = null
+  var instance_type: String? = null
  
 
 }

@@ -1,4 +1,5 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
 class aws_codestarnotifications_notification_rule(val detail_type : Detail_type, val event_type_ids : List<String>, val name : String, val resource : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"

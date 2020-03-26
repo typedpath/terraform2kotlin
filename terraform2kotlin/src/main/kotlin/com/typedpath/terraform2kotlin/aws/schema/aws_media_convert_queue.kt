@@ -1,20 +1,21 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
 class aws_media_convert_queue(val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var tags: Map<String, String>? = null
+	  var reservation_plan_settings: List<Reservation_plan_settings>? = null
+  var status: Status? = null
+  var tags: Map<String, String>? = null
   var description: String? = null
   var pricing_plan: Pricing_plan? = null
-  var reservation_plan_settings: List<Reservation_plan_settings>? = null
-  var status: Status? = null
  
 
-enum class Pricing_plan(val theValue: String ) {
-	 ON_DEMAND ("ON_DEMAND"), RESERVED ("RESERVED") ;
-	override fun toString() = theValue
-	}
 enum class Status(val theValue: String ) {
 	 ACTIVE ("ACTIVE"), PAUSED ("PAUSED") ;
+	override fun toString() = theValue
+	}
+enum class Pricing_plan(val theValue: String ) {
+	 ON_DEMAND ("ON_DEMAND"), RESERVED ("RESERVED") ;
 	override fun toString() = theValue
 	}
 

@@ -1,6 +1,7 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
-class aws_appautoscaling_scheduled_action(val service_namespace : String, val name : String, val resource_id : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_appautoscaling_scheduled_action(val resource_id : String, val name : String, val service_namespace : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
 	  var scalable_dimension: String? = null
   var start_time: String? = null
@@ -12,8 +13,8 @@ class aws_appautoscaling_scheduled_action(val service_namespace : String, val na
 
 class Scalable_target_action() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var max_capacity: Int? = null
-  var min_capacity: Int? = null
+	  var min_capacity: Int? = null
+  var max_capacity: Int? = null
  
 
 }

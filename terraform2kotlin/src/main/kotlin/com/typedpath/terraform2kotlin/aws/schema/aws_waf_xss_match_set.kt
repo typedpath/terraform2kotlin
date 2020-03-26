@@ -1,4 +1,5 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
 class aws_waf_xss_match_set(val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
@@ -6,7 +7,7 @@ class aws_waf_xss_match_set(val name : String) :  com.typedpath.terraform2kotlin
  
 
 
-class Xss_match_tuples(val text_transformation : String, val field_to_match : List<Field_to_match>) :  com.typedpath.terraform2kotlin.Resource() {
+class Xss_match_tuples(val field_to_match : List<Field_to_match>, val text_transformation : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	 
 

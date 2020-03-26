@@ -1,4 +1,5 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
 class aws_athena_database(val name : String, val bucket : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"

@@ -1,4 +1,5 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
 class aws_datasync_location_efs(val ec2_config : List<Ec2_config>, val efs_file_system_arn : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"

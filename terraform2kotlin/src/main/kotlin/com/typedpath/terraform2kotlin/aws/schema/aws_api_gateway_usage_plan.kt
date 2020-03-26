@@ -1,13 +1,14 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
 class aws_api_gateway_usage_plan(val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var tags: Map<String, String>? = null
-  var description: String? = null
+	  var description: String? = null
   var api_stages: List<Api_stages>? = null
   var quota_settings: List<Quota_settings>? = null
   var throttle_settings: List<Throttle_settings>? = null
   var product_code: String? = null
+  var tags: Map<String, String>? = null
  
 
 

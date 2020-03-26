@@ -1,4 +1,5 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
 class aws_waf_regex_match_set(val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
@@ -6,7 +7,7 @@ class aws_waf_regex_match_set(val name : String) :  com.typedpath.terraform2kotl
  
 
 
-class Regex_match_tuple(val text_transformation : String, val field_to_match : List<Field_to_match>, val regex_pattern_set_id : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Regex_match_tuple(val field_to_match : List<Field_to_match>, val regex_pattern_set_id : String, val text_transformation : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	 
 

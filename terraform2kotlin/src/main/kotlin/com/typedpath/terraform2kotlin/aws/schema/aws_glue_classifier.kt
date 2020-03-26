@@ -1,4 +1,5 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
 class aws_glue_classifier(val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
@@ -17,12 +18,12 @@ class Xml_classifier(val classification : String, val row_tag : String) :  com.t
 
 class Csv_classifier() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var delimiter: String? = null
+	  var contains_header: Contains_header? = null
+  var delimiter: String? = null
   var disable_value_trimming: Boolean? = null
   var header: List<String>? = null
   var quote_symbol: String? = null
   var allow_single_column: Boolean? = null
-  var contains_header: Contains_header? = null
  
 
 enum class Contains_header(val theValue: String ) {

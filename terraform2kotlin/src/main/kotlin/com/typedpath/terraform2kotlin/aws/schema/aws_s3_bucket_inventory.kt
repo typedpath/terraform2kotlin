@@ -1,6 +1,7 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
-class aws_s3_bucket_inventory(val name : String, val destination : List<Destination>, val schedule : List<Schedule>, val included_object_versions : Included_object_versions, val bucket : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_s3_bucket_inventory(val bucket : String, val name : String, val destination : List<Destination>, val schedule : List<Schedule>, val included_object_versions : Included_object_versions) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
 	  var optional_fields: List<Optional_fields>? = null
   var enabled: Boolean? = null
@@ -21,7 +22,7 @@ class Destination(val bucket : List<Bucket>) :  com.typedpath.terraform2kotlin.R
 	 
 
 
-class Bucket(val format : Format, val bucket_arn : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Bucket(val bucket_arn : String, val format : Format) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	  var account_id: String? = null
   var prefix: String? = null

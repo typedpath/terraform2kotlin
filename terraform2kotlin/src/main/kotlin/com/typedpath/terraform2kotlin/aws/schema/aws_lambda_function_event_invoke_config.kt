@@ -1,4 +1,5 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
 class aws_lambda_function_event_invoke_config(val function_name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"

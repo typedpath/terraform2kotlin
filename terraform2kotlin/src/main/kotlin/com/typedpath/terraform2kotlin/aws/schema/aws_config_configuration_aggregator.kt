@@ -1,4 +1,5 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
 class aws_config_configuration_aggregator(val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
@@ -18,8 +19,8 @@ class Account_aggregation_source(val account_ids : List<String>) :  com.typedpat
 
 class Organization_aggregation_source(val role_arn : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var all_regions: Boolean? = null
-  var regions: List<String>? = null
+	  var regions: List<String>? = null
+  var all_regions: Boolean? = null
  
 
 }

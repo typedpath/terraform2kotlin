@@ -1,4 +1,5 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
 class aws_gamelift_build(val name : String, val operating_system : Operating_system, val storage_location : List<Storage_location>) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"

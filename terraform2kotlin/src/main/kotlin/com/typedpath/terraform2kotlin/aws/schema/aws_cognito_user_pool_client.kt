@@ -1,19 +1,20 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
-class aws_cognito_user_pool_client(val user_pool_id : String, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_cognito_user_pool_client(val name : String, val user_pool_id : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var generate_secret: Boolean? = null
-  var explicit_auth_flows: List<Explicit_auth_flows>? = null
-  var logout_urls: List<String>? = null
-  var read_attributes: List<String>? = null
-  var allowed_oauth_flows: List<Allowed_oauth_flows>? = null
-  var allowed_oauth_flows_user_pool_client: Boolean? = null
-  var refresh_token_validity: Int? = null
-  var allowed_oauth_scopes: List<String>? = null
+	  var read_attributes: List<String>? = null
+  var write_attributes: List<String>? = null
   var callback_urls: List<String>? = null
+  var allowed_oauth_flows_user_pool_client: Boolean? = null
+  var allowed_oauth_scopes: List<String>? = null
+  var logout_urls: List<String>? = null
+  var generate_secret: Boolean? = null
+  var explicit_auth_flows: List<Explicit_auth_flows>? = null
+  var refresh_token_validity: Int? = null
+  var allowed_oauth_flows: List<Allowed_oauth_flows>? = null
   var default_redirect_uri: String? = null
   var supported_identity_providers: List<String>? = null
-  var write_attributes: List<String>? = null
  
 
 enum class Explicit_auth_flows(val theValue: String ) {

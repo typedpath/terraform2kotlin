@@ -1,14 +1,27 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
 class aws_glue_security_configuration(val encryption_configuration : List<Encryption_configuration>, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
 	 
 
 
-class Encryption_configuration(val cloudwatch_encryption : List<Cloudwatch_encryption>, val job_bookmarks_encryption : List<Job_bookmarks_encryption>, val s3_encryption : List<S3_encryption>) :  com.typedpath.terraform2kotlin.Resource() {
+class Encryption_configuration(val job_bookmarks_encryption : List<Job_bookmarks_encryption>, val s3_encryption : List<S3_encryption>, val cloudwatch_encryption : List<Cloudwatch_encryption>) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	 
 
+
+class S3_encryption() :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	  var kms_key_arn: String? = null
+  var s3_encryption_mode: S3_encryption_mode? = null
+ 
+
+enum class S3_encryption_mode(val theValue: String ) {
+	 DISABLED ("DISABLED"), SSE_KMS ("SSE-KMS"), SSE_S3 ("SSE-S3") ;
+	override fun toString() = theValue
+	}
+}
 
 class Cloudwatch_encryption() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
@@ -24,24 +37,12 @@ enum class Cloudwatch_encryption_mode(val theValue: String ) {
 
 class Job_bookmarks_encryption() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var job_bookmarks_encryption_mode: Job_bookmarks_encryption_mode? = null
-  var kms_key_arn: String? = null
+	  var kms_key_arn: String? = null
+  var job_bookmarks_encryption_mode: Job_bookmarks_encryption_mode? = null
  
 
 enum class Job_bookmarks_encryption_mode(val theValue: String ) {
 	 CSE_KMS ("CSE-KMS"), DISABLED ("DISABLED") ;
-	override fun toString() = theValue
-	}
-}
-
-class S3_encryption() :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	  var kms_key_arn: String? = null
-  var s3_encryption_mode: S3_encryption_mode? = null
- 
-
-enum class S3_encryption_mode(val theValue: String ) {
-	 DISABLED ("DISABLED"), SSE_KMS ("SSE-KMS"), SSE_S3 ("SSE-S3") ;
 	override fun toString() = theValue
 	}
 }

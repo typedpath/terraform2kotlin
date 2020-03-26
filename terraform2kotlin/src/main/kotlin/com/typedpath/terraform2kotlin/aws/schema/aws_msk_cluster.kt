@@ -1,13 +1,14 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
-class aws_msk_cluster(val cluster_name : String, val broker_node_group_info : List<Broker_node_group_info>, val number_of_broker_nodes : Int, val kafka_version : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_msk_cluster(val kafka_version : String, val number_of_broker_nodes : Int, val broker_node_group_info : List<Broker_node_group_info>, val cluster_name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var enhanced_monitoring: Enhanced_monitoring? = null
-  var tags: Map<String, String>? = null
+	  var client_authentication: List<Client_authentication>? = null
+  var open_monitoring: List<Open_monitoring>? = null
+  var enhanced_monitoring: Enhanced_monitoring? = null
   var configuration_info: List<Configuration_info>? = null
   var encryption_info: List<Encryption_info>? = null
-  var open_monitoring: List<Open_monitoring>? = null
-  var client_authentication: List<Client_authentication>? = null
+  var tags: Map<String, String>? = null
  
 
 enum class Enhanced_monitoring(val theValue: String ) {
@@ -40,7 +41,33 @@ class Tls() :  com.typedpath.terraform2kotlin.Resource() {
 }
 }
 
-class Configuration_info(val revision : Int, val arn : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Open_monitoring(val prometheus : List<Prometheus>) :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	 
+
+
+class Prometheus() :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	  var jmx_exporter: List<Jmx_exporter>? = null
+  var node_exporter: List<Node_exporter>? = null
+ 
+
+
+class Node_exporter(val enabled_in_broker : Boolean) :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	 
+
+}
+
+class Jmx_exporter(val enabled_in_broker : Boolean) :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	 
+
+}
+}
+}
+
+class Configuration_info(val arn : String, val revision : Int) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	 
 
@@ -55,8 +82,8 @@ class Encryption_info() :  com.typedpath.terraform2kotlin.Resource() {
 
 class Encryption_in_transit() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var client_broker: Client_broker? = null
-  var in_cluster: Boolean? = null
+	  var in_cluster: Boolean? = null
+  var client_broker: Client_broker? = null
  
 
 enum class Client_broker(val theValue: String ) {
@@ -65,30 +92,12 @@ enum class Client_broker(val theValue: String ) {
 	}
 }
 }
-
-class Open_monitoring(val prometheus : List<Prometheus>) :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	 
-
-
-class Prometheus() :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	  var jmx_exporter: List<Jmx_exporter>? = null
-  var node_exporter: List<Node_exporter>? = null
- 
-
-
-class Jmx_exporter(val enabled_in_broker : Boolean) :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	 
-
-}
-
-class Node_exporter(val enabled_in_broker : Boolean) :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	 
-
-}
-}
-}
+fun kafka_versionRef(subPath: String = "") = ref(this, "kafka_version", subPath)
+fun number_of_broker_nodesRef(subPath: String = "") = ref(this, "number_of_broker_nodes", subPath)
+fun tagsRef(subPath: String = "") = ref(this, "tags", subPath)
+fun zookeeper_connect_stringRef(subPath: String = "") = ref(this, "zookeeper_connect_string", subPath)
+fun arnRef(subPath: String = "") = ref(this, "arn", subPath)
+fun bootstrap_brokersRef(subPath: String = "") = ref(this, "bootstrap_brokers", subPath)
+fun bootstrap_brokers_tlsRef(subPath: String = "") = ref(this, "bootstrap_brokers_tls", subPath)
+fun cluster_nameRef(subPath: String = "") = ref(this, "cluster_name", subPath)
 }

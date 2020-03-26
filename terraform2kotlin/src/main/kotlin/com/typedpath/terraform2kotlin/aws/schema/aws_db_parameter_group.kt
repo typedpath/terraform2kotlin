@@ -1,4 +1,5 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
 class aws_db_parameter_group(val family : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
@@ -10,7 +11,7 @@ class aws_db_parameter_group(val family : String) :  com.typedpath.terraform2kot
  
 
 
-class Parameter(val value : String, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Parameter(val name : String, val value : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	  var apply_method: String? = null
  

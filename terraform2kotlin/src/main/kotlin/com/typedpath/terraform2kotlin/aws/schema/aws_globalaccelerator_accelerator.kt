@@ -1,11 +1,12 @@
 package com.typedpath.terraform2kotlin.aws.schema
+import com.typedpath.terraform2kotlin.ref
 
 class aws_globalaccelerator_accelerator(val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var tags: Map<String, String>? = null
-  var ip_address_type: Ip_address_type? = null
+	  var ip_address_type: Ip_address_type? = null
   var enabled: Boolean? = null
   var attributes: List<Attributes>? = null
+  var tags: Map<String, String>? = null
  
 
 enum class Ip_address_type(val theValue: String ) {
