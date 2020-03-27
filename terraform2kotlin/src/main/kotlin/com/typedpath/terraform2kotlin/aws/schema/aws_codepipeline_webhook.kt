@@ -20,8 +20,8 @@ class Filter(val json_path : String, val match_equals : String) :  com.typedpath
 
 class Authentication_configuration() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var allowed_ip_range: String? = null
-  var secret_token: String? = null
+	  var secret_token: String? = null
+  var allowed_ip_range: String? = null
  
 
 }

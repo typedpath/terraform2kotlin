@@ -1,14 +1,14 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_budgets_budget(val budget_type : String, val limit_amount : String, val limit_unit : String, val time_period_start : String, val time_unit : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_budgets_budget(val limit_amount : String, val limit_unit : String, val time_period_start : String, val time_unit : String, val budget_type : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var name_prefix: String? = null
-  var cost_filters: Map<String, String>? = null
+	  var time_period_end: String? = null
   var account_id: String? = null
   var name: String? = null
+  var name_prefix: String? = null
+  var cost_filters: Map<String, String>? = null
   var cost_types: List<Cost_types>? = null
-  var time_period_end: String? = null
   var notification: List<Notification>? = null
  
 
@@ -16,16 +16,16 @@ class aws_budgets_budget(val budget_type : String, val limit_amount : String, va
 class Cost_types() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	  var include_subscription: Boolean? = null
+  var include_tax: Boolean? = null
   var include_upfront: Boolean? = null
-  var use_amortized: Boolean? = null
+  var use_blended: Boolean? = null
+  var include_other_subscription: Boolean? = null
   var include_recurring: Boolean? = null
   var include_refund: Boolean? = null
   var include_support: Boolean? = null
-  var include_tax: Boolean? = null
-  var use_blended: Boolean? = null
+  var use_amortized: Boolean? = null
   var include_credit: Boolean? = null
   var include_discount: Boolean? = null
-  var include_other_subscription: Boolean? = null
  
 
 }

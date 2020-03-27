@@ -1,7 +1,7 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_lb_listener(val default_action : List<Default_action>, val load_balancer_arn : String, val port : Int) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_lb_listener(val load_balancer_arn : String, val port : Int, val default_action : List<Default_action>) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
 	  var protocol: Protocol? = null
   var ssl_policy: String? = null
@@ -15,12 +15,12 @@ enum class Protocol(val theValue: String ) {
 
 class Default_action(val type : Type) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var target_group_arn: String? = null
-  var redirect: List<Redirect>? = null
+	  var redirect: List<Redirect>? = null
   var fixed_response: List<Fixed_response>? = null
   var authenticate_cognito: List<Authenticate_cognito>? = null
   var authenticate_oidc: List<Authenticate_oidc>? = null
   var order: Int? = null
+  var target_group_arn: String? = null
  
 
 enum class Type(val theValue: String ) {
@@ -30,11 +30,11 @@ enum class Type(val theValue: String ) {
 
 class Redirect(val status_code : Status_code) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var port: String? = null
+	  var path: String? = null
+  var port: String? = null
   var protocol: Protocol? = null
   var query: String? = null
   var host: String? = null
-  var path: String? = null
  
 
 enum class Status_code(val theValue: String ) {
@@ -49,8 +49,8 @@ enum class Protocol(val theValue: String ) {
 
 class Fixed_response(val content_type : Content_type) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var message_body: String? = null
-  var status_code: String? = null
+	  var status_code: String? = null
+  var message_body: String? = null
  
 
 enum class Content_type(val theValue: String ) {
@@ -74,13 +74,13 @@ enum class On_unauthenticated_request(val theValue: String ) {
 	}
 }
 
-class Authenticate_oidc(val token_endpoint : String, val client_id : String, val issuer : String, val user_info_endpoint : String, val authorization_endpoint : String, val client_secret : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Authenticate_oidc(val authorization_endpoint : String, val client_secret : String, val issuer : String, val user_info_endpoint : String, val client_id : String, val token_endpoint : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var authentication_request_extra_params: Map<String, String>? = null
-  var session_cookie_name: String? = null
-  var session_timeout: Int? = null
-  var on_unauthenticated_request: On_unauthenticated_request? = null
+	  var session_timeout: Int? = null
+  var authentication_request_extra_params: Map<String, String>? = null
   var scope: String? = null
+  var session_cookie_name: String? = null
+  var on_unauthenticated_request: On_unauthenticated_request? = null
  
 
 enum class On_unauthenticated_request(val theValue: String ) {

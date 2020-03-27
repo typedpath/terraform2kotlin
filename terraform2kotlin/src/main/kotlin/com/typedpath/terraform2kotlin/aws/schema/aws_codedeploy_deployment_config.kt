@@ -3,27 +3,15 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_codedeploy_deployment_config(val deployment_config_name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var minimum_healthy_hosts: List<Minimum_healthy_hosts>? = null
+	  var compute_platform: Compute_platform? = null
+  var minimum_healthy_hosts: List<Minimum_healthy_hosts>? = null
   var traffic_routing_config: List<Traffic_routing_config>? = null
-  var compute_platform: Compute_platform? = null
  
 
 enum class Compute_platform(val theValue: String ) {
 	 Server ("Server"), Lambda ("Lambda"), ECS ("ECS") ;
 	override fun toString() = theValue
 	}
-
-class Minimum_healthy_hosts() :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	  var type: Type? = null
-  var value: Int? = null
- 
-
-enum class Type(val theValue: String ) {
-	 HOST_COUNT ("HOST_COUNT"), FLEET_PERCENT ("FLEET_PERCENT") ;
-	override fun toString() = theValue
-	}
-}
 
 class Traffic_routing_config() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
@@ -47,10 +35,22 @@ class Time_based_canary() :  com.typedpath.terraform2kotlin.Resource() {
 
 class Time_based_linear() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var interval: Int? = null
-  var percentage: Int? = null
+	  var percentage: Int? = null
+  var interval: Int? = null
  
 
 }
+}
+
+class Minimum_healthy_hosts() :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	  var type: Type? = null
+  var value: Int? = null
+ 
+
+enum class Type(val theValue: String ) {
+	 HOST_COUNT ("HOST_COUNT"), FLEET_PERCENT ("FLEET_PERCENT") ;
+	override fun toString() = theValue
+	}
 }
 }

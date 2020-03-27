@@ -19,8 +19,8 @@ class Rule(val rule_name : String, val target_vault_name : String) :  com.typedp
 
 class Lifecycle() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var delete_after: Int? = null
-  var cold_storage_after: Int? = null
+	  var cold_storage_after: Int? = null
+  var delete_after: Int? = null
  
 
 }

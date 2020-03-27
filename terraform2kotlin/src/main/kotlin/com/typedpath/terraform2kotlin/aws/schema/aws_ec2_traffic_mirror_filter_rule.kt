@@ -1,12 +1,12 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_ec2_traffic_mirror_filter_rule(val destination_cidr_block : String, val rule_number : Int, val traffic_mirror_filter_id : String, val rule_action : Rule_action, val source_cidr_block : String, val traffic_direction : Traffic_direction) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_ec2_traffic_mirror_filter_rule(val traffic_mirror_filter_id : String, val destination_cidr_block : String, val rule_action : Rule_action, val rule_number : Int, val source_cidr_block : String, val traffic_direction : Traffic_direction) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var source_port_range: List<Source_port_range>? = null
-  var description: String? = null
-  var protocol: Int? = null
+	  var description: String? = null
   var destination_port_range: List<Destination_port_range>? = null
+  var source_port_range: List<Source_port_range>? = null
+  var protocol: Int? = null
  
 
 enum class Rule_action(val theValue: String ) {

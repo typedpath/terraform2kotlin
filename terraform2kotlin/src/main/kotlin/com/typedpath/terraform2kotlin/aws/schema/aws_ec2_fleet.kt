@@ -5,12 +5,12 @@ class aws_ec2_fleet(val launch_template_config : List<Launch_template_config>, v
 	override fun typestring() ="resource"
 	  var excess_capacity_termination_policy: Excess_capacity_termination_policy? = null
   var on_demand_options: List<On_demand_options>? = null
-  var replace_unhealthy_instances: Boolean? = null
   var spot_options: List<Spot_options>? = null
   var tags: Map<String, String>? = null
-  var type: Type? = null
   var terminate_instances: Boolean? = null
   var terminate_instances_with_expiration: Boolean? = null
+  var type: Type? = null
+  var replace_unhealthy_instances: Boolean? = null
  
 
 enum class Excess_capacity_termination_policy(val theValue: String ) {
@@ -30,20 +30,20 @@ class Launch_template_config(val launch_template_specification : List<Launch_tem
 
 class Launch_template_specification(val version : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var launch_template_id: String? = null
-  var launch_template_name: String? = null
+	  var launch_template_name: String? = null
+  var launch_template_id: String? = null
  
 
 }
 
 class Override() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var max_price: String? = null
-  var priority: Float? = null
-  var subnet_id: String? = null
-  var weighted_capacity: Float? = null
+	  var weighted_capacity: Float? = null
   var availability_zone: String? = null
   var instance_type: String? = null
+  var max_price: String? = null
+  var priority: Float? = null
+  var subnet_id: String? = null
  
 
 }
@@ -74,9 +74,9 @@ enum class Allocation_strategy(val theValue: String ) {
 
 class Spot_options() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var allocation_strategy: Allocation_strategy? = null
+	  var instance_pools_to_use_count: Int? = null
+  var allocation_strategy: Allocation_strategy? = null
   var instance_interruption_behavior: Instance_interruption_behavior? = null
-  var instance_pools_to_use_count: Int? = null
  
 
 enum class Allocation_strategy(val theValue: String ) {

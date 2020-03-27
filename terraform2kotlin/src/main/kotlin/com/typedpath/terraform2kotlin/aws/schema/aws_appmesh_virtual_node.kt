@@ -1,7 +1,7 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_appmesh_virtual_node(val name : String, val mesh_name : String, val spec : List<Spec>) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_appmesh_virtual_node(val spec : List<Spec>, val name : String, val mesh_name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
 	  var tags: Map<String, String>? = null
  
@@ -9,13 +9,26 @@ class aws_appmesh_virtual_node(val name : String, val mesh_name : String, val sp
 
 class Spec() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var backends: List<String>? = null
+	  var logging: List<Logging>? = null
+  var service_discovery: List<Service_discovery>? = null
+  var backends: List<String>? = null
   var backend: List<Backend>? = null
   var listener: List<Listener>? = null
-  var logging: List<Logging>? = null
-  var service_discovery: List<Service_discovery>? = null
  
 
+
+class Backend() :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	  var virtual_service: List<Virtual_service>? = null
+ 
+
+
+class Virtual_service(val virtual_service_name : String) :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	 
+
+}
+}
 
 class Listener(val port_mapping : List<Port_mapping>) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
@@ -35,8 +48,8 @@ enum class Protocol(val theValue: String ) {
 
 class Health_check(val protocol : Protocol, val timeout_millis : Int, val unhealthy_threshold : Int, val healthy_threshold : Int, val interval_millis : Int) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var path: String? = null
-  var port: Int? = null
+	  var port: Int? = null
+  var path: String? = null
  
 
 enum class Protocol(val theValue: String ) {
@@ -84,19 +97,6 @@ class Dns(val hostname : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	  var service_name: String? = null
  
-
-}
-}
-
-class Backend() :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	  var virtual_service: List<Virtual_service>? = null
- 
-
-
-class Virtual_service(val virtual_service_name : String) :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	 
 
 }
 }

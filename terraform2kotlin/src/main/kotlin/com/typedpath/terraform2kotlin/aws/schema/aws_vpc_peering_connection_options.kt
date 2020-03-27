@@ -19,9 +19,9 @@ class Accepter() :  com.typedpath.terraform2kotlin.Resource() {
 
 class Requester() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var allow_remote_vpc_dns_resolution: Boolean? = null
-  var allow_classic_link_to_remote_vpc: Boolean? = null
+	  var allow_classic_link_to_remote_vpc: Boolean? = null
   var allow_vpc_to_remote_classic_link: Boolean? = null
+  var allow_remote_vpc_dns_resolution: Boolean? = null
  
 
 }

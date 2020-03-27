@@ -3,11 +3,11 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_media_convert_queue(val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var reservation_plan_settings: List<Reservation_plan_settings>? = null
+	  var description: String? = null
+  var pricing_plan: Pricing_plan? = null
+  var reservation_plan_settings: List<Reservation_plan_settings>? = null
   var status: Status? = null
   var tags: Map<String, String>? = null
-  var description: String? = null
-  var pricing_plan: Pricing_plan? = null
  
 
 enum class Status(val theValue: String ) {
@@ -19,7 +19,7 @@ enum class Pricing_plan(val theValue: String ) {
 	override fun toString() = theValue
 	}
 
-class Reservation_plan_settings(val commitment : Commitment, val renewal_type : Renewal_type, val reserved_slots : Int) :  com.typedpath.terraform2kotlin.Resource() {
+class Reservation_plan_settings(val reserved_slots : Int, val commitment : Commitment, val renewal_type : Renewal_type) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	 
 

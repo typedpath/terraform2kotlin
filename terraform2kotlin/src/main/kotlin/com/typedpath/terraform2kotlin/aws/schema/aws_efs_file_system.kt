@@ -3,23 +3,23 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_efs_file_system() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var creation_token: String? = null
-  var reference_name: String? = null
-  var encrypted: Boolean? = null
-  var kms_key_id: String? = null
-  var tags: Map<String, String>? = null
+	  var tags: Map<String, String>? = null
+  var creation_token: String? = null
+  var provisioned_throughput_in_mibps: Float? = null
   var throughput_mode: Throughput_mode? = null
   var lifecycle_policy: List<Lifecycle_policy>? = null
+  var reference_name: String? = null
   var performance_mode: Performance_mode? = null
-  var provisioned_throughput_in_mibps: Float? = null
+  var encrypted: Boolean? = null
+  var kms_key_id: String? = null
  
 
-enum class Performance_mode(val theValue: String ) {
-	 generalPurpose ("generalPurpose"), maxIO ("maxIO") ;
-	override fun toString() = theValue
-	}
 enum class Throughput_mode(val theValue: String ) {
 	 bursting ("bursting"), provisioned ("provisioned") ;
+	override fun toString() = theValue
+	}
+enum class Performance_mode(val theValue: String ) {
+	 generalPurpose ("generalPurpose"), maxIO ("maxIO") ;
 	override fun toString() = theValue
 	}
 
@@ -33,15 +33,15 @@ enum class Transition_to_ia(val theValue: String ) {
 	override fun toString() = theValue
 	}
 }
-fun lifecycle_policyRef(subPath: String = "") = ref(this, "lifecycle_policy", subPath)
-fun arnRef(subPath: String = "") = ref(this, "arn", subPath)
-fun creation_tokenRef(subPath: String = "") = ref(this, "creation_token", subPath)
 fun file_system_idRef(subPath: String = "") = ref(this, "file_system_id", subPath)
-fun kms_key_idRef(subPath: String = "") = ref(this, "kms_key_id", subPath)
-fun tagsRef(subPath: String = "") = ref(this, "tags", subPath)
-fun provisioned_throughput_in_mibpsRef(subPath: String = "") = ref(this, "provisioned_throughput_in_mibps", subPath)
+fun throughput_modeRef(subPath: String = "") = ref(this, "throughput_mode", subPath)
+fun arnRef(subPath: String = "") = ref(this, "arn", subPath)
 fun encryptedRef(subPath: String = "") = ref(this, "encrypted", subPath)
 fun performance_modeRef(subPath: String = "") = ref(this, "performance_mode", subPath)
 fun dns_nameRef(subPath: String = "") = ref(this, "dns_name", subPath)
-fun throughput_modeRef(subPath: String = "") = ref(this, "throughput_mode", subPath)
+fun tagsRef(subPath: String = "") = ref(this, "tags", subPath)
+fun provisioned_throughput_in_mibpsRef(subPath: String = "") = ref(this, "provisioned_throughput_in_mibps", subPath)
+fun lifecycle_policyRef(subPath: String = "") = ref(this, "lifecycle_policy", subPath)
+fun creation_tokenRef(subPath: String = "") = ref(this, "creation_token", subPath)
+fun kms_key_idRef(subPath: String = "") = ref(this, "kms_key_id", subPath)
 }

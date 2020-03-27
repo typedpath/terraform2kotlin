@@ -11,7 +11,7 @@ class aws_rds_cluster_parameter_group(val family : String) :  com.typedpath.terr
  
 
 
-class Parameter(val value : String, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Parameter(val name : String, val value : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	  var apply_method: String? = null
  

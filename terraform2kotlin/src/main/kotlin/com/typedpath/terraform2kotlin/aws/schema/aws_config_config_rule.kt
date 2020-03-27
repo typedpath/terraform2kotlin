@@ -1,13 +1,13 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_config_config_rule(val source : List<Source>, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_config_config_rule(val name : String, val source : List<Source>) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
 	  var maximum_execution_frequency: Maximum_execution_frequency? = null
   var scope: List<Scope>? = null
   var tags: Map<String, String>? = null
-  var input_parameters: String? = null
   var description: String? = null
+  var input_parameters: String? = null
  
 
 enum class Maximum_execution_frequency(val theValue: String ) {
@@ -27,9 +27,9 @@ enum class Owner(val theValue: String ) {
 
 class Source_detail() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var event_source: String? = null
+	  var message_type: String? = null
+  var event_source: String? = null
   var maximum_execution_frequency: Maximum_execution_frequency? = null
-  var message_type: String? = null
  
 
 enum class Maximum_execution_frequency(val theValue: String ) {

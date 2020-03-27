@@ -1,7 +1,7 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_s3_access_point(val bucket : String, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_s3_access_point(val name : String, val bucket : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
 	  var public_access_block_configuration: List<Public_access_block_configuration>? = null
   var vpc_configuration: List<Vpc_configuration>? = null

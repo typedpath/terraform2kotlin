@@ -3,34 +3,29 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_codedeploy_deployment_group(val service_role_arn : String, val deployment_group_name : String, val app_name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var autoscaling_groups: List<String>? = null
-  var ec2_tag_filter: List<Ec2_tag_filter>? = null
-  var ecs_service: List<Ecs_service>? = null
-  var deployment_style: List<Deployment_style>? = null
-  var blue_green_deployment_config: List<Blue_green_deployment_config>? = null
-  var alarm_configuration: List<Alarm_configuration>? = null
+	  var load_balancer_info: List<Load_balancer_info>? = null
   var auto_rollback_configuration: List<Auto_rollback_configuration>? = null
-  var deployment_config_name: String? = null
-  var ec2_tag_set: List<Ec2_tag_set>? = null
+  var autoscaling_groups: List<String>? = null
   var on_premises_instance_tag_filter: List<On_premises_instance_tag_filter>? = null
+  var deployment_config_name: String? = null
+  var ecs_service: List<Ecs_service>? = null
+  var alarm_configuration: List<Alarm_configuration>? = null
+  var blue_green_deployment_config: List<Blue_green_deployment_config>? = null
+  var ec2_tag_set: List<Ec2_tag_set>? = null
+  var ec2_tag_filter: List<Ec2_tag_filter>? = null
   var trigger_configuration: List<Trigger_configuration>? = null
-  var load_balancer_info: List<Load_balancer_info>? = null
+  var deployment_style: List<Deployment_style>? = null
  
 
 
-class Ec2_tag_filter() :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	  var key: String? = null
-  var type: String? = null
-  var value: String? = null
- 
-
-}
-
-class Ecs_service(val cluster_name : String, val service_name : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Trigger_configuration(val trigger_events : List<Trigger_events>, val trigger_name : String, val trigger_target_arn : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	 
 
+enum class Trigger_events(val theValue: String ) {
+	 DeploymentStart ("DeploymentStart"), DeploymentSuccess ("DeploymentSuccess"), DeploymentFailure ("DeploymentFailure"), DeploymentStop ("DeploymentStop"), DeploymentRollback ("DeploymentRollback"), DeploymentReady ("DeploymentReady"), InstanceStart ("InstanceStart"), InstanceSuccess ("InstanceSuccess"), InstanceFailure ("InstanceFailure"), InstanceReady ("InstanceReady") ;
+	override fun toString() = theValue
+	}
 }
 
 class Deployment_style() :  com.typedpath.terraform2kotlin.Resource() {
@@ -57,13 +52,79 @@ class Auto_rollback_configuration() :  com.typedpath.terraform2kotlin.Resource()
 
 }
 
-class On_premises_instance_tag_filter() :  com.typedpath.terraform2kotlin.Resource() {
+class Ecs_service(val cluster_name : String, val service_name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var key: String? = null
-  var type: String? = null
-  var value: String? = null
+	 
+
+}
+
+class Alarm_configuration() :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	  var ignore_poll_alarm_failure: Boolean? = null
+  var alarms: List<String>? = null
+  var enabled: Boolean? = null
  
 
+}
+
+class Blue_green_deployment_config() :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	  var deployment_ready_option: List<Deployment_ready_option>? = null
+  var green_fleet_provisioning_option: List<Green_fleet_provisioning_option>? = null
+  var terminate_blue_instances_on_deployment_success: List<Terminate_blue_instances_on_deployment_success>? = null
+ 
+
+
+class Deployment_ready_option() :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	  var action_on_timeout: Action_on_timeout? = null
+  var wait_time_in_minutes: Int? = null
+ 
+
+enum class Action_on_timeout(val theValue: String ) {
+	 CONTINUE_DEPLOYMENT ("CONTINUE_DEPLOYMENT"), STOP_DEPLOYMENT ("STOP_DEPLOYMENT") ;
+	override fun toString() = theValue
+	}
+}
+
+class Green_fleet_provisioning_option() :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	  var action: Action? = null
+ 
+
+enum class Action(val theValue: String ) {
+	 DISCOVER_EXISTING ("DISCOVER_EXISTING"), COPY_AUTO_SCALING_GROUP ("COPY_AUTO_SCALING_GROUP") ;
+	override fun toString() = theValue
+	}
+}
+
+class Terminate_blue_instances_on_deployment_success() :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	  var action: Action? = null
+  var termination_wait_time_in_minutes: Int? = null
+ 
+
+enum class Action(val theValue: String ) {
+	 TERMINATE ("TERMINATE"), KEEP_ALIVE ("KEEP_ALIVE") ;
+	override fun toString() = theValue
+	}
+}
+}
+
+class Ec2_tag_set() :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	  var ec2_tag_filter: List<Ec2_tag_filter>? = null
+ 
+
+
+class Ec2_tag_filter() :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	  var value: String? = null
+  var key: String? = null
+  var type: String? = null
+ 
+
+}
 }
 
 class Load_balancer_info() :  com.typedpath.terraform2kotlin.Resource() {
@@ -73,13 +134,6 @@ class Load_balancer_info() :  com.typedpath.terraform2kotlin.Resource() {
   var target_group_pair_info: List<Target_group_pair_info>? = null
  
 
-
-class Elb_info() :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	  var name: String? = null
- 
-
-}
 
 class Target_group_info() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
@@ -112,66 +166,23 @@ class Test_traffic_route(val listener_arns : List<String>) :  com.typedpath.terr
 
 }
 }
-}
 
-class Blue_green_deployment_config() :  com.typedpath.terraform2kotlin.Resource() {
+class Elb_info() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var green_fleet_provisioning_option: List<Green_fleet_provisioning_option>? = null
-  var terminate_blue_instances_on_deployment_success: List<Terminate_blue_instances_on_deployment_success>? = null
-  var deployment_ready_option: List<Deployment_ready_option>? = null
- 
-
-
-class Green_fleet_provisioning_option() :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	  var action: Action? = null
- 
-
-enum class Action(val theValue: String ) {
-	 DISCOVER_EXISTING ("DISCOVER_EXISTING"), COPY_AUTO_SCALING_GROUP ("COPY_AUTO_SCALING_GROUP") ;
-	override fun toString() = theValue
-	}
-}
-
-class Terminate_blue_instances_on_deployment_success() :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	  var termination_wait_time_in_minutes: Int? = null
-  var action: Action? = null
- 
-
-enum class Action(val theValue: String ) {
-	 TERMINATE ("TERMINATE"), KEEP_ALIVE ("KEEP_ALIVE") ;
-	override fun toString() = theValue
-	}
-}
-
-class Deployment_ready_option() :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	  var wait_time_in_minutes: Int? = null
-  var action_on_timeout: Action_on_timeout? = null
- 
-
-enum class Action_on_timeout(val theValue: String ) {
-	 CONTINUE_DEPLOYMENT ("CONTINUE_DEPLOYMENT"), STOP_DEPLOYMENT ("STOP_DEPLOYMENT") ;
-	override fun toString() = theValue
-	}
-}
-}
-
-class Alarm_configuration() :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	  var alarms: List<String>? = null
-  var enabled: Boolean? = null
-  var ignore_poll_alarm_failure: Boolean? = null
+	  var name: String? = null
  
 
 }
+}
 
-class Ec2_tag_set() :  com.typedpath.terraform2kotlin.Resource() {
+class On_premises_instance_tag_filter() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var ec2_tag_filter: List<Ec2_tag_filter>? = null
+	  var type: String? = null
+  var value: String? = null
+  var key: String? = null
  
 
+}
 
 class Ec2_tag_filter() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
@@ -180,16 +191,5 @@ class Ec2_tag_filter() :  com.typedpath.terraform2kotlin.Resource() {
   var value: String? = null
  
 
-}
-}
-
-class Trigger_configuration(val trigger_events : List<Trigger_events>, val trigger_name : String, val trigger_target_arn : String) :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	 
-
-enum class Trigger_events(val theValue: String ) {
-	 DeploymentStart ("DeploymentStart"), DeploymentSuccess ("DeploymentSuccess"), DeploymentFailure ("DeploymentFailure"), DeploymentStop ("DeploymentStop"), DeploymentRollback ("DeploymentRollback"), DeploymentReady ("DeploymentReady"), InstanceStart ("InstanceStart"), InstanceSuccess ("InstanceSuccess"), InstanceFailure ("InstanceFailure"), InstanceReady ("InstanceReady") ;
-	override fun toString() = theValue
-	}
 }
 }

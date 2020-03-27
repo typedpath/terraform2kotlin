@@ -9,18 +9,18 @@ class aws_config_configuration_aggregator(val name : String) :  com.typedpath.te
  
 
 
-class Account_aggregation_source(val account_ids : List<String>) :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	  var all_regions: Boolean? = null
-  var regions: List<String>? = null
- 
-
-}
-
 class Organization_aggregation_source(val role_arn : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	  var regions: List<String>? = null
   var all_regions: Boolean? = null
+ 
+
+}
+
+class Account_aggregation_source(val account_ids : List<String>) :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	  var all_regions: Boolean? = null
+  var regions: List<String>? = null
  
 
 }

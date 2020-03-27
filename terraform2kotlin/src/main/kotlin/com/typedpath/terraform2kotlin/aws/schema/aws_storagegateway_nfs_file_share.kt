@@ -1,18 +1,18 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_storagegateway_nfs_file_share(val role_arn : String, val client_list : List<String>, val gateway_arn : String, val location_arn : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_storagegateway_nfs_file_share(val client_list : List<String>, val gateway_arn : String, val role_arn : String, val location_arn : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var guess_mime_type_enabled: Boolean? = null
+	  var kms_encrypted: Boolean? = null
   var nfs_file_share_defaults: List<Nfs_file_share_defaults>? = null
-  var kms_encrypted: Boolean? = null
+  var read_only: Boolean? = null
   var requester_pays: Boolean? = null
-  var kms_key_arn: String? = null
+  var guess_mime_type_enabled: Boolean? = null
   var tags: Map<String, String>? = null
+  var kms_key_arn: String? = null
   var squash: Squash? = null
   var default_storage_class: Default_storage_class? = null
   var object_acl: Object_acl? = null
-  var read_only: Boolean? = null
  
 
 enum class Squash(val theValue: String ) {
@@ -30,10 +30,10 @@ enum class Object_acl(val theValue: String ) {
 
 class Nfs_file_share_defaults() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var directory_mode: String? = null
+	  var owner_id: Int? = null
+  var directory_mode: String? = null
   var file_mode: String? = null
   var group_id: Int? = null
-  var owner_id: Int? = null
  
 
 }

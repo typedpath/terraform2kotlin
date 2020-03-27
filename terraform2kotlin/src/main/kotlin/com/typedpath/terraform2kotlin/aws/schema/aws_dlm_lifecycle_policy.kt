@@ -17,7 +17,7 @@ class Policy_details(val resource_types : List<String>, val schedule : List<Sche
 	 
 
 
-class Schedule(val retain_rule : List<Retain_rule>, val create_rule : List<Create_rule>, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Schedule(val create_rule : List<Create_rule>, val name : String, val retain_rule : List<Retain_rule>) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	  var copy_tags: Boolean? = null
   var tags_to_add: Map<String, String>? = null
@@ -26,8 +26,8 @@ class Schedule(val retain_rule : List<Retain_rule>, val create_rule : List<Creat
 
 class Create_rule(val interval : Int) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var times: List<String>? = null
-  var interval_unit: Interval_unit? = null
+	  var interval_unit: Interval_unit? = null
+  var times: List<String>? = null
  
 
 enum class Interval_unit(val theValue: String ) {

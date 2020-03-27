@@ -3,8 +3,8 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_iot_thing_type(val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var deprecated: Boolean? = null
-  var properties: List<Properties>? = null
+	  var properties: List<Properties>? = null
+  var deprecated: Boolean? = null
  
 
 

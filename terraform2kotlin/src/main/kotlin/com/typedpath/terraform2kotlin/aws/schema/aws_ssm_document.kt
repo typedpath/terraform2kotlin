@@ -1,13 +1,13 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_ssm_document(val name : String, val document_type : Document_type, val content : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_ssm_document(val name : String, val content : String, val document_type : Document_type) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var attachments_source: List<Attachments_source>? = null
-  var permissions: Map<String, String>? = null
-  var document_format: Document_format? = null
+	  var target_type: String? = null
+  var attachments_source: List<Attachments_source>? = null
   var tags: Map<String, String>? = null
-  var target_type: String? = null
+  var document_format: Document_format? = null
+  var permissions: Map<String, String>? = null
  
 
 enum class Document_type(val theValue: String ) {

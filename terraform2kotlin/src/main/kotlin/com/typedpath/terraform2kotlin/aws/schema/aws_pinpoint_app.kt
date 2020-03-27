@@ -3,12 +3,12 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_pinpoint_app() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var name_prefix: String? = null
+	  var tags: Map<String, String>? = null
+  var name: String? = null
+  var name_prefix: String? = null
   var campaign_hook: List<Campaign_hook>? = null
   var limits: List<Limits>? = null
   var quiet_time: List<Quiet_time>? = null
-  var tags: Map<String, String>? = null
-  var name: String? = null
  
 
 

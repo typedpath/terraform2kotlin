@@ -13,6 +13,8 @@ import com.typedpath.terraform2kotlin.aws.schema.*
 
 class EksVpcTemplate(val clusterName: String) : TerraformTemplate() {
 
+    val availabilityZones = aws_availability_zones()
+
     val demoVpc = aws_vpc(cidr_block = "10.0.0.0/16").apply {
         tags = mapOf(
             "Name" to "terraform-eks-demo-node",
@@ -21,8 +23,9 @@ class EksVpcTemplate(val clusterName: String) : TerraformTemplate() {
     }
 
     fun createSubnet(index: Int): aws_subnet =
-        aws_subnet(vpc_id = "\${aws_vpc.demoVpc.id}", cidr_block = "10.0.${index}.0/24").apply {
-            availability_zone = "\${data.aws_availability_zones.available.names[$index]}"
+        aws_subnet(vpc_id = demoVpc.idRef(), cidr_block = "10.0.${index}.0/24").apply {
+            //TODO make refs to arrays typesafe
+            availability_zone = availabilityZones.namesRef("[$index]")
 
             tags = mapOf(
                 "Name" to "terraform-eks-demo-node",
@@ -34,13 +37,13 @@ class EksVpcTemplate(val clusterName: String) : TerraformTemplate() {
     val awsSubnet1 = createSubnet(1)
 
     val demoGateway = aws_internet_gateway().apply {
-        vpc_id = "\${aws_vpc.demoVpc.id}"
-        tags = mapOf (
+        vpc_id = demoVpc.idRef()
+        tags = mapOf(
             "Name" to "terraform-eks-demo"
         )
     }
 
-    val demoRouteTable = aws_route_table(vpc_id = "\${aws_vpc.demoVpc.id}").apply {
+    val demoRouteTable = aws_route_table(vpc_id = demoVpc.idRef()).apply {
         route = listOf(
             aws_route_table.Route().apply {
                 cidr_block = "0.0.0.0/0"
@@ -49,13 +52,12 @@ class EksVpcTemplate(val clusterName: String) : TerraformTemplate() {
         )
     }
 
-    fun associateRoute(index: Int) = aws_route_table_association(route_table_id = "\${aws_route_table.demoRouteTable.id}").apply{
-        subnet_id      = "\${aws_subnet.awsSubnet$index.id}"
+    val demoRouteAssociation0 = aws_route_table_association(route_table_id = demoRouteTable.idRef()).apply {
+        subnet_id = awsSubnet0.idRef()
     }
 
-    val demoRouteAssociation0 = associateRoute(0)
-    val demoRouteAssociation1 = associateRoute(1)
-
-
+    val demoRouteAssociation1 = aws_route_table_association(route_table_id = demoRouteTable.idRef()).apply {
+        subnet_id = awsSubnet1.idRef()
+    }
 
 }

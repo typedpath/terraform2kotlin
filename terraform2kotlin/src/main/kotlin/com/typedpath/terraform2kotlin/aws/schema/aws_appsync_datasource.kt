@@ -1,14 +1,14 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_appsync_datasource(val api_id : String, val type : Type, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_appsync_datasource(val api_id : String, val name : String, val type : Type) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var description: String? = null
-  var elasticsearch_config: List<Elasticsearch_config>? = null
+	  var elasticsearch_config: List<Elasticsearch_config>? = null
   var lambda_config: List<Lambda_config>? = null
-  var service_role_arn: String? = null
-  var dynamodb_config: List<Dynamodb_config>? = null
   var http_config: List<Http_config>? = null
+  var service_role_arn: String? = null
+  var description: String? = null
+  var dynamodb_config: List<Dynamodb_config>? = null
  
 
 enum class Type(val theValue: String ) {
@@ -29,17 +29,17 @@ class Lambda_config(val function_arn : String) :  com.typedpath.terraform2kotlin
 
 }
 
+class Http_config(val endpoint : String) :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	 
+
+}
+
 class Dynamodb_config(val table_name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	  var region: String? = null
   var use_caller_credentials: Boolean? = null
  
-
-}
-
-class Http_config(val endpoint : String) :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	 
 
 }
 }

@@ -3,31 +3,19 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_appsync_graphql_api(val name : String, val authentication_type : Authentication_type) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var schema: String? = null
-  var user_pool_config: List<User_pool_config>? = null
-  var tags: Map<String, String>? = null
-  var xray_enabled: Boolean? = null
-  var additional_authentication_provider: List<Additional_authentication_provider>? = null
+	  var additional_authentication_provider: List<Additional_authentication_provider>? = null
   var log_config: List<Log_config>? = null
   var openid_connect_config: List<Openid_connect_config>? = null
+  var xray_enabled: Boolean? = null
+  var schema: String? = null
+  var user_pool_config: List<User_pool_config>? = null
+  var tags: Map<String, String>? = null
  
 
 enum class Authentication_type(val theValue: String ) {
 	 API_KEY ("API_KEY"), AWS_IAM ("AWS_IAM"), AMAZON_COGNITO_USER_POOLS ("AMAZON_COGNITO_USER_POOLS"), OPENID_CONNECT ("OPENID_CONNECT") ;
 	override fun toString() = theValue
 	}
-
-class User_pool_config(val default_action : Default_action, val user_pool_id : String) :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	  var app_id_client_regex: String? = null
-  var aws_region: String? = null
- 
-
-enum class Default_action(val theValue: String ) {
-	 ALLOW ("ALLOW"), DENY ("DENY") ;
-	override fun toString() = theValue
-	}
-}
 
 class Additional_authentication_provider(val authentication_type : Authentication_type) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
@@ -40,19 +28,19 @@ enum class Authentication_type(val theValue: String ) {
 	override fun toString() = theValue
 	}
 
-class User_pool_config(val user_pool_id : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Openid_connect_config(val issuer : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var app_id_client_regex: String? = null
-  var aws_region: String? = null
+	  var client_id: String? = null
+  var iat_ttl: Int? = null
+  var auth_ttl: Int? = null
  
 
 }
 
-class Openid_connect_config(val issuer : String) :  com.typedpath.terraform2kotlin.Resource() {
+class User_pool_config(val user_pool_id : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var auth_ttl: Int? = null
-  var client_id: String? = null
-  var iat_ttl: Int? = null
+	  var app_id_client_regex: String? = null
+  var aws_region: String? = null
  
 
 }
@@ -70,10 +58,22 @@ enum class Field_log_level(val theValue: String ) {
 
 class Openid_connect_config(val issuer : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var iat_ttl: Int? = null
-  var auth_ttl: Int? = null
+	  var auth_ttl: Int? = null
   var client_id: String? = null
+  var iat_ttl: Int? = null
  
 
+}
+
+class User_pool_config(val default_action : Default_action, val user_pool_id : String) :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	  var app_id_client_regex: String? = null
+  var aws_region: String? = null
+ 
+
+enum class Default_action(val theValue: String ) {
+	 ALLOW ("ALLOW"), DENY ("DENY") ;
+	override fun toString() = theValue
+	}
 }
 }

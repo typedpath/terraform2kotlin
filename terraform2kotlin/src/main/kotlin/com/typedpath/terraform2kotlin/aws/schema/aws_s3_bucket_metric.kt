@@ -9,8 +9,8 @@ class aws_s3_bucket_metric(val name : String, val bucket : String) :  com.typedp
 
 class Filter() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var tags: Map<String, String>? = null
-  var prefix: String? = null
+	  var prefix: String? = null
+  var tags: Map<String, String>? = null
  
 
 }

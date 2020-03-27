@@ -7,41 +7,50 @@ import com.typedpath.terraform2kotlin.toTerraform
 
 import org.junit.Assert
 import org.junit.Test
+import java.io.File
 
 class EksGettingStarted_test {
 @Test
 fun test() {
     val clusterName = "testEksCluster"
     val vpcTemplate = EksVpcTemplate(clusterName)
-    val vpcName = EksVpcTemplate::demoVpc.name
     autoTag(vpcTemplate)
-    val clusterTemplate = EksClusterTemplate(clusterName, vpcName,
-        listOf(vpcTemplate.awsSubnet0, vpcTemplate.awsSubnet1))
+    val subnets = listOf(vpcTemplate.awsSubnet0, vpcTemplate.awsSubnet1)
+    val clusterTemplate = EksClusterTemplate(clusterName, vpcTemplate.demoVpc, subnets )
     autoTag(clusterTemplate)
-    val nodesTemplate = EksWorkerNodesTemplate(clusterName)
+    val nodesTemplate = EksWorkerNodesTemplate(clusterTemplate.demoEksCluster, subnets)
     autoTag(nodesTemplate)
-    val globalsTemplate = GlobalsTemplate()
 
     val outputTemplate =  OutputTemplate(clusterTemplate.demoEksCluster, clusterTemplate.demoClusterRole, clusterName)
 
     println(toTerraform(vpcTemplate))
     println(toTerraform(clusterTemplate))
-    println(toTerraform(globalsTemplate))
+    println(toTerraform(nodesTemplate))
     println(toTerraform(outputTemplate))
 
-    val runner = terraformAwsRunnerFromEnvironment(this, clusterTemplate, vpcTemplate, globalsTemplate, outputTemplate)
+    val runner = terraformAwsRunnerFromEnvironment(this, vpcTemplate, clusterTemplate, nodesTemplate, outputTemplate)
     try {
+        println("executing in " + runner.runDir)
         val outputs = runner.initApply()
+        println("executed in " + runner.runDir)
+
         Assert.assertTrue(outputs.containsKey("roleArn"))
         println("created role: " + outputs.get("roleArn"))
+
         val kubeconfig = outputTemplate.kubeconfig(outputs)
-        println("kubeconfig: $kubeconfig")
+        println("writing kubeconfig to ${runner.runDir}/kubeconfig.txt")
+        File(runner.runDir, "kubeconfig.txt").writeText(kubeconfig)
         Assert.assertTrue(!kubeconfig.contains("null"))
+
         val configMapAwsAuth = outputTemplate.configMapAwsAuth(outputs)
-        println("configMapAwsAuth: $configMapAwsAuth")
+        println("writing configMapAwsAuth to ${runner.runDir}/configMapAwsAuth.txt")
+        File(runner.runDir, "configMapAwsAuth.txt").writeText(configMapAwsAuth)
         Assert.assertTrue(!configMapAwsAuth.contains("null"))
+
     } finally {
+        println("destroying")
         runner.destroy()
+        println("destroyed")
     }
 
 }

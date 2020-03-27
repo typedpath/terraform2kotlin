@@ -3,10 +3,10 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_athena_workgroup(val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var configuration: List<Configuration>? = null
-  var description: String? = null
-  var state: State? = null
+	  var state: State? = null
   var tags: Map<String, String>? = null
+  var configuration: List<Configuration>? = null
+  var description: String? = null
  
 
 enum class State(val theValue: String ) {

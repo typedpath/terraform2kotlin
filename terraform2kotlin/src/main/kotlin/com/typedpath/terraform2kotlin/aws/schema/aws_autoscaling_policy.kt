@@ -1,18 +1,18 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_autoscaling_policy(val name : String, val autoscaling_group_name : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_autoscaling_policy(val autoscaling_group_name : String, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
 	  var adjustment_type: String? = null
+  var metric_aggregation_type: String? = null
+  var step_adjustment: List<Step_adjustment>? = null
+  var min_adjustment_step: Int? = null
+  var policy_type: Policy_type? = null
   var cooldown: Int? = null
   var estimated_instance_warmup: Int? = null
-  var metric_aggregation_type: String? = null
-  var min_adjustment_step: Int? = null
-  var scaling_adjustment: Int? = null
-  var step_adjustment: List<Step_adjustment>? = null
-  var target_tracking_configuration: List<Target_tracking_configuration>? = null
-  var policy_type: Policy_type? = null
   var min_adjustment_magnitude: Int? = null
+  var scaling_adjustment: Int? = null
+  var target_tracking_configuration: List<Target_tracking_configuration>? = null
  
 
 enum class Policy_type(val theValue: String ) {
@@ -30,9 +30,9 @@ class Step_adjustment(val scaling_adjustment : Int) :  com.typedpath.terraform2k
 
 class Target_tracking_configuration(val target_value : Float) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var predefined_metric_specification: List<Predefined_metric_specification>? = null
+	  var disable_scale_in: Boolean? = null
+  var predefined_metric_specification: List<Predefined_metric_specification>? = null
   var customized_metric_specification: List<Customized_metric_specification>? = null
-  var disable_scale_in: Boolean? = null
  
 
 

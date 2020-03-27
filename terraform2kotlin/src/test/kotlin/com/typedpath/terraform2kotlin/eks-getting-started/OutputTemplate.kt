@@ -8,6 +8,7 @@ import com.typedpath.terraform2kotlin.aws.schema.aws_iam_role
 class OutputTemplate(cluster: aws_eks_cluster, role: aws_iam_role, val clusterName: String) : TerraformTemplate() {
 
     val certificateAuthorityData = Output(
+        //TODO improve typesafety
         cluster.certificate_authorityRef(".0.data")
     )
 

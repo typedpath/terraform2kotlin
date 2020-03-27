@@ -1,7 +1,7 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_storagegateway_upload_buffer(val disk_id : String, val gateway_arn : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_storagegateway_upload_buffer(val gateway_arn : String, val disk_id : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
 	 
 

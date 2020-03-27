@@ -11,18 +11,6 @@ class Encryption_configuration(val job_bookmarks_encryption : List<Job_bookmarks
 	 
 
 
-class S3_encryption() :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	  var kms_key_arn: String? = null
-  var s3_encryption_mode: S3_encryption_mode? = null
- 
-
-enum class S3_encryption_mode(val theValue: String ) {
-	 DISABLED ("DISABLED"), SSE_KMS ("SSE-KMS"), SSE_S3 ("SSE-S3") ;
-	override fun toString() = theValue
-	}
-}
-
 class Cloudwatch_encryption() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	  var cloudwatch_encryption_mode: Cloudwatch_encryption_mode? = null
@@ -37,12 +25,24 @@ enum class Cloudwatch_encryption_mode(val theValue: String ) {
 
 class Job_bookmarks_encryption() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var kms_key_arn: String? = null
-  var job_bookmarks_encryption_mode: Job_bookmarks_encryption_mode? = null
+	  var job_bookmarks_encryption_mode: Job_bookmarks_encryption_mode? = null
+  var kms_key_arn: String? = null
  
 
 enum class Job_bookmarks_encryption_mode(val theValue: String ) {
 	 CSE_KMS ("CSE-KMS"), DISABLED ("DISABLED") ;
+	override fun toString() = theValue
+	}
+}
+
+class S3_encryption() :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	  var kms_key_arn: String? = null
+  var s3_encryption_mode: S3_encryption_mode? = null
+ 
+
+enum class S3_encryption_mode(val theValue: String ) {
+	 DISABLED ("DISABLED"), SSE_KMS ("SSE-KMS"), SSE_S3 ("SSE-S3") ;
 	override fun toString() = theValue
 	}
 }

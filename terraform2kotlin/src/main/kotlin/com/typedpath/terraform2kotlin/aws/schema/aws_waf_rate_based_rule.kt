@@ -8,7 +8,7 @@ class aws_waf_rate_based_rule(val metric_name : String, val rate_key : String, v
  
 
 
-class Predicates(val negated : Boolean, val data_id : String, val type : Type) :  com.typedpath.terraform2kotlin.Resource() {
+class Predicates(val type : Type, val negated : Boolean, val data_id : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	 
 

@@ -1,14 +1,14 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_glue_trigger(val actions : List<Actions>, val type : Type, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_glue_trigger(val name : String, val actions : List<Actions>, val type : Type) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var tags: Map<String, String>? = null
-  var enabled: Boolean? = null
+	  var description: String? = null
   var predicate: List<Predicate>? = null
   var schedule: String? = null
   var workflow_name: String? = null
-  var description: String? = null
+  var enabled: Boolean? = null
+  var tags: Map<String, String>? = null
  
 
 enum class Type(val theValue: String ) {
@@ -38,11 +38,11 @@ enum class Logical(val theValue: String ) {
 
 class Conditions() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var crawler_name: String? = null
+	  var job_name: String? = null
+  var crawler_name: String? = null
   var logical_operator: Logical_operator? = null
   var state: State? = null
   var crawl_state: Crawl_state? = null
-  var job_name: String? = null
  
 
 enum class Logical_operator(val theValue: String ) {

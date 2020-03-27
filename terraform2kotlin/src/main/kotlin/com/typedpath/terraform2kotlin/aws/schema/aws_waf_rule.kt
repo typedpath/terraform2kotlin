@@ -8,7 +8,7 @@ class aws_waf_rule(val name : String, val metric_name : String) :  com.typedpath
  
 
 
-class Predicates(val data_id : String, val type : Type, val negated : Boolean) :  com.typedpath.terraform2kotlin.Resource() {
+class Predicates(val negated : Boolean, val data_id : String, val type : Type) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	 
 

@@ -3,10 +3,10 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_config_delivery_channel(val s3_bucket_name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var name: String? = null
-  var s3_key_prefix: String? = null
-  var sns_topic_arn: String? = null
+	  var sns_topic_arn: String? = null
   var snapshot_delivery_properties: List<Snapshot_delivery_properties>? = null
+  var name: String? = null
+  var s3_key_prefix: String? = null
  
 
 

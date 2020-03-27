@@ -1,32 +1,32 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_elasticache_replication_group(val replication_group_id : String, val replication_group_description : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_elasticache_replication_group(val replication_group_description : String, val replication_group_id : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var engine_version: String? = null
-  var maintenance_window: String? = null
-  var at_rest_encryption_enabled: Boolean? = null
-  var cluster_mode: List<Cluster_mode>? = null
-  var security_group_ids: List<String>? = null
-  var snapshot_retention_limit: Int? = null
-  var subnet_group_name: String? = null
-  var engine: String? = null
-  var node_type: String? = null
-  var number_cache_clusters: Int? = null
-  var security_group_names: List<String>? = null
-  var auth_token: String? = null
-  var port: Int? = null
-  var transit_encryption_enabled: Boolean? = null
+	  var snapshot_retention_limit: Int? = null
   var snapshot_window: String? = null
-  var snapshot_name: String? = null
-  var apply_immediately: Boolean? = null
-  var notification_topic_arn: String? = null
-  var parameter_group_name: String? = null
+  var kms_key_id: String? = null
+  var number_cache_clusters: Int? = null
+  var engine_version: String? = null
   var snapshot_arns: List<String>? = null
-  var auto_minor_version_upgrade: Boolean? = null
+  var transit_encryption_enabled: Boolean? = null
+  var apply_immediately: Boolean? = null
   var availability_zones: List<String>? = null
   var tags: Map<String, String>? = null
-  var kms_key_id: String? = null
+  var security_group_names: List<String>? = null
+  var auto_minor_version_upgrade: Boolean? = null
+  var cluster_mode: List<Cluster_mode>? = null
+  var engine: String? = null
+  var snapshot_name: String? = null
+  var at_rest_encryption_enabled: Boolean? = null
+  var subnet_group_name: String? = null
+  var node_type: String? = null
+  var notification_topic_arn: String? = null
+  var auth_token: String? = null
+  var port: Int? = null
+  var security_group_ids: List<String>? = null
+  var parameter_group_name: String? = null
+  var maintenance_window: String? = null
   var automatic_failover_enabled: Boolean? = null
  
 
@@ -36,16 +36,16 @@ class Cluster_mode(val replicas_per_node_group : Int, val num_node_groups : Int)
 	 
 
 }
-fun replication_group_idRef(subPath: String = "") = ref(this, "replication_group_id", subPath)
+fun replication_group_descriptionRef(subPath: String = "") = ref(this, "replication_group_description", subPath)
 fun auth_token_enabledRef(subPath: String = "") = ref(this, "auth_token_enabled", subPath)
+fun configuration_endpoint_addressRef(subPath: String = "") = ref(this, "configuration_endpoint_address", subPath)
+fun primary_endpoint_addressRef(subPath: String = "") = ref(this, "primary_endpoint_address", subPath)
+fun node_typeRef(subPath: String = "") = ref(this, "node_type", subPath)
+fun snapshot_retention_limitRef(subPath: String = "") = ref(this, "snapshot_retention_limit", subPath)
+fun replication_group_idRef(subPath: String = "") = ref(this, "replication_group_id", subPath)
 fun automatic_failover_enabledRef(subPath: String = "") = ref(this, "automatic_failover_enabled", subPath)
 fun portRef(subPath: String = "") = ref(this, "port", subPath)
 fun number_cache_clustersRef(subPath: String = "") = ref(this, "number_cache_clusters", subPath)
-fun snapshot_retention_limitRef(subPath: String = "") = ref(this, "snapshot_retention_limit", subPath)
-fun replication_group_descriptionRef(subPath: String = "") = ref(this, "replication_group_description", subPath)
-fun configuration_endpoint_addressRef(subPath: String = "") = ref(this, "configuration_endpoint_address", subPath)
-fun primary_endpoint_addressRef(subPath: String = "") = ref(this, "primary_endpoint_address", subPath)
 fun member_clustersRef(subPath: String = "") = ref(this, "member_clusters", subPath)
-fun node_typeRef(subPath: String = "") = ref(this, "node_type", subPath)
 fun snapshot_windowRef(subPath: String = "") = ref(this, "snapshot_window", subPath)
 }

@@ -4,28 +4,37 @@ import kotlin.reflect.KVisibility
 import kotlin.reflect.full.memberProperties
 
 
-private const val refPrefix= "_#_#"
+private const val refPrefix= "z#z#"
 private const val dependsOnPropertyName = "depends_on"
-
+private const val dataTypeString ="data"
 
 private val stringToRef = mutableMapOf<String, Pair<Any, String>>()
 //TODO enforce names are globally unique
 private val object2Name = mutableMapOf<Any, String>()
 
 fun ref(o: Any, propertyName: String, subPath: String = "") : String {
-    val strRef = refPrefix +  stringToRef.size
+    val strRef = refPrefix +  stringToRef.size + "z"
+    if (stringToRef.containsKey(strRef)) {
+        throw Exception("ref $strRef already exists for ${stringToRef.get(strRef)} so cant add ${o} at ${propertyName} ")
+    }
     stringToRef.put(strRef, Pair(o, propertyName+subPath))
     return strRef
 }
-
+//TODO exception on val constructor properties
 fun toTerraform(template: TerraformTemplate) : String {
-return (
+var result = (
 """${printDataProperties(template)}
 ${printResourceProperties(template)}
 ${printOutputProperties(template)}    
 ${printProviderProperties(template)}    
 ${printLocals(template)}  
 """)
+// TODO move ref replacement here
+stringToRef.forEach {
+    val newValue = refPairToRef(it.value.first, it.value.second)
+    result = result.replace(it.key, newValue)
+}
+return result
 }
 
 private fun printDataProperties(template: TerraformTemplate) : String {
@@ -130,15 +139,25 @@ private fun printObject(name: String?, o: Any,  indent: String) : String {
     return printMap(getProperties(o), indent, "")
 }
 
+private fun refPairToRef(referredParentObject: Any, refferedPropertyName: String) : String {
+    val name = object2Name.get(referredParentObject)
+    val typePrefix = if (referredParentObject is Resource && referredParentObject.typestring().equals(dataTypeString)) (dataTypeString +".") else ""
+    return "$typePrefix${referredParentObject.javaClass.simpleName}.${name}${if (refferedPropertyName.length==0) "" else ("." + refferedPropertyName)}"
+}
+
 private fun printSimpleValue(o: Any) : String {
-    return if (o is String && stringToRef.containsKey(o)) {
-        val refPair = stringToRef.get(o)
-        if (!object2Name.containsKey(refPair!!.first)) {
+    val isRef = o is String && stringToRef.containsKey(o)
+    /*return if (o is String && stringToRef.containsKey(o)) {
+        val refPair = stringToRef.get(o)!!
+        val referredParentObject = refPair.first
+        val refferedPropertyName = refPair.second
+        if (!object2Name.containsKey(referredParentObject)) {
             throw Exception("cant resolve ref $refPair" )
         }
-        val name = object2Name.get(refPair!!.first)
-        return "${refPair.first.javaClass.simpleName}.${name}${if (refPair.second.length==0) "" else ("." + refPair.second)}"
-    } else  if (o is String || o.javaClass.isEnum) """"$o"""" else  "$o"
+        val name = object2Name.get(referredParentObject)
+        val typePrefix = if (referredParentObject is Resource && referredParentObject.typestring().equals(dataTypeString)) (dataTypeString +".") else ""
+        return "$typePrefix${referredParentObject.javaClass.simpleName}.${name}${if (refferedPropertyName.length==0) "" else ("." + refferedPropertyName)}"
+    } else*/  return if ((o is String || o.javaClass.isEnum) && !isRef) """"$o"""" else  "$o"
 }
 
 private val indentStep = "  "
@@ -186,6 +205,7 @@ fun getProperties(resource: Any) : Map<String, Any> {
 
  fun getTemplateProperties(template: TerraformTemplate, filter: (String, Any)->Boolean) : Map<String, Any> {
     var resources = mutableMapOf<String, Any>()
+     val mP = template.javaClass.kotlin.memberProperties
     template.javaClass.kotlin.memberProperties.map { Pair(it, it.get(template)) }
         .filter { it.second != null }
         .filter { filter(it.first.name, it.second!!)}

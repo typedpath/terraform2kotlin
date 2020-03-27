@@ -3,10 +3,10 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_lambda_function_event_invoke_config(val function_name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var destination_config: List<Destination_config>? = null
-  var maximum_event_age_in_seconds: Int? = null
-  var maximum_retry_attempts: Int? = null
+	  var maximum_retry_attempts: Int? = null
   var qualifier: String? = null
+  var destination_config: List<Destination_config>? = null
+  var maximum_event_age_in_seconds: Int? = null
  
 
 

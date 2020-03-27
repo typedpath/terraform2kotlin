@@ -1,6 +1,5 @@
 package com.typedpath.terraform2kotlin.`eks-getting-started`
 
-import com.typedpath.terraform2kotlin.Output
 import com.typedpath.terraform2kotlin.TerraformTemplate
 import com.typedpath.terraform2kotlin.aws.schema.*
 import com.typedpath.terraform2kotlin.aws.schema.aws_iam_policy_document.Statement.Effect.Allow
@@ -9,9 +8,10 @@ import com.typedpath.terraform2kotlin.aws.schema.aws_iam_policy_document.Stateme
 import com.typedpath.terraform2kotlin.aws.schema.aws_iam_policy_document.Statement.Principals
 import com.typedpath.terraform2kotlin.getMyExternalIp
 
-// based on https://www.terraform.io/docs/providers/aws/r/eks_cluster.html
-//TODO finish this
-class EksClusterTemplate (val clusterName: String, val vpcName: String, val subnets: List<aws_subnet>) : TerraformTemplate() {
+// based on https://www.terraform.io/docs/providers/aws/r/eks_cluster.html,
+// https://github.com/terraform-providers/terraform-provider-aws/tree/master/examples/eks-getting-started
+class EksClusterTemplate(clusterName: String, vpc: aws_vpc, subnets: List<aws_subnet>) :
+    TerraformTemplate() {
 
     val demoClusterRolePolicyDocument = aws_iam_policy_document().apply {
         version = _2012_10_17
@@ -32,25 +32,25 @@ class EksClusterTemplate (val clusterName: String, val vpcName: String, val subn
     }
 
     val demoClusterRole =
-        aws_iam_role("\${data.aws_iam_policy_document.demoClusterRolePolicyDocument.json}" /*TODO utility for this*/)
+        aws_iam_role(demoClusterRolePolicyDocument.jsonRef())
             .apply {
                 name = "eks-cluster-example"
             }
 
     val demoClusterAmazonEKSClusterPolicyAttachment = aws_iam_role_policy_attachment(
-        role = "\${aws_iam_role.demoClusterRole.name}" /*TODO utility for this*/,
-        policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy" /*TODO utility for this*/
+        role = demoClusterRole.nameRef(),
+        policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
     )
 
     val demoClusterAmazonEKSServicePolicyAttachment = aws_iam_role_policy_attachment(
-        role = "\${aws_iam_role.demoClusterRole.name}",
+        role = demoClusterRole.nameRef(),
         policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
     )
 
     val demoClusterSecurityGroup = aws_security_group().apply {
         name = "terraform-eks-demo-cluster"
         description = "Cluster communication with worker nodes"
-        vpc_id = "\${aws_vpc.$vpcName.id}"
+        vpc_id = vpc.idRef()
 
         egress = listOf(aws_security_group.Egress(
             from_port = 0, protocol = "-1", to_port = 0
@@ -65,7 +65,7 @@ class EksClusterTemplate (val clusterName: String, val vpcName: String, val subn
 
     val demoClusterIngressWorkstationHttpsSecurityGroupRule = aws_security_group_rule(
         from_port = 443,
-        security_group_id = "\${aws_security_group.demoClusterSecurityGroup.id}",
+        security_group_id = demoClusterSecurityGroup.idRef(),
         type = aws_security_group_rule.Type.ingress,
         to_port = 4443,
         protocol = "tcp"
@@ -78,10 +78,9 @@ class EksClusterTemplate (val clusterName: String, val vpcName: String, val subn
         name = clusterName,
         role_arn = demoClusterRole.arnRef(),
         vpc_config = listOf(
-            aws_eks_cluster.Vpc_config( listOf(
-                  subnets[0].idRef(),
-                  subnets[1].idRef()
-            )).apply {
+            aws_eks_cluster.Vpc_config(
+                subnet_ids = subnets.map { it.idRef() }
+            ).apply {
                 security_group_ids = listOf(
                     demoClusterSecurityGroup.idRef()
                 )

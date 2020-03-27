@@ -1,13 +1,13 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_ec2_client_vpn_endpoint(val authentication_options : List<Authentication_options>, val client_cidr_block : String, val server_certificate_arn : String, val connection_log_options : List<Connection_log_options>) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_ec2_client_vpn_endpoint(val server_certificate_arn : String, val authentication_options : List<Authentication_options>, val client_cidr_block : String, val connection_log_options : List<Connection_log_options>) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var split_tunnel: Boolean? = null
+	  var dns_servers: List<String>? = null
+  var transport_protocol: Transport_protocol? = null
   var tags: Map<String, String>? = null
   var description: String? = null
-  var dns_servers: List<String>? = null
-  var transport_protocol: Transport_protocol? = null
+  var split_tunnel: Boolean? = null
  
 
 enum class Transport_protocol(val theValue: String ) {
