@@ -3,11 +3,11 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_service_discovery_service(val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var dns_config: List<Dns_config>? = null
+	  var description: String? = null
+  var namespace_id: String? = null
+  var dns_config: List<Dns_config>? = null
   var health_check_config: List<Health_check_config>? = null
   var health_check_custom_config: List<Health_check_custom_config>? = null
-  var description: String? = null
-  var namespace_id: String? = null
  
 
 
@@ -21,7 +21,7 @@ enum class Routing_policy(val theValue: String ) {
 	override fun toString() = theValue
 	}
 
-class Dns_records(val ttl : Int, val type : Type) :  com.typedpath.terraform2kotlin.Resource() {
+class Dns_records(val type : Type, val ttl : Int) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	 
 

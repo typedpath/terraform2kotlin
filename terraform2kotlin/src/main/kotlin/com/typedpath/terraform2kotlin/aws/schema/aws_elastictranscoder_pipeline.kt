@@ -3,18 +3,18 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_elastictranscoder_pipeline(val role : String, val input_bucket : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var thumbnail_config_permissions: List<Thumbnail_config_permissions>? = null
-  var content_config: List<Content_config>? = null
-  var notifications: List<Notifications>? = null
+	  var notifications: List<Notifications>? = null
   var thumbnail_config: List<Thumbnail_config>? = null
+  var thumbnail_config_permissions: List<Thumbnail_config_permissions>? = null
+  var content_config_permissions: List<Content_config_permissions>? = null
+  var content_config: List<Content_config>? = null
   var name: String? = null
   var output_bucket: String? = null
   var aws_kms_key_arn: String? = null
-  var content_config_permissions: List<Content_config_permissions>? = null
  
 
 
-class Thumbnail_config_permissions() :  com.typedpath.terraform2kotlin.Resource() {
+class Content_config_permissions() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	  var access: List<String>? = null
   var grantee: String? = null
@@ -49,7 +49,7 @@ class Thumbnail_config() :  com.typedpath.terraform2kotlin.Resource() {
 
 }
 
-class Content_config_permissions() :  com.typedpath.terraform2kotlin.Resource() {
+class Thumbnail_config_permissions() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	  var access: List<String>? = null
   var grantee: String? = null

@@ -1,7 +1,7 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_athena_database(val name : String, val bucket : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_athena_database(val bucket : String, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
 	  var force_destroy: Boolean? = null
   var encryption_configuration: List<Encryption_configuration>? = null

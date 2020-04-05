@@ -1,0 +1,1 @@
+// Add naming scheme so templates names can have a prefix

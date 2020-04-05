@@ -3,11 +3,11 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_acmpca_certificate_authority(val certificate_authority_configuration : List<Certificate_authority_configuration>) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var revocation_configuration: List<Revocation_configuration>? = null
-  var enabled: Boolean? = null
-  var permanent_deletion_time_in_days: Int? = null
-  var type: Type? = null
+	  var enabled: Boolean? = null
+  var revocation_configuration: List<Revocation_configuration>? = null
   var tags: Map<String, String>? = null
+  var type: Type? = null
+  var permanent_deletion_time_in_days: Int? = null
  
 
 enum class Type(val theValue: String ) {
@@ -30,19 +30,19 @@ enum class Signing_algorithm(val theValue: String ) {
 
 class Subject() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var pseudonym: String? = null
+	  var country: String? = null
+  var given_name: String? = null
+  var organization: String? = null
   var state: String? = null
+  var title: String? = null
+  var organizational_unit: String? = null
+  var pseudonym: String? = null
+  var surname: String? = null
   var common_name: String? = null
-  var country: String? = null
   var distinguished_name_qualifier: String? = null
   var generation_qualifier: String? = null
-  var organization: String? = null
-  var title: String? = null
-  var given_name: String? = null
   var initials: String? = null
   var locality: String? = null
-  var organizational_unit: String? = null
-  var surname: String? = null
  
 
 }
@@ -63,15 +63,15 @@ class Crl_configuration(val expiration_in_days : Int) :  com.typedpath.terraform
 
 }
 }
-fun certificate_signing_requestRef(subPath: String = "") = ref(this, "certificate_signing_request", subPath)
-fun revocation_configurationRef(subPath: String = "") = ref(this, "revocation_configuration", subPath)
-fun typeRef(subPath: String = "") = ref(this, "type", subPath)
 fun certificateRef(subPath: String = "") = ref(this, "certificate", subPath)
 fun certificate_chainRef(subPath: String = "") = ref(this, "certificate_chain", subPath)
-fun not_beforeRef(subPath: String = "") = ref(this, "not_before", subPath)
-fun serialRef(subPath: String = "") = ref(this, "serial", subPath)
-fun statusRef(subPath: String = "") = ref(this, "status", subPath)
-fun tagsRef(subPath: String = "") = ref(this, "tags", subPath)
-fun arnRef(subPath: String = "") = ref(this, "arn", subPath)
+fun certificate_signing_requestRef(subPath: String = "") = ref(this, "certificate_signing_request", subPath)
 fun not_afterRef(subPath: String = "") = ref(this, "not_after", subPath)
+fun not_beforeRef(subPath: String = "") = ref(this, "not_before", subPath)
+fun revocation_configurationRef(subPath: String = "") = ref(this, "revocation_configuration", subPath)
+fun serialRef(subPath: String = "") = ref(this, "serial", subPath)
+fun arnRef(subPath: String = "") = ref(this, "arn", subPath)
+fun tagsRef(subPath: String = "") = ref(this, "tags", subPath)
+fun typeRef(subPath: String = "") = ref(this, "type", subPath)
+fun statusRef(subPath: String = "") = ref(this, "status", subPath)
 }

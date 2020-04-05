@@ -1,10 +1,10 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_api_gateway_vpc_link(val target_arns : List<String>, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_api_gateway_vpc_link(val name : String, val target_arns : List<String>) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var tags: Map<String, String>? = null
-  var description: String? = null
+	  var description: String? = null
+  var tags: Map<String, String>? = null
  
 
 fun statusRef(subPath: String = "") = ref(this, "status", subPath)

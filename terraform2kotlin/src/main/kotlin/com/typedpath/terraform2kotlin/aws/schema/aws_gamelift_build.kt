@@ -12,7 +12,7 @@ enum class Operating_system(val theValue: String ) {
 	override fun toString() = theValue
 	}
 
-class Storage_location(val role_arn : String, val bucket : String, val key : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Storage_location(val key : String, val role_arn : String, val bucket : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	 
 

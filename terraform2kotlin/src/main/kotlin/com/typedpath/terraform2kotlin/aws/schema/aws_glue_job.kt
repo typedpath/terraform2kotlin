@@ -1,22 +1,22 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_glue_job(val role_arn : String, val command : List<Command>, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_glue_job(val command : List<Command>, val name : String, val role_arn : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var glue_version: String? = null
-  var security_configuration: String? = null
-  var tags: Map<String, String>? = null
-  var connections: List<String>? = null
-  var max_capacity: Float? = null
+	  var max_retries: Int? = null
   var notification_property: List<Notification_property>? = null
-  var worker_type: Worker_type? = null
-  var number_of_workers: Int? = null
+  var tags: Map<String, String>? = null
+  var default_arguments: Map<String, String>? = null
   var allocated_capacity: Int? = null
   var description: String? = null
-  var timeout: Int? = null
-  var default_arguments: Map<String, String>? = null
+  var max_capacity: Float? = null
+  var security_configuration: String? = null
+  var number_of_workers: Int? = null
+  var connections: List<String>? = null
+  var glue_version: String? = null
   var execution_property: List<Execution_property>? = null
-  var max_retries: Int? = null
+  var timeout: Int? = null
+  var worker_type: Worker_type? = null
  
 
 enum class Worker_type(val theValue: String ) {

@@ -17,8 +17,8 @@ class Appversion_lifecycle(val service_role : String) :  com.typedpath.terraform
  
 
 }
+fun arnRef(subPath: String = "") = ref(this, "arn", subPath)
 fun nameRef(subPath: String = "") = ref(this, "name", subPath)
 fun descriptionRef(subPath: String = "") = ref(this, "description", subPath)
 fun appversion_lifecycleRef(subPath: String = "") = ref(this, "appversion_lifecycle", subPath)
-fun arnRef(subPath: String = "") = ref(this, "arn", subPath)
 }

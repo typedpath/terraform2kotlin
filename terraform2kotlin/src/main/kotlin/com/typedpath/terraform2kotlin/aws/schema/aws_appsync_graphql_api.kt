@@ -1,15 +1,15 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_appsync_graphql_api(val name : String, val authentication_type : Authentication_type) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_appsync_graphql_api(val authentication_type : Authentication_type, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var additional_authentication_provider: List<Additional_authentication_provider>? = null
+	  var tags: Map<String, String>? = null
+  var xray_enabled: Boolean? = null
+  var additional_authentication_provider: List<Additional_authentication_provider>? = null
   var log_config: List<Log_config>? = null
   var openid_connect_config: List<Openid_connect_config>? = null
-  var xray_enabled: Boolean? = null
-  var schema: String? = null
   var user_pool_config: List<User_pool_config>? = null
-  var tags: Map<String, String>? = null
+  var schema: String? = null
  
 
 enum class Authentication_type(val theValue: String ) {
@@ -30,9 +30,9 @@ enum class Authentication_type(val theValue: String ) {
 
 class Openid_connect_config(val issuer : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var client_id: String? = null
+	  var auth_ttl: Int? = null
+  var client_id: String? = null
   var iat_ttl: Int? = null
-  var auth_ttl: Int? = null
  
 
 }

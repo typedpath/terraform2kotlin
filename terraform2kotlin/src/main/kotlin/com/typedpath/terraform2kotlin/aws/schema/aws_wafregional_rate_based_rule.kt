@@ -3,8 +3,8 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_wafregional_rate_based_rule(val name : String, val metric_name : String, val rate_key : String, val rate_limit : Int) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var predicate: List<Predicate>? = null
-  var tags: Map<String, String>? = null
+	  var tags: Map<String, String>? = null
+  var predicate: List<Predicate>? = null
  
 
 

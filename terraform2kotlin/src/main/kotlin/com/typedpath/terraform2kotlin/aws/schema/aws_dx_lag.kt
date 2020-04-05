@@ -1,7 +1,7 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_dx_lag(val connections_bandwidth : Connections_bandwidth, val location : String, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_dx_lag(val location : String, val connections_bandwidth : Connections_bandwidth, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
 	  var number_of_connections: Int? = null
   var tags: Map<String, String>? = null

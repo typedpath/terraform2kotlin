@@ -6,8 +6,8 @@ class aws_ssm_activation(val iam_role : String) :  com.typedpath.terraform2kotli
 	  var name: String? = null
   var description: String? = null
   var expiration_date: String? = null
-  var tags: Map<String, String>? = null
   var registration_limit: Int? = null
+  var tags: Map<String, String>? = null
  
 
 }

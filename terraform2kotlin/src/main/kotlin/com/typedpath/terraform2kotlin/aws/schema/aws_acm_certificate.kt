@@ -3,15 +3,15 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_acm_certificate() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var certificate_body: String? = null
-  var certificate_authority_arn: String? = null
+	  var tags: Map<String, String>? = null
   var domain_name: String? = null
   var subject_alternative_names: List<String>? = null
-  var validation_method: String? = null
   var options: List<Options>? = null
+  var validation_method: String? = null
+  var certificate_body: String? = null
   var certificate_chain: String? = null
   var private_key: String? = null
-  var tags: Map<String, String>? = null
+  var certificate_authority_arn: String? = null
  
 
 

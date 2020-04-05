@@ -1,7 +1,7 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_appmesh_virtual_node(val spec : List<Spec>, val name : String, val mesh_name : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_appmesh_virtual_node(val name : String, val mesh_name : String, val spec : List<Spec>) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
 	  var tags: Map<String, String>? = null
  
@@ -9,13 +9,35 @@ class aws_appmesh_virtual_node(val spec : List<Spec>, val name : String, val mes
 
 class Spec() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var logging: List<Logging>? = null
-  var service_discovery: List<Service_discovery>? = null
-  var backends: List<String>? = null
+	  var backends: List<String>? = null
   var backend: List<Backend>? = null
   var listener: List<Listener>? = null
+  var logging: List<Logging>? = null
+  var service_discovery: List<Service_discovery>? = null
  
 
+
+class Service_discovery() :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	  var aws_cloud_map: List<Aws_cloud_map>? = null
+  var dns: List<Dns>? = null
+ 
+
+
+class Aws_cloud_map(val namespace_name : String, val service_name : String) :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	  var attributes: Map<String, String>? = null
+ 
+
+}
+
+class Dns(val hostname : String) :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	  var service_name: String? = null
+ 
+
+}
+}
 
 class Backend() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
@@ -46,10 +68,10 @@ enum class Protocol(val theValue: String ) {
 	}
 }
 
-class Health_check(val protocol : Protocol, val timeout_millis : Int, val unhealthy_threshold : Int, val healthy_threshold : Int, val interval_millis : Int) :  com.typedpath.terraform2kotlin.Resource() {
+class Health_check(val unhealthy_threshold : Int, val healthy_threshold : Int, val interval_millis : Int, val protocol : Protocol, val timeout_millis : Int) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var port: Int? = null
-  var path: String? = null
+	  var path: String? = null
+  var port: Int? = null
  
 
 enum class Protocol(val theValue: String ) {
@@ -76,28 +98,6 @@ class File(val path : String) :  com.typedpath.terraform2kotlin.Resource() {
 	 
 
 }
-}
-}
-
-class Service_discovery() :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	  var aws_cloud_map: List<Aws_cloud_map>? = null
-  var dns: List<Dns>? = null
- 
-
-
-class Aws_cloud_map(val namespace_name : String, val service_name : String) :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	  var attributes: Map<String, String>? = null
- 
-
-}
-
-class Dns(val hostname : String) :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	  var service_name: String? = null
- 
-
 }
 }
 }

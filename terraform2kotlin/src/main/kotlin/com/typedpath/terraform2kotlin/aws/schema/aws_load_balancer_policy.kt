@@ -9,8 +9,8 @@ class aws_load_balancer_policy(val load_balancer_name : String, val policy_name 
 
 class Policy_attribute() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var name: String? = null
-  var value: String? = null
+	  var value: String? = null
+  var name: String? = null
  
 
 }

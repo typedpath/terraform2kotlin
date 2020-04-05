@@ -9,9 +9,9 @@ class aws_appmesh_route(val name : String, val mesh_name : String, val virtual_r
 
 class Spec() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var priority: Int? = null
-  var tcp_route: List<Tcp_route>? = null
+	  var tcp_route: List<Tcp_route>? = null
   var http_route: List<Http_route>? = null
+  var priority: Int? = null
  
 
 
@@ -25,7 +25,7 @@ class Action(val weighted_target : List<Weighted_target>) :  com.typedpath.terra
 	 
 
 
-class Weighted_target(val virtual_node : String, val weight : Int) :  com.typedpath.terraform2kotlin.Resource() {
+class Weighted_target(val weight : Int, val virtual_node : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	 
 
@@ -52,38 +52,38 @@ class Weighted_target(val virtual_node : String, val weight : Int) :  com.typedp
 
 class Match(val prefix : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var scheme: Scheme? = null
-  var header: List<Header>? = null
+	  var header: List<Header>? = null
   var method: Method? = null
+  var scheme: Scheme? = null
  
 
-enum class Scheme(val theValue: String ) {
-	 http ("http"), https ("https") ;
-	override fun toString() = theValue
-	}
 enum class Method(val theValue: String ) {
 	 CONNECT ("CONNECT"), DELETE ("DELETE"), GET ("GET"), HEAD ("HEAD"), OPTIONS ("OPTIONS"), PATCH ("PATCH"), POST ("POST"), PUT ("PUT"), TRACE ("TRACE") ;
+	override fun toString() = theValue
+	}
+enum class Scheme(val theValue: String ) {
+	 http ("http"), https ("https") ;
 	override fun toString() = theValue
 	}
 
 class Header(val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var match: List<Match>? = null
-  var invert: Boolean? = null
+	  var invert: Boolean? = null
+  var match: List<Match>? = null
  
 
 
 class Match() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var range: List<Range>? = null
+	  var exact: String? = null
+  var prefix: String? = null
+  var range: List<Range>? = null
   var regex: String? = null
   var suffix: String? = null
-  var exact: String? = null
-  var prefix: String? = null
  
 
 
-class Range(val start : Int, val end : Int) :  com.typedpath.terraform2kotlin.Resource() {
+class Range(val end : Int, val start : Int) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	 
 

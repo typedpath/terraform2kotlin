@@ -1,15 +1,15 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_cloudformation_stack_set(val name : String, val administration_role_arn : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_cloudformation_stack_set(val administration_role_arn : String, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
 	  var capabilities: List<Capabilities>? = null
   var description: String? = null
-  var template_body: String? = null
   var execution_role_name: String? = null
+  var template_url: String? = null
   var parameters: Map<String, String>? = null
   var tags: Map<String, String>? = null
-  var template_url: String? = null
+  var template_body: String? = null
  
 
 enum class Capabilities(val theValue: String ) {

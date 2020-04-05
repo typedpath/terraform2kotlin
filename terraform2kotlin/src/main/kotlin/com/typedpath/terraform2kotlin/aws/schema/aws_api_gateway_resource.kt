@@ -5,8 +5,8 @@ class aws_api_gateway_resource(val path_part : String, val rest_api_id : String,
 	override fun typestring() ="resource"
 	 
 
-fun path_partRef(subPath: String = "") = ref(this, "path_part", subPath)
-fun parent_idRef(subPath: String = "") = ref(this, "parent_id", subPath)
 fun rest_api_idRef(subPath: String = "") = ref(this, "rest_api_id", subPath)
 fun pathRef(subPath: String = "") = ref(this, "path", subPath)
+fun path_partRef(subPath: String = "") = ref(this, "path_part", subPath)
+fun parent_idRef(subPath: String = "") = ref(this, "parent_id", subPath)
 }

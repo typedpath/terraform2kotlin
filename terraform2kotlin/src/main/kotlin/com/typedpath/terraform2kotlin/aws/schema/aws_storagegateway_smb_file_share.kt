@@ -1,19 +1,19 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_storagegateway_smb_file_share(val gateway_arn : String, val location_arn : String, val role_arn : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_storagegateway_smb_file_share(val location_arn : String, val gateway_arn : String, val role_arn : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var kms_encrypted: Boolean? = null
-  var object_acl: Object_acl? = null
+	  var object_acl: Object_acl? = null
   var read_only: Boolean? = null
-  var tags: Map<String, String>? = null
-  var authentication: Authentication? = null
-  var default_storage_class: Default_storage_class? = null
-  var invalid_user_list: List<String>? = null
   var valid_user_list: List<String>? = null
+  var authentication: Authentication? = null
   var guess_mime_type_enabled: Boolean? = null
   var kms_key_arn: String? = null
+  var kms_encrypted: Boolean? = null
   var requester_pays: Boolean? = null
+  var tags: Map<String, String>? = null
+  var invalid_user_list: List<String>? = null
+  var default_storage_class: Default_storage_class? = null
  
 
 enum class Object_acl(val theValue: String ) {

@@ -1,10 +1,10 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_cloudhsm_v2_cluster(val hsm_type : Hsm_type, val subnet_ids : List<String>) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_cloudhsm_v2_cluster(val subnet_ids : List<String>, val hsm_type : Hsm_type) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var tags: Map<String, String>? = null
-  var source_backup_identifier: String? = null
+	  var source_backup_identifier: String? = null
+  var tags: Map<String, String>? = null
  
 
 enum class Hsm_type(val theValue: String ) {

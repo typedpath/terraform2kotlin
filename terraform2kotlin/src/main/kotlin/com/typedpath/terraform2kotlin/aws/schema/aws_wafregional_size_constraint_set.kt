@@ -7,7 +7,7 @@ class aws_wafregional_size_constraint_set(val name : String) :  com.typedpath.te
  
 
 
-class Size_constraints(val comparison_operator : String, val size : Int, val text_transformation : String, val field_to_match : List<Field_to_match>) :  com.typedpath.terraform2kotlin.Resource() {
+class Size_constraints(val size : Int, val text_transformation : String, val field_to_match : List<Field_to_match>, val comparison_operator : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	 
 

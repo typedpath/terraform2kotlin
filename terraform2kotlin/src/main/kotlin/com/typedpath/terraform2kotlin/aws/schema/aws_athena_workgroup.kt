@@ -3,10 +3,10 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_athena_workgroup(val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var state: State? = null
-  var tags: Map<String, String>? = null
-  var configuration: List<Configuration>? = null
+	  var configuration: List<Configuration>? = null
   var description: String? = null
+  var state: State? = null
+  var tags: Map<String, String>? = null
  
 
 enum class State(val theValue: String ) {
@@ -32,8 +32,8 @@ class Result_configuration() :  com.typedpath.terraform2kotlin.Resource() {
 
 class Encryption_configuration() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var encryption_option: Encryption_option? = null
-  var kms_key_arn: String? = null
+	  var kms_key_arn: String? = null
+  var encryption_option: Encryption_option? = null
  
 
 enum class Encryption_option(val theValue: String ) {

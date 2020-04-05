@@ -17,15 +17,15 @@ enum class Version(val theValue: String ) {
 
 class Statement() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var not_principals: List<Not_principals>? = null
-  var condition: List<Condition>? = null
-  var effect: Effect? = null
+	  var sid: String? = null
+  var not_actions: List<String>? = null
   var resources: List<String>? = null
   var principals: List<Principals>? = null
-  var not_resources: List<String>? = null
-  var sid: String? = null
+  var condition: List<Condition>? = null
+  var effect: Effect? = null
   var actions: List<String>? = null
-  var not_actions: List<String>? = null
+  var not_resources: List<String>? = null
+  var not_principals: List<Not_principals>? = null
  
 
 enum class Effect(val theValue: String ) {
@@ -39,13 +39,13 @@ class Not_principals(val type : String, val identifiers : List<String>) :  com.t
 
 }
 
-class Condition(val test : String, val variable : String, val values : List<String>) :  com.typedpath.terraform2kotlin.Resource() {
+class Principals(val type : String, val identifiers : List<String>) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	 
 
 }
 
-class Principals(val identifiers : List<String>, val type : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Condition(val test : String, val variable : String, val values : List<String>) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	 
 

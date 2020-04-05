@@ -3,8 +3,8 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_backup_selection(val name : String, val plan_id : String, val iam_role_arn : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var resources: List<String>? = null
-  var selection_tag: List<Selection_tag>? = null
+	  var selection_tag: List<Selection_tag>? = null
+  var resources: List<String>? = null
  
 
 

@@ -21,7 +21,7 @@ class Option(val option_name : String) :  com.typedpath.terraform2kotlin.Resourc
  
 
 
-class Option_settings(val name : String, val value : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Option_settings(val value : String, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	 
 
