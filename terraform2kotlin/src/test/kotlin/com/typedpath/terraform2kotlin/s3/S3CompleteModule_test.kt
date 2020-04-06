@@ -1,11 +1,7 @@
 package com.typedpath.terraform2kotlin.eks
 
-import com.typedpath.terraform2kotlin.TerraformTemplate
-import com.typedpath.terraform2kotlin.`eks-getting-started`.OutputTemplate
-import com.typedpath.terraform2kotlin.aws.schema.aws_s3_bucket
+
 import com.typedpath.terraform2kotlin.s3.S3CompleteFeatures
-import com.typedpath.terraform2kotlin.s3.S3UtilMainTemplate
-import com.typedpath.terraform2kotlin.s3.S3UtilOutputsTemplate
 import com.typedpath.terraform2kotlin.terraformAwsRunnerFromEnvironment
 import com.typedpath.terraform2kotlin.toTerraform
 import org.junit.Assert
