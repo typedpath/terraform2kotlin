@@ -1,15 +1,16 @@
 package com.typedpath.terraform2kotlin.s3
 
-import com.typedpath.terraform2kotlin.TerraformTemplate
 import com.typedpath.terraform2kotlin.aws.schema.aws_iam_policy_document
 import com.typedpath.terraform2kotlin.aws.schema.aws_iam_role
 import com.typedpath.terraform2kotlin.aws.schema.aws_kms_key
+import com.typedpath.terraform2kotlin.aws.schema.aws_s3_bucket
 
 // based on https://github.com/terraform-aws-modules/terraform-aws-s3-bucket/tree/master/examples/complete
 // Differences in this version
 // Terraform Locals are not used - Kotlin scoping is preferred
 //
-class S3CompleteFeaturesTemplate(bucketName: String) : TerraformTemplate() {
+class  S3CompleteFeatures(bucketName: String, logBucketName: String) {
+
     val objectsKey = aws_kms_key().apply {
         description = "KMS key is used to encrypt bucket objects"
         deletion_window_in_days = 7
@@ -51,6 +52,17 @@ class S3CompleteFeaturesTemplate(bucketName: String) : TerraformTemplate() {
                 resources = listOf("arn:aws:s3:::$bucketName")
             }
         )
+    }
+
+    val logBucketTemplate = S3UtilMainTemplate(
+        awsS3Bucket = aws_s3_bucket().apply {
+            bucket = logBucketName
+            acl = "log-delivery-write"
+            force_destroy = true
+        },
+        attach_elb_log_delivery_policy = true
+    ).apply {
+        scope = "log_bucket"
     }
 
 

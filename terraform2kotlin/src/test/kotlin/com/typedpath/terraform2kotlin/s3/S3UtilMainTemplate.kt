@@ -29,8 +29,8 @@ class S3UtilMainTemplate(
                 )
                 effect = aws_iam_policy_document.Statement.Effect.Allow
                 actions = listOf("s3:PutObject")
-                //TODO should be id ref
                 //        resources =  [  "arn:aws:s3:::${aws_s3_bucket.s3_bucket.id}/*"]
+                //TODO remove need for double escaping
                 resources = listOf("arn:aws:s3:::\${${s3_bucket.idRef()}}/*")
 
             })

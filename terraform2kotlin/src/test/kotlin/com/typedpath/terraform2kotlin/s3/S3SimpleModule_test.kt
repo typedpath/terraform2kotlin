@@ -1,6 +1,7 @@
 package com.typedpath.terraform2kotlin.eks
 
 import com.typedpath.terraform2kotlin.aws.schema.aws_s3_bucket
+import com.typedpath.terraform2kotlin.s3.S3CompleteFeatures
 import com.typedpath.terraform2kotlin.s3.S3UtilMainTemplate
 import com.typedpath.terraform2kotlin.s3.S3UtilOutputsTemplate
 import com.typedpath.terraform2kotlin.terraformAwsRunnerFromEnvironment
@@ -11,10 +12,13 @@ import org.junit.Test
 
 class S3SimpleModule_test {
 
+    val defaultBucketName = S3SimpleModule_test::class.simpleName!!.toLowerCase().replace("_", "-")
+    val defaultLogBucketName = "my-s3-bucket-for-logs" + System.currentTimeMillis()
+
     @Test
     fun testBasic() {
         val s3BucketIn = aws_s3_bucket().apply {
-            bucket = S3SimpleModule_test::class.simpleName!!.toLowerCase().replace("_", "-")
+            bucket = defaultBucketName
             acl = "private"
             versioning = listOf(aws_s3_bucket.Versioning().apply { this.enabled = true })
         }
@@ -29,7 +33,7 @@ class S3SimpleModule_test {
     fun testLogBucket() {
         val template = S3UtilMainTemplate(
             awsS3Bucket = aws_s3_bucket().apply {
-                bucket = "my-s3-bucket-for-logs" + System.currentTimeMillis()
+                bucket = defaultLogBucketName
                 acl = "log-delivery-write"
                 force_destroy = true
             },
@@ -38,8 +42,18 @@ class S3SimpleModule_test {
         test(::testLogBucket, template)
     }
 
+    @Test
+    fun completeFeaturesTest() {
+
+        val completeFeatures =  S3CompleteFeatures(defaultBucketName, defaultLogBucketName)
+        println(toTerraform(completeFeatures.logBucketTemplate))
+        test(::completeFeaturesTest, completeFeatures.logBucketTemplate)
+    }
+
     private fun test(context: Any, template: S3UtilMainTemplate) {
         val outputsTemplate = S3UtilOutputsTemplate(template)
+        //TODO do this in constructor
+        outputsTemplate.scope = template.scope
 
         println(toTerraform(template))
         println(toTerraform(outputsTemplate))

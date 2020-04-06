@@ -15,6 +15,9 @@ class TerraformAWSRunner( val accessKey: String,
 
     val templates  = templatesIn
 
+    private fun toFileName(template: TerraformTemplate) =
+        (if (template.scope!=null) (template.scope+"-") else "") + template.javaClass.simpleName + ".tf"
+
     fun initApply() : Map<String, String> {
 
         println("running in directory ${runDir?.absolutePath}")
@@ -26,7 +29,7 @@ class TerraformAWSRunner( val accessKey: String,
 }
 """)
         templates.forEach {
-            File(runDir, it.javaClass.simpleName + ".tf").writeText(toTerraform(it))
+            File(runDir, toFileName(it)).writeText(toTerraform(it))
         }
         val initResult = "terraform init".runCommand(runDir!!)
         println("terraform init result: $initResult")

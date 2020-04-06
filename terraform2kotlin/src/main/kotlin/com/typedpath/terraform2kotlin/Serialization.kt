@@ -4,6 +4,7 @@ import kotlin.reflect.KVisibility
 import kotlin.reflect.full.memberProperties
 
 
+
 private const val refPrefix= "z#z#"
 private const val dependsOnPropertyName = "depends_on"
 private const val dataTypeString ="data"
@@ -38,25 +39,20 @@ return result
 }
 
 private fun printDataProperties(template: TerraformTemplate) : String {
-    fun isResource ( n: String, o: Any) = o is Resource && "data".equals(o.typestring())
-    val properties = getTemplateProperties(template, ::isResource)
-    return (
-            """${properties.entries.map{(
-                    """
-data "${it.value?.javaClass?.simpleName}" "${it.key}" ${printValue(it.value!!, indentStep, it.key, true, false)}
-""")}.joinToString (
-                """
-""" )
-            }""")
+    return printComplexProperties(template, "data")
 }
 
 private fun printResourceProperties(template: TerraformTemplate) : String {
-    fun isResource (n: String, o: Any) = o is Resource && "resource".equals(o.typestring())
+return printComplexProperties(template, "resource")
+}
+
+private fun printComplexProperties(template: TerraformTemplate, typeName: String) : String {
+    fun isResource (n: String, o: Any) = o is Resource && typeName.equals(o.typestring())
     val properties = getTemplateProperties(template, ::isResource)
     return (
             """${properties.entries.map{(
                     """
-resource "${it.value?.javaClass?.simpleName}" "${it.key}" ${printValue(it.value!!, indentStep, it.key, true, false)}
+$typeName "${it.value?.javaClass?.simpleName}" "${template.scopeName(it.key)}" ${printValue(it.value!!, indentStep, template.scopeName(it.key), true, false)}
 """)}.joinToString (
                 """
 """ )
@@ -102,7 +98,6 @@ ${printValue(it.value!!, indentStep, it.key, false)}
 """ )
             }
             }""")
-    //return printProperties(template, "provider", ::filter)
 }
 
 
@@ -111,7 +106,7 @@ private fun printProperties(template: TerraformTemplate,  typename: String, filt
     return (
             """${properties.entries.map{(
                     """
-$typename "${it.key}" ${printValue(it.value!!, indentStep, it.key, false, false )}
+$typename "${template.scopeName(it.key)}" ${printValue(it.value!!, indentStep, it.key, false, false )}
 """)}.joinToString (
                 """
 """ )
@@ -135,7 +130,7 @@ private fun printList(list: List<*>, indent: String) : String {
 }
 
 private fun printObject(name: String?, o: Any,  indent: String) : String {
-    if (name !=null)  object2Name.put(o, name)
+    if (name !=null) object2Name.put(o, name)
     return printMap(getProperties(o), indent, "")
 }
 
@@ -147,17 +142,7 @@ private fun refPairToRef(referredParentObject: Any, refferedPropertyName: String
 
 private fun printSimpleValue(o: Any) : String {
     val isRef = o is String && stringToRef.containsKey(o)
-    /*return if (o is String && stringToRef.containsKey(o)) {
-        val refPair = stringToRef.get(o)!!
-        val referredParentObject = refPair.first
-        val refferedPropertyName = refPair.second
-        if (!object2Name.containsKey(referredParentObject)) {
-            throw Exception("cant resolve ref $refPair" )
-        }
-        val name = object2Name.get(referredParentObject)
-        val typePrefix = if (referredParentObject is Resource && referredParentObject.typestring().equals(dataTypeString)) (dataTypeString +".") else ""
-        return "$typePrefix${referredParentObject.javaClass.simpleName}.${name}${if (refferedPropertyName.length==0) "" else ("." + refferedPropertyName)}"
-    } else*/  return if ((o is String || o.javaClass.isEnum) && !isRef) """"$o"""" else  "$o"
+    return if ((o is String || o.javaClass.isEnum) && !isRef) """"$o"""" else  "$o"
 }
 
 private val indentStep = "  "
@@ -181,12 +166,12 @@ private fun printValue(oIn: Any,  indent: String, name: String?=null, quoteName:
          if (attributeAsBlocks) {
              o.map { """
 ${indent}$name { 
-${printObject(name, it as Any, indent+ indentStep)}
+${printObject(name, it as Any, indent + indentStep)}
 $indent}""" }.joinToString("")
          } else
          "$nameInitialiser [" + printList(o, indent) + "]"
     } else if (isComplex(o)) {
-         "$nameInitialiser {" + System.lineSeparator()  + printObject(name, o, indent + indentStep) + System.lineSeparator() + indent +  "}"
+         "$nameInitialiser {" + System.lineSeparator()  + printObject(/*scopeName(name)*/name, o, indent + indentStep) + System.lineSeparator() + indent +  "}"
     } else {
         "$nameInitialiser ${printSimpleValue(o)}"
     }
