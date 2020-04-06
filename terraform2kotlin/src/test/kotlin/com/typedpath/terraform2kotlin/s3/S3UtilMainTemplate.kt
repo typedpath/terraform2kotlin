@@ -10,7 +10,11 @@ class S3UtilMainTemplate(
     awsS3Bucket: aws_s3_bucket,
     policy: aws_iam_policy_document? = null,
     attach_elb_log_delivery_policy: Boolean = false,
-    attach_policy: Boolean = false
+    attach_policy: Boolean = false,
+    block_public_acls: Boolean? = null,
+    block_public_policy: Boolean? = null,
+    ignore_public_acls: Boolean? = null,
+    restrict_public_buckets: Boolean? = null
 ) : TerraformTemplate() {
     val s3_bucket = awsS3Bucket
 

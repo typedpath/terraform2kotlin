@@ -4,7 +4,7 @@ import kotlin.reflect.KVisibility
 import kotlin.reflect.full.memberProperties
 
 
-
+const val LITERAL_PREFIX="<<"
 private const val refPrefix= "z#z#"
 private const val dependsOnPropertyName = "depends_on"
 private const val dataTypeString ="data"
@@ -142,7 +142,8 @@ private fun refPairToRef(referredParentObject: Any, refferedPropertyName: String
 
 private fun printSimpleValue(o: Any) : String {
     val isRef = o is String && stringToRef.containsKey(o)
-    return if ((o is String || o.javaClass.isEnum) && !isRef) """"$o"""" else  "$o"
+    val isLiteral = o is String && o.startsWith(LITERAL_PREFIX)
+    return if ((o is String || o.javaClass.isEnum) && !isRef && !isLiteral) """"$o"""" else  "$o"
 }
 
 private val indentStep = "  "
