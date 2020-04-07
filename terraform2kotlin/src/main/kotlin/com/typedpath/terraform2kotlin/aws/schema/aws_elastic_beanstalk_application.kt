@@ -3,9 +3,9 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_elastic_beanstalk_application(val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var description: String? = null
+	  var tags: Map<String, String>? = null
+  var description: String? = null
   var appversion_lifecycle: List<Appversion_lifecycle>? = null
-  var tags: Map<String, String>? = null
  
 
 

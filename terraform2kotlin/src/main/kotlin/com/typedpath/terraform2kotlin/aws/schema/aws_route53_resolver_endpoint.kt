@@ -3,8 +3,8 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_route53_resolver_endpoint(val direction : Direction, val ip_address : List<Ip_address>, val security_group_ids : List<String>) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var tags: Map<String, String>? = null
-  var name: String? = null
+	  var name: String? = null
+  var tags: Map<String, String>? = null
  
 
 enum class Direction(val theValue: String ) {

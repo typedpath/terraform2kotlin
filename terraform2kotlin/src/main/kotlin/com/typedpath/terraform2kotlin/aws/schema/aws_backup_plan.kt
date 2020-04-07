@@ -9,11 +9,11 @@ class aws_backup_plan(val name : String, val rule : List<Rule>) :  com.typedpath
 
 class Rule(val rule_name : String, val target_vault_name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var schedule: String? = null
+	  var recovery_point_tags: Map<String, String>? = null
+  var schedule: String? = null
   var start_window: Int? = null
   var completion_window: Int? = null
   var lifecycle: List<Lifecycle>? = null
-  var recovery_point_tags: Map<String, String>? = null
  
 
 

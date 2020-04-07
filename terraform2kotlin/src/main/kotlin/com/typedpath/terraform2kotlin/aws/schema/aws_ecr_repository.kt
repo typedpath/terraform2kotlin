@@ -18,9 +18,9 @@ class Image_scanning_configuration(val scan_on_push : Boolean) :  com.typedpath.
 	 
 
 }
-fun repository_urlRef(subPath: String = "") = ref(this, "repository_url", subPath)
 fun tagsRef(subPath: String = "") = ref(this, "tags", subPath)
 fun nameRef(subPath: String = "") = ref(this, "name", subPath)
 fun arnRef(subPath: String = "") = ref(this, "arn", subPath)
 fun registry_idRef(subPath: String = "") = ref(this, "registry_id", subPath)
+fun repository_urlRef(subPath: String = "") = ref(this, "repository_url", subPath)
 }

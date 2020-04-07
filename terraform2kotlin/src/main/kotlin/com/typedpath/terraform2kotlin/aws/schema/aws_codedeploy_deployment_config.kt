@@ -3,9 +3,9 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_codedeploy_deployment_config(val deployment_config_name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var minimum_healthy_hosts: List<Minimum_healthy_hosts>? = null
+	  var compute_platform: Compute_platform? = null
+  var minimum_healthy_hosts: List<Minimum_healthy_hosts>? = null
   var traffic_routing_config: List<Traffic_routing_config>? = null
-  var compute_platform: Compute_platform? = null
  
 
 enum class Compute_platform(val theValue: String ) {

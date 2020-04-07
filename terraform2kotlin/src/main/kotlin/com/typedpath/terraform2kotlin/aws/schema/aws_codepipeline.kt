@@ -17,7 +17,7 @@ enum class Type(val theValue: String ) {
 	override fun toString() = theValue
 	}
 
-class Encryption_key(val type : Type, val id : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Encryption_key(val id : String, val type : Type) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	 
 
@@ -33,13 +33,13 @@ class Stage(val name : String, val action : List<Action>) :  com.typedpath.terra
 	 
 
 
-class Action(val owner : Owner, val name : String, val category : Category, val provider : String, val version : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Action(val owner : Owner, val version : String, val name : String, val category : Category, val provider : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var output_artifacts: List<String>? = null
-  var configuration: Map<String, String>? = null
+	  var role_arn: String? = null
   var input_artifacts: List<String>? = null
-  var role_arn: String? = null
+  var output_artifacts: List<String>? = null
   var run_order: Int? = null
+  var configuration: Map<String, String>? = null
  
 
 enum class Owner(val theValue: String ) {

@@ -1,22 +1,22 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_opsworks_application(val type : Type, val name : String, val stack_id : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_opsworks_application(val name : String, val type : Type, val stack_id : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var document_root: String? = null
-  var data_source_type: String? = null
-  var domains: List<String>? = null
-  var environment: List<Environment>? = null
-  var ssl_configuration: List<Ssl_configuration>? = null
-  var rails_env: String? = null
+	  var rails_env: String? = null
   var auto_bundle_on_deploy: String? = null
   var app_source: List<App_source>? = null
-  var data_source_database_name: String? = null
+  var ssl_configuration: List<Ssl_configuration>? = null
+  var aws_flow_ruby_settings: String? = null
+  var data_source_type: String? = null
   var data_source_arn: String? = null
   var description: String? = null
-  var enable_ssl: Boolean? = null
-  var aws_flow_ruby_settings: String? = null
   var short_name: String? = null
+  var document_root: String? = null
+  var domains: List<String>? = null
+  var enable_ssl: Boolean? = null
+  var data_source_database_name: String? = null
+  var environment: List<Environment>? = null
  
 
 enum class Type(val theValue: String ) {
@@ -35,16 +35,16 @@ class App_source(val type : String) :  com.typedpath.terraform2kotlin.Resource()
 
 }
 
-class Environment(val key : String, val value : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Ssl_configuration(val certificate : String, val private_key : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var secure: Boolean? = null
+	  var chain: String? = null
  
 
 }
 
-class Ssl_configuration(val certificate : String, val private_key : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Environment(val key : String, val value : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var chain: String? = null
+	  var secure: Boolean? = null
  
 
 }

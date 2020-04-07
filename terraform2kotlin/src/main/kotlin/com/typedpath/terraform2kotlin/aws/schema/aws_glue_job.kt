@@ -1,22 +1,22 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_glue_job(val command : List<Command>, val name : String, val role_arn : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_glue_job(val name : String, val role_arn : String, val command : List<Command>) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var max_retries: Int? = null
-  var notification_property: List<Notification_property>? = null
-  var tags: Map<String, String>? = null
-  var default_arguments: Map<String, String>? = null
-  var allocated_capacity: Int? = null
+	  var connections: List<String>? = null
   var description: String? = null
   var max_capacity: Float? = null
-  var security_configuration: String? = null
-  var number_of_workers: Int? = null
-  var connections: List<String>? = null
+  var timeout: Int? = null
+  var allocated_capacity: Int? = null
   var glue_version: String? = null
   var execution_property: List<Execution_property>? = null
-  var timeout: Int? = null
+  var max_retries: Int? = null
+  var notification_property: List<Notification_property>? = null
+  var security_configuration: String? = null
+  var default_arguments: Map<String, String>? = null
+  var tags: Map<String, String>? = null
   var worker_type: Worker_type? = null
+  var number_of_workers: Int? = null
  
 
 enum class Worker_type(val theValue: String ) {
@@ -26,8 +26,8 @@ enum class Worker_type(val theValue: String ) {
 
 class Command(val script_location : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var name: String? = null
-  var python_version: Python_version? = null
+	  var python_version: Python_version? = null
+  var name: String? = null
  
 
 enum class Python_version(val theValue: String ) {
@@ -36,16 +36,16 @@ enum class Python_version(val theValue: String ) {
 	}
 }
 
-class Notification_property() :  com.typedpath.terraform2kotlin.Resource() {
+class Execution_property() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var notify_delay_after: Int? = null
+	  var max_concurrent_runs: Int? = null
  
 
 }
 
-class Execution_property() :  com.typedpath.terraform2kotlin.Resource() {
+class Notification_property() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var max_concurrent_runs: Int? = null
+	  var notify_delay_after: Int? = null
  
 
 }

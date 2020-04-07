@@ -1,10 +1,10 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_dx_hosted_public_virtual_interface(val connection_id : String, val name : String, val owner_account_id : String, val route_filter_prefixes : List<String>, val bgp_asn : Int, val vlan : Int, val address_family : Address_family) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_dx_hosted_public_virtual_interface(val bgp_asn : Int, val name : String, val address_family : Address_family, val connection_id : String, val owner_account_id : String, val route_filter_prefixes : List<String>, val vlan : Int) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var bgp_auth_key: String? = null
-  var amazon_address: String? = null
+	  var amazon_address: String? = null
+  var bgp_auth_key: String? = null
   var customer_address: String? = null
  
 

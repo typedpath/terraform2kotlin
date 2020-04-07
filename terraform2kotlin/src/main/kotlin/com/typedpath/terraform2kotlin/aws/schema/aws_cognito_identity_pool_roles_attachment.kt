@@ -22,7 +22,7 @@ enum class Ambiguous_role_resolution(val theValue: String ) {
 	override fun toString() = theValue
 	}
 
-class Mapping_rule(val claim : String, val match_type : Match_type, val role_arn : String, val value : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Mapping_rule(val value : String, val claim : String, val match_type : Match_type, val role_arn : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	 
 

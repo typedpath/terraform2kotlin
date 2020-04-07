@@ -24,7 +24,7 @@ enum class Value_source(val theValue: String ) {
 	}
 }
 
-class Kinesis_destination(val role_arn : String, val stream_arn : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Kinesis_destination(val stream_arn : String, val role_arn : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	 
 

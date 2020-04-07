@@ -8,16 +8,16 @@ class aws_cloudwatch_event_permission(val principal : String, val statement_id :
  
 
 
-class Condition(val type : Type, val value : String, val key : Key) :  com.typedpath.terraform2kotlin.Resource() {
+class Condition(val key : Key, val type : Type, val value : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	 
 
-enum class Type(val theValue: String ) {
-	 StringEquals ("StringEquals") ;
-	override fun toString() = theValue
-	}
 enum class Key(val theValue: String ) {
 	 aws_PrincipalOrgID ("aws:PrincipalOrgID") ;
+	override fun toString() = theValue
+	}
+enum class Type(val theValue: String ) {
+	 StringEquals ("StringEquals") ;
 	override fun toString() = theValue
 	}
 }

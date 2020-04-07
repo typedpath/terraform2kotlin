@@ -7,7 +7,7 @@ class aws_waf_sql_injection_match_set(val name : String) :  com.typedpath.terraf
  
 
 
-class Sql_injection_match_tuples(val text_transformation : String, val field_to_match : List<Field_to_match>) :  com.typedpath.terraform2kotlin.Resource() {
+class Sql_injection_match_tuples(val field_to_match : List<Field_to_match>, val text_transformation : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	 
 

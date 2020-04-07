@@ -8,7 +8,7 @@ class aws_waf_rule_group(val name : String, val metric_name : String) :  com.typ
  
 
 
-class Activated_rule(val action : List<Action>, val priority : Int, val rule_id : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Activated_rule(val priority : Int, val rule_id : String, val action : List<Action>) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	  var type: String? = null
  

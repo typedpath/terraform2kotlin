@@ -8,7 +8,7 @@ class aws_elasticache_parameter_group(val name : String, val family : String) : 
  
 
 
-class Parameter(val value : String, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Parameter(val name : String, val value : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	 
 

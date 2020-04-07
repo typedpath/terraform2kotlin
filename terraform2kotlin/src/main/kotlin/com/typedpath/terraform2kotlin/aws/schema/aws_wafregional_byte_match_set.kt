@@ -22,7 +22,7 @@ class Field_to_match(val type : String) :  com.typedpath.terraform2kotlin.Resour
 }
 }
 
-class Byte_match_tuples(val text_transformation : String, val field_to_match : List<Field_to_match>, val positional_constraint : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Byte_match_tuples(val field_to_match : List<Field_to_match>, val positional_constraint : String, val text_transformation : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	  var target_string: String? = null
  

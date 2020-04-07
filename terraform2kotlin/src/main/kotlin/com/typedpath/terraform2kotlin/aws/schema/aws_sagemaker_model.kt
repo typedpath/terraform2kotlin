@@ -14,14 +14,14 @@ class aws_sagemaker_model(val execution_role_arn : String) :  com.typedpath.terr
 
 class Primary_container(val image : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var environment: Map<String, String>? = null
-  var container_hostname: String? = null
+	  var container_hostname: String? = null
   var model_data_url: String? = null
+  var environment: Map<String, String>? = null
  
 
 }
 
-class Vpc_config(val subnets : List<String>, val security_group_ids : List<String>) :  com.typedpath.terraform2kotlin.Resource() {
+class Vpc_config(val security_group_ids : List<String>, val subnets : List<String>) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	 
 
@@ -29,9 +29,9 @@ class Vpc_config(val subnets : List<String>, val security_group_ids : List<Strin
 
 class Container(val image : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var environment: Map<String, String>? = null
+	  var model_data_url: String? = null
+  var environment: Map<String, String>? = null
   var container_hostname: String? = null
-  var model_data_url: String? = null
  
 
 }

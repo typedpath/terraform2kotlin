@@ -3,8 +3,8 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_organizations_policy(val content : String, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var type: Type? = null
-  var description: String? = null
+	  var description: String? = null
+  var type: Type? = null
  
 
 enum class Type(val theValue: String ) {

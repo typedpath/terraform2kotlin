@@ -9,7 +9,7 @@ class aws_sagemaker_endpoint_configuration(val production_variants : List<Produc
  
 
 
-class Production_variants(val initial_instance_count : Int, val instance_type : String, val model_name : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Production_variants(val model_name : String, val initial_instance_count : Int, val instance_type : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	  var initial_variant_weight: Float? = null
   var accelerator_type: String? = null

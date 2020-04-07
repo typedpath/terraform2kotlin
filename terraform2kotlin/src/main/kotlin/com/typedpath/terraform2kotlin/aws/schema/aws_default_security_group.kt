@@ -11,25 +11,25 @@ class aws_default_security_group() :  com.typedpath.terraform2kotlin.Resource() 
  
 
 
-class Ingress(val to_port : Int, val protocol : String, val from_port : Int) :  com.typedpath.terraform2kotlin.Resource() {
+class Ingress(val protocol : String, val from_port : Int, val to_port : Int) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var ipv6_cidr_blocks: List<String>? = null
+	  var cidr_blocks: List<String>? = null
+  var prefix_list_ids: List<String>? = null
+  var ipv6_cidr_blocks: List<String>? = null
+  var security_groups: List<String>? = null
   var self: Boolean? = null
   var description: String? = null
-  var security_groups: List<String>? = null
-  var cidr_blocks: List<String>? = null
-  var prefix_list_ids: List<String>? = null
  
 
 }
 
-class Egress(val to_port : Int, val protocol : String, val from_port : Int) :  com.typedpath.terraform2kotlin.Resource() {
+class Egress(val protocol : String, val to_port : Int, val from_port : Int) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	  var cidr_blocks: List<String>? = null
-  var description: String? = null
   var ipv6_cidr_blocks: List<String>? = null
   var prefix_list_ids: List<String>? = null
   var security_groups: List<String>? = null
+  var description: String? = null
   var self: Boolean? = null
  
 

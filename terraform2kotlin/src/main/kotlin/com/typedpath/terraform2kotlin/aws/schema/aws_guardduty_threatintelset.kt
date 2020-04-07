@@ -1,7 +1,7 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_guardduty_threatintelset(val location : String, val activate : Boolean, val detector_id : String, val name : String, val format : Format) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_guardduty_threatintelset(val detector_id : String, val name : String, val format : Format, val location : String, val activate : Boolean) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
 	 
 

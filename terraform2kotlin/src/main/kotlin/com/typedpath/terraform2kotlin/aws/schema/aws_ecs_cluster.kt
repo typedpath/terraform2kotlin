@@ -27,11 +27,11 @@ enum class Name(val theValue: String ) {
 	override fun toString() = theValue
 	}
 }
-fun settingRef(subPath: String = "") = ref(this, "setting", subPath)
-fun cluster_nameRef(subPath: String = "") = ref(this, "cluster_name", subPath)
 fun arnRef(subPath: String = "") = ref(this, "arn", subPath)
 fun statusRef(subPath: String = "") = ref(this, "status", subPath)
 fun pending_tasks_countRef(subPath: String = "") = ref(this, "pending_tasks_count", subPath)
 fun running_tasks_countRef(subPath: String = "") = ref(this, "running_tasks_count", subPath)
 fun registered_container_instances_countRef(subPath: String = "") = ref(this, "registered_container_instances_count", subPath)
+fun settingRef(subPath: String = "") = ref(this, "setting", subPath)
+fun cluster_nameRef(subPath: String = "") = ref(this, "cluster_name", subPath)
 }

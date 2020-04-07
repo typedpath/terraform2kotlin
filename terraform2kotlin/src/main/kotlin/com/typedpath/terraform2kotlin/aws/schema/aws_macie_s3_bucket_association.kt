@@ -11,16 +11,16 @@ class aws_macie_s3_bucket_association(val bucket_name : String) :  com.typedpath
 
 class Classification_type() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var one_time: One_time? = null
-  var continuous: Continuous? = null
+	  var continuous: Continuous? = null
+  var one_time: One_time? = null
  
 
-enum class One_time(val theValue: String ) {
-	 FULL ("FULL"), NONE ("NONE") ;
-	override fun toString() = theValue
-	}
 enum class Continuous(val theValue: String ) {
 	 FULL ("FULL") ;
+	override fun toString() = theValue
+	}
+enum class One_time(val theValue: String ) {
+	 FULL ("FULL"), NONE ("NONE") ;
 	override fun toString() = theValue
 	}
 }

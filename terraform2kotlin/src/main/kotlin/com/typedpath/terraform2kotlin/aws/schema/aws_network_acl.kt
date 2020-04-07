@@ -11,22 +11,22 @@ class aws_network_acl(val vpc_id : String) :  com.typedpath.terraform2kotlin.Res
  
 
 
-class Ingress(val protocol : String, val from_port : Int, val to_port : Int, val action : String, val rule_no : Int) :  com.typedpath.terraform2kotlin.Resource() {
+class Ingress(val from_port : Int, val rule_no : Int, val action : String, val to_port : Int, val protocol : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	  var ipv6_cidr_block: String? = null
   var icmp_type: Int? = null
-  var cidr_block: String? = null
   var icmp_code: Int? = null
+  var cidr_block: String? = null
  
 
 }
 
-class Egress(val to_port : Int, val rule_no : Int, val action : String, val protocol : String, val from_port : Int) :  com.typedpath.terraform2kotlin.Resource() {
+class Egress(val rule_no : Int, val action : String, val from_port : Int, val protocol : String, val to_port : Int) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var ipv6_cidr_block: String? = null
-  var icmp_code: Int? = null
-  var cidr_block: String? = null
+	  var icmp_code: Int? = null
+  var ipv6_cidr_block: String? = null
   var icmp_type: Int? = null
+  var cidr_block: String? = null
  
 
 }

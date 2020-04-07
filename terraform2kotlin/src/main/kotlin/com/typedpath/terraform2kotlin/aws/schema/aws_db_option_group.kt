@@ -13,15 +13,15 @@ class aws_db_option_group(val engine_name : String, val major_engine_version : S
 
 class Option(val option_name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var option_settings: List<Option_settings>? = null
+	  var vpc_security_group_memberships: List<String>? = null
+  var version: String? = null
+  var option_settings: List<Option_settings>? = null
   var port: Int? = null
   var db_security_group_memberships: List<String>? = null
-  var vpc_security_group_memberships: List<String>? = null
-  var version: String? = null
  
 
 
-class Option_settings(val value : String, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Option_settings(val name : String, val value : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	 
 

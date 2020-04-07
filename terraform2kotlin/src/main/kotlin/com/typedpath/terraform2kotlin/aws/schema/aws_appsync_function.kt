@@ -1,10 +1,10 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_appsync_function(val api_id : String, val data_source : String, val request_mapping_template : String, val response_mapping_template : String, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_appsync_function(val api_id : String, val data_source : String, val name : String, val request_mapping_template : String, val response_mapping_template : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var description: String? = null
-  var function_version: Function_version? = null
+	  var function_version: Function_version? = null
+  var description: String? = null
  
 
 enum class Function_version(val theValue: String ) {

@@ -3,8 +3,8 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_autoscaling_attachment(val autoscaling_group_name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var alb_target_group_arn: String? = null
-  var elb: String? = null
+	  var elb: String? = null
+  var alb_target_group_arn: String? = null
  
 
 }

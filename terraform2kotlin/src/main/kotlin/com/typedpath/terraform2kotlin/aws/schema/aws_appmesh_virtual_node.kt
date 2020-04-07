@@ -17,28 +17,6 @@ class Spec() :  com.typedpath.terraform2kotlin.Resource() {
  
 
 
-class Service_discovery() :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	  var aws_cloud_map: List<Aws_cloud_map>? = null
-  var dns: List<Dns>? = null
- 
-
-
-class Aws_cloud_map(val namespace_name : String, val service_name : String) :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	  var attributes: Map<String, String>? = null
- 
-
-}
-
-class Dns(val hostname : String) :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	  var service_name: String? = null
- 
-
-}
-}
-
 class Backend() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	  var virtual_service: List<Virtual_service>? = null
@@ -68,7 +46,7 @@ enum class Protocol(val theValue: String ) {
 	}
 }
 
-class Health_check(val unhealthy_threshold : Int, val healthy_threshold : Int, val interval_millis : Int, val protocol : Protocol, val timeout_millis : Int) :  com.typedpath.terraform2kotlin.Resource() {
+class Health_check(val protocol : Protocol, val timeout_millis : Int, val unhealthy_threshold : Int, val healthy_threshold : Int, val interval_millis : Int) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	  var path: String? = null
   var port: Int? = null
@@ -98,6 +76,28 @@ class File(val path : String) :  com.typedpath.terraform2kotlin.Resource() {
 	 
 
 }
+}
+}
+
+class Service_discovery() :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	  var aws_cloud_map: List<Aws_cloud_map>? = null
+  var dns: List<Dns>? = null
+ 
+
+
+class Aws_cloud_map(val namespace_name : String, val service_name : String) :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	  var attributes: Map<String, String>? = null
+ 
+
+}
+
+class Dns(val hostname : String) :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	  var service_name: String? = null
+ 
+
 }
 }
 }

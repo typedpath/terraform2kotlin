@@ -3,9 +3,9 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_alb_listener(val default_action : List<Default_action>, val load_balancer_arn : String, val port : Int) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var protocol: Protocol? = null
+	  var certificate_arn: String? = null
+  var protocol: Protocol? = null
   var ssl_policy: String? = null
-  var certificate_arn: String? = null
  
 
 enum class Protocol(val theValue: String ) {
@@ -27,36 +27,6 @@ enum class Type(val theValue: String ) {
 	 authenticate_cognito ("authenticate-cognito"), authenticate_oidc ("authenticate-oidc"), fixed_response ("fixed-response"), forward ("forward"), redirect ("redirect") ;
 	override fun toString() = theValue
 	}
-
-class Authenticate_cognito(val user_pool_arn : String, val user_pool_client_id : String, val user_pool_domain : String) :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	  var on_unauthenticated_request: On_unauthenticated_request? = null
-  var scope: String? = null
-  var session_cookie_name: String? = null
-  var session_timeout: Int? = null
-  var authentication_request_extra_params: Map<String, String>? = null
- 
-
-enum class On_unauthenticated_request(val theValue: String ) {
-	 deny ("deny"), allow ("allow"), authenticate ("authenticate") ;
-	override fun toString() = theValue
-	}
-}
-
-class Authenticate_oidc(val user_info_endpoint : String, val authorization_endpoint : String, val client_id : String, val client_secret : String, val issuer : String, val token_endpoint : String) :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	  var on_unauthenticated_request: On_unauthenticated_request? = null
-  var session_timeout: Int? = null
-  var authentication_request_extra_params: Map<String, String>? = null
-  var session_cookie_name: String? = null
-  var scope: String? = null
- 
-
-enum class On_unauthenticated_request(val theValue: String ) {
-	 deny ("deny"), allow ("allow"), authenticate ("authenticate") ;
-	override fun toString() = theValue
-	}
-}
 
 class Redirect(val status_code : Status_code) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
@@ -88,12 +58,42 @@ enum class Content_type(val theValue: String ) {
 	override fun toString() = theValue
 	}
 }
+
+class Authenticate_cognito(val user_pool_arn : String, val user_pool_client_id : String, val user_pool_domain : String) :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	  var on_unauthenticated_request: On_unauthenticated_request? = null
+  var scope: String? = null
+  var session_cookie_name: String? = null
+  var session_timeout: Int? = null
+  var authentication_request_extra_params: Map<String, String>? = null
+ 
+
+enum class On_unauthenticated_request(val theValue: String ) {
+	 deny ("deny"), allow ("allow"), authenticate ("authenticate") ;
+	override fun toString() = theValue
+	}
 }
+
+class Authenticate_oidc(val issuer : String, val token_endpoint : String, val user_info_endpoint : String, val authorization_endpoint : String, val client_id : String, val client_secret : String) :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	  var session_cookie_name: String? = null
+  var authentication_request_extra_params: Map<String, String>? = null
+  var scope: String? = null
+  var on_unauthenticated_request: On_unauthenticated_request? = null
+  var session_timeout: Int? = null
+ 
+
+enum class On_unauthenticated_request(val theValue: String ) {
+	 deny ("deny"), allow ("allow"), authenticate ("authenticate") ;
+	override fun toString() = theValue
+	}
+}
+}
+fun load_balancer_arnRef(subPath: String = "") = ref(this, "load_balancer_arn", subPath)
+fun portRef(subPath: String = "") = ref(this, "port", subPath)
+fun protocolRef(subPath: String = "") = ref(this, "protocol", subPath)
 fun ssl_policyRef(subPath: String = "") = ref(this, "ssl_policy", subPath)
 fun certificate_arnRef(subPath: String = "") = ref(this, "certificate_arn", subPath)
 fun default_actionRef(subPath: String = "") = ref(this, "default_action", subPath)
 fun arnRef(subPath: String = "") = ref(this, "arn", subPath)
-fun load_balancer_arnRef(subPath: String = "") = ref(this, "load_balancer_arn", subPath)
-fun portRef(subPath: String = "") = ref(this, "port", subPath)
-fun protocolRef(subPath: String = "") = ref(this, "protocol", subPath)
 }

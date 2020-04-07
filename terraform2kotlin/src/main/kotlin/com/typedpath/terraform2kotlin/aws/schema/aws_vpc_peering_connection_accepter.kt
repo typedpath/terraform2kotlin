@@ -3,9 +3,9 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_vpc_peering_connection_accepter(val vpc_peering_connection_id : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var accepter: List<Accepter>? = null
+	  var auto_accept: Boolean? = null
+  var accepter: List<Accepter>? = null
   var tags: Map<String, String>? = null
-  var auto_accept: Boolean? = null
   var requester: List<Requester>? = null
  
 

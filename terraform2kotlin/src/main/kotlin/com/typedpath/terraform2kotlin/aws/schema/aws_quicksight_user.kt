@@ -3,9 +3,9 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_quicksight_user(val identity_type : Identity_type, val user_role : User_role, val email : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var namespace: Namespace? = null
+	  var session_name: String? = null
   var iam_arn: String? = null
-  var session_name: String? = null
+  var namespace: Namespace? = null
   var user_name: String? = null
   var aws_account_id: String? = null
  

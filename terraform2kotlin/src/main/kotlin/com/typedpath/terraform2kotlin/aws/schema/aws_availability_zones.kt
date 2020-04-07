@@ -12,9 +12,9 @@ enum class State(val theValue: String ) {
 	 available ("available"), information ("information"), impaired ("impaired"), unavailable ("unavailable") ;
 	override fun toString() = theValue
 	}
-fun stateRef(subPath: String = "") = ref(this, "state", subPath)
-fun zone_idsRef(subPath: String = "") = ref(this, "zone_ids", subPath)
 fun blacklisted_namesRef(subPath: String = "") = ref(this, "blacklisted_names", subPath)
 fun blacklisted_zone_idsRef(subPath: String = "") = ref(this, "blacklisted_zone_ids", subPath)
 fun namesRef(subPath: String = "") = ref(this, "names", subPath)
+fun stateRef(subPath: String = "") = ref(this, "state", subPath)
+fun zone_idsRef(subPath: String = "") = ref(this, "zone_ids", subPath)
 }

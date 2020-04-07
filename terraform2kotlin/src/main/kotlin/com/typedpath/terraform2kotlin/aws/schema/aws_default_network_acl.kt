@@ -10,7 +10,7 @@ class aws_default_network_acl(val default_network_acl_id : String) :  com.typedp
  
 
 
-class Egress(val rule_no : Int, val from_port : Int, val action : String, val protocol : String, val to_port : Int) :  com.typedpath.terraform2kotlin.Resource() {
+class Ingress(val from_port : Int, val to_port : Int, val rule_no : Int, val action : String, val protocol : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	  var cidr_block: String? = null
   var ipv6_cidr_block: String? = null
@@ -20,12 +20,12 @@ class Egress(val rule_no : Int, val from_port : Int, val action : String, val pr
 
 }
 
-class Ingress(val to_port : Int, val rule_no : Int, val from_port : Int, val action : String, val protocol : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Egress(val to_port : Int, val action : String, val protocol : String, val from_port : Int, val rule_no : Int) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var icmp_type: Int? = null
-  var cidr_block: String? = null
+	  var cidr_block: String? = null
   var ipv6_cidr_block: String? = null
   var icmp_code: Int? = null
+  var icmp_type: Int? = null
  
 
 }

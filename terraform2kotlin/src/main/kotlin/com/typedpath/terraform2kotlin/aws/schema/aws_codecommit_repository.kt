@@ -3,9 +3,9 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_codecommit_repository(val repository_name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var tags: Map<String, String>? = null
+	  var default_branch: String? = null
+  var tags: Map<String, String>? = null
   var description: String? = null
-  var default_branch: String? = null
  
 
 fun clone_url_sshRef(subPath: String = "") = ref(this, "clone_url_ssh", subPath)

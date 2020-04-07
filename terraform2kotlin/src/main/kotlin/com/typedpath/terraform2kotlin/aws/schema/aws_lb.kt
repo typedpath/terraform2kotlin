@@ -3,20 +3,20 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_lb() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var internal: Boolean? = null
+	  var load_balancer_type: Load_balancer_type? = null
   var subnets: List<String>? = null
-  var enable_http2: Boolean? = null
-  var name: String? = null
-  var name_prefix: String? = null
-  var load_balancer_type: Load_balancer_type? = null
-  var security_groups: List<String>? = null
-  var subnet_mapping: List<Subnet_mapping>? = null
-  var enable_deletion_protection: Boolean? = null
-  var ip_address_type: Ip_address_type? = null
   var idle_timeout: Int? = null
-  var enable_cross_zone_load_balancing: Boolean? = null
   var tags: Map<String, String>? = null
   var access_logs: List<Access_logs>? = null
+  var name_prefix: String? = null
+  var security_groups: List<String>? = null
+  var subnet_mapping: List<Subnet_mapping>? = null
+  var internal: Boolean? = null
+  var enable_deletion_protection: Boolean? = null
+  var enable_cross_zone_load_balancing: Boolean? = null
+  var enable_http2: Boolean? = null
+  var ip_address_type: Ip_address_type? = null
+  var name: String? = null
  
 
 enum class Load_balancer_type(val theValue: String ) {
@@ -28,13 +28,6 @@ enum class Ip_address_type(val theValue: String ) {
 	override fun toString() = theValue
 	}
 
-class Subnet_mapping(val subnet_id : String) :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	  var allocation_id: String? = null
- 
-
-}
-
 class Access_logs(val bucket : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	  var prefix: String? = null
@@ -42,19 +35,26 @@ class Access_logs(val bucket : String) :  com.typedpath.terraform2kotlin.Resourc
  
 
 }
-fun nameRef(subPath: String = "") = ref(this, "name", subPath)
-fun internalRef(subPath: String = "") = ref(this, "internal", subPath)
-fun load_balancer_typeRef(subPath: String = "") = ref(this, "load_balancer_type", subPath)
-fun security_groupsRef(subPath: String = "") = ref(this, "security_groups", subPath)
-fun zone_idRef(subPath: String = "") = ref(this, "zone_id", subPath)
-fun dns_nameRef(subPath: String = "") = ref(this, "dns_name", subPath)
-fun subnetsRef(subPath: String = "") = ref(this, "subnets", subPath)
-fun vpc_idRef(subPath: String = "") = ref(this, "vpc_id", subPath)
-fun tagsRef(subPath: String = "") = ref(this, "tags", subPath)
+
+class Subnet_mapping(val subnet_id : String) :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	  var allocation_id: String? = null
+ 
+
+}
 fun arn_suffixRef(subPath: String = "") = ref(this, "arn_suffix", subPath)
+fun nameRef(subPath: String = "") = ref(this, "name", subPath)
+fun vpc_idRef(subPath: String = "") = ref(this, "vpc_id", subPath)
+fun security_groupsRef(subPath: String = "") = ref(this, "security_groups", subPath)
 fun subnet_mappingRef(subPath: String = "") = ref(this, "subnet_mapping", subPath)
-fun idle_timeoutRef(subPath: String = "") = ref(this, "idle_timeout", subPath)
-fun arnRef(subPath: String = "") = ref(this, "arn", subPath)
+fun internalRef(subPath: String = "") = ref(this, "internal", subPath)
 fun access_logsRef(subPath: String = "") = ref(this, "access_logs", subPath)
 fun enable_deletion_protectionRef(subPath: String = "") = ref(this, "enable_deletion_protection", subPath)
+fun idle_timeoutRef(subPath: String = "") = ref(this, "idle_timeout", subPath)
+fun arnRef(subPath: String = "") = ref(this, "arn", subPath)
+fun load_balancer_typeRef(subPath: String = "") = ref(this, "load_balancer_type", subPath)
+fun subnetsRef(subPath: String = "") = ref(this, "subnets", subPath)
+fun zone_idRef(subPath: String = "") = ref(this, "zone_id", subPath)
+fun dns_nameRef(subPath: String = "") = ref(this, "dns_name", subPath)
+fun tagsRef(subPath: String = "") = ref(this, "tags", subPath)
 }

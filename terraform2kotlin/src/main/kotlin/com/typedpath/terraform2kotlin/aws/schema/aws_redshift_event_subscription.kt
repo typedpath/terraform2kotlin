@@ -6,9 +6,9 @@ class aws_redshift_event_subscription(val name : String, val sns_topic_arn : Str
 	  var severity: String? = null
   var tags: Map<String, String>? = null
   var event_categories: List<String>? = null
+  var enabled: Boolean? = null
   var source_ids: List<String>? = null
   var source_type: String? = null
-  var enabled: Boolean? = null
  
 
 }

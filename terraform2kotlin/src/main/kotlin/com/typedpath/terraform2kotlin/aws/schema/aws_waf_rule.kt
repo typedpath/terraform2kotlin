@@ -1,7 +1,7 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_waf_rule(val name : String, val metric_name : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_waf_rule(val metric_name : String, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
 	  var predicates: List<Predicates>? = null
   var tags: Map<String, String>? = null
