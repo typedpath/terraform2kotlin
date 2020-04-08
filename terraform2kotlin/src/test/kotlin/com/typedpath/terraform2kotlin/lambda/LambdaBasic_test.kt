@@ -57,7 +57,7 @@ class LambdaBasic_test {
 
         } finally {
             println("destroying")
-            //println(runner.destroy())
+            println(runner.destroy())
         }
     }
 }
