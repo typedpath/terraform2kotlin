@@ -51,14 +51,19 @@ fun contextAsString(context: Any) : String {
     } else context.javaClass.simpleName
 }
 
+val accessKeyPropertyName = "awsTestAccessKey"
+val secretKeyPropertyName =   "awsTestSecretKey"
+val regionPropertyName    = "awsTestRegion"
+
+fun getTestAccessKey() = System.getenv(accessKeyPropertyName)
+fun getTestSecretKey() = System.getenv(secretKeyPropertyName)
+fun getTestRegion() = System.getenv(regionPropertyName)
+
 fun terraformAwsRunnerFromEnvironment( context: Any, vararg templates: TerraformTemplate) : TerraformAWSRunner{
-    val accessKeyPropertyName = "awsTestAccessKey"
-    val secretKeyPropertyName = "awsTestSecretKey"
-    val regionPropertyName = "awsTestRegion"
     val terraformTestDirPropertyName = "terraformTestDir"
-    val accessKey = System.getenv(accessKeyPropertyName)
-    val secretKey = System.getenv(secretKeyPropertyName)
-    val region = System.getenv(regionPropertyName)
+    val accessKey = getTestAccessKey()
+    val secretKey = getTestSecretKey()
+    val region = getTestRegion()
     val terraformTestDir= System.getenv(terraformTestDirPropertyName)
 
     val strContext = contextAsString(context)

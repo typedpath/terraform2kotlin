@@ -44,6 +44,8 @@ dependencies {
     compile (kotlin("reflect"))
     testCompile("junit:junit:4.12")
     testCompile("com.amazonaws:aws-java-sdk-sqs:1.11.759")
+    testCompile("com.amazonaws:aws-java-sdk-lambda:1.11.759")
+
 
 }
 
