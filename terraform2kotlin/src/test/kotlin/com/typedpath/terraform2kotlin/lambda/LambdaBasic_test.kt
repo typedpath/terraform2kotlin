@@ -45,7 +45,7 @@ class LambdaBasic_test {
             val request = InvokeRequest()
             request.functionName = functionName
             request.invocationType = InvocationType.RequestResponse.toString()
-            request.payload = ByteBuffer.wrap("""{"message": "hello"}""".toByteArray())
+            request.payload = ByteBuffer.wrap("""{"$greetingParamName": "$greetingParamValue"}""".toByteArray())
 
             val result = client.invoke(request)
             val strResponse = String(result.payload.array())
