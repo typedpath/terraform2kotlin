@@ -43,6 +43,7 @@ dependencies {
     compile(kotlin("stdlib-jdk8"))
     compile (kotlin("reflect"))
     testCompile("junit:junit:4.12")
+    testCompile("com.amazonaws:aws-java-sdk-sns:1.11.759")
     testCompile("com.amazonaws:aws-java-sdk-sqs:1.11.759")
     testCompile("com.amazonaws:aws-java-sdk-lambda:1.11.759")
 

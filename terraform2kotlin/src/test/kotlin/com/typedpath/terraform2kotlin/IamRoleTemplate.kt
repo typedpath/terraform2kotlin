@@ -10,7 +10,7 @@ import com.typedpath.terraform2kotlin.aws.schema.aws_iam_policy_document.Stateme
 // and this https://www.terraform.io/docs/providers/aws/r/iam_role.html
 class IamRoleTemplate() : TerraformTemplate() {
 
-    val  eksClusterExamplePolicyDocument = aws_iam_policy_document().apply {
+    val  examplePolicyDocument = aws_iam_policy_document().apply {
         version = _2012_10_17
         statement = listOf(
             Statement().apply {
@@ -25,7 +25,7 @@ class IamRoleTemplate() : TerraformTemplate() {
         )
     }
 
-   val exampleRole = aws_iam_role("\${data.aws_iam_policy_document.eksClusterExamplePolicyDocument.json}" /*TODO utility for this*/)
+   val exampleRole = aws_iam_role(examplePolicyDocument.jsonRef() /*TODO utility for this*/)
         .apply {
             name = "eks-cluster-example"
    }

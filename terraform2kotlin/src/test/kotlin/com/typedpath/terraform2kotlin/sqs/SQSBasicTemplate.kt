@@ -22,7 +22,7 @@ class SQSBasicTemplate : TerraformTemplate() {
     }
 
     val queueArn = Output( queue.arnRef() )
-    // TODO why doesnt urlRef work
+    // TODO why doesnt urlRef work ?
     val queueUrl = Output( queue.idRef() )
 
 }
