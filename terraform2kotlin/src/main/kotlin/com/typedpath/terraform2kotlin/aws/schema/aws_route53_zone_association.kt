@@ -6,4 +6,5 @@ class aws_route53_zone_association(val zone_id : String, val vpc_id : String) : 
 	  var vpc_region: String? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

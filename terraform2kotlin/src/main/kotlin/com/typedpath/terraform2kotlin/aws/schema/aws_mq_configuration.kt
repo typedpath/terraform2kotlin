@@ -7,4 +7,5 @@ class aws_mq_configuration(val data : String, val engine_type : String, val engi
   var description: String? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

@@ -11,4 +11,5 @@ class Replica(val region_name : String) :  com.typedpath.terraform2kotlin.Resour
 	 
 
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

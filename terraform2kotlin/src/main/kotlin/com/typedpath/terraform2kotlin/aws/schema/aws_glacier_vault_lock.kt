@@ -6,4 +6,5 @@ class aws_glacier_vault_lock(val vault_name : String, val complete_lock : Boolea
 	  var ignore_deletion_error: Boolean? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

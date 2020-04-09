@@ -5,4 +5,5 @@ class aws_inspector_resource_group(val tags : Map<String, String>) :  com.typedp
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

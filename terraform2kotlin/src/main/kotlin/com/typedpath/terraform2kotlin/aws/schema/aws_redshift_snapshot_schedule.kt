@@ -10,4 +10,5 @@ class aws_redshift_snapshot_schedule(val definitions : List<String>) :  com.type
   var description: String? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

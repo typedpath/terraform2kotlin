@@ -6,4 +6,5 @@ class aws_worklink_website_certificate_authority_association(val fleet_arn : Str
 	  var display_name: String? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

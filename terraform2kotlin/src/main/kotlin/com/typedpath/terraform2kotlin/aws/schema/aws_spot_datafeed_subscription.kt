@@ -6,4 +6,5 @@ class aws_spot_datafeed_subscription(val bucket : String) :  com.typedpath.terra
 	  var prefix: String? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

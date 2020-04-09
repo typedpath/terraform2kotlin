@@ -9,4 +9,5 @@ class aws_cloudformation_stack_set_instance(val stack_set_name : String) :  com.
   var region: String? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

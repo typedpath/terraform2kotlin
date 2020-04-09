@@ -6,4 +6,5 @@ class aws_inspector_assessment_target(val name : String) :  com.typedpath.terraf
 	  var resource_group_arn: String? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

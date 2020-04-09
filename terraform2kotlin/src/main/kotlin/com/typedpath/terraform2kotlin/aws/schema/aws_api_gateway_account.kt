@@ -6,4 +6,5 @@ class aws_api_gateway_account() :  com.typedpath.terraform2kotlin.Resource() {
 	  var cloudwatch_role_arn: String? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

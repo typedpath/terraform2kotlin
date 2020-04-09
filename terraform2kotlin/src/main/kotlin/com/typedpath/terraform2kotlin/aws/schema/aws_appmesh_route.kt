@@ -1,7 +1,7 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_appmesh_route(val mesh_name : String, val virtual_router_name : String, val spec : List<Spec>, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_appmesh_route(val virtual_router_name : String, val spec : List<Spec>, val name : String, val mesh_name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
 	  var tags: Map<String, String>? = null
  
@@ -57,12 +57,12 @@ class Match(val prefix : String) :  com.typedpath.terraform2kotlin.Resource() {
   var method: Method? = null
  
 
-enum class Scheme(val theValue: String ) {
-	 http ("http"), https ("https") ;
-	override fun toString() = theValue
-	}
 enum class Method(val theValue: String ) {
 	 CONNECT ("CONNECT"), DELETE ("DELETE"), GET ("GET"), HEAD ("HEAD"), OPTIONS ("OPTIONS"), PATCH ("PATCH"), POST ("POST"), PUT ("PUT"), TRACE ("TRACE") ;
+	override fun toString() = theValue
+	}
+enum class Scheme(val theValue: String ) {
+	 http ("http"), https ("https") ;
 	override fun toString() = theValue
 	}
 
@@ -83,7 +83,7 @@ class Match() :  com.typedpath.terraform2kotlin.Resource() {
  
 
 
-class Range(val end : Int, val start : Int) :  com.typedpath.terraform2kotlin.Resource() {
+class Range(val start : Int, val end : Int) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	 
 
@@ -93,4 +93,5 @@ class Range(val end : Int, val start : Int) :  com.typedpath.terraform2kotlin.Re
 }
 }
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

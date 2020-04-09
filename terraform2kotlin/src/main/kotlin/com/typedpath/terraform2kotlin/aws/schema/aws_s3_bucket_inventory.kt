@@ -1,11 +1,11 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_s3_bucket_inventory(val included_object_versions : Included_object_versions, val bucket : String, val name : String, val destination : List<Destination>, val schedule : List<Schedule>) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_s3_bucket_inventory(val destination : List<Destination>, val schedule : List<Schedule>, val included_object_versions : Included_object_versions, val bucket : String, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var enabled: Boolean? = null
+	  var optional_fields: List<Optional_fields>? = null
+  var enabled: Boolean? = null
   var filter: List<Filter>? = null
-  var optional_fields: List<Optional_fields>? = null
  
 
 enum class Included_object_versions(val theValue: String ) {
@@ -24,9 +24,9 @@ class Destination(val bucket : List<Bucket>) :  com.typedpath.terraform2kotlin.R
 
 class Bucket(val format : Format, val bucket_arn : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var prefix: String? = null
-  var encryption: List<Encryption>? = null
+	  var encryption: List<Encryption>? = null
   var account_id: String? = null
+  var prefix: String? = null
  
 
 enum class Format(val theValue: String ) {
@@ -72,4 +72,5 @@ class Filter() :  com.typedpath.terraform2kotlin.Resource() {
  
 
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

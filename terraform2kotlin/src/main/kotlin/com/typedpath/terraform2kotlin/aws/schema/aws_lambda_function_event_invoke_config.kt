@@ -12,21 +12,22 @@ class aws_lambda_function_event_invoke_config(val function_name : String) :  com
 
 class Destination_config() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var on_failure: List<On_failure>? = null
-  var on_success: List<On_success>? = null
+	  var on_success: List<On_success>? = null
+  var on_failure: List<On_failure>? = null
  
 
-
-class On_failure(val destination : String) :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	 
-
-}
 
 class On_success(val destination : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
 	 
 
 }
+
+class On_failure(val destination : String) :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	 
+
 }
+}
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

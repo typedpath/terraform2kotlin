@@ -6,4 +6,5 @@ class aws_load_balancer_listener_policy(val load_balancer_name : String, val loa
 	  var policy_names: List<String>? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

@@ -5,4 +5,5 @@ class aws_lightsail_static_ip_attachment(val static_ip_name : String, val instan
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

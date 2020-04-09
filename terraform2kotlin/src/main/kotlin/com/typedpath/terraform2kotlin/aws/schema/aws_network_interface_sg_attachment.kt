@@ -5,4 +5,5 @@ class aws_network_interface_sg_attachment(val security_group_id : String, val ne
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

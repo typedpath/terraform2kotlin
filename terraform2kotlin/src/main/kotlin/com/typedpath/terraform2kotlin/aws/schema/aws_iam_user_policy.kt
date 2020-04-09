@@ -7,4 +7,5 @@ class aws_iam_user_policy(val policy : String, val user : String) :  com.typedpa
   var name_prefix: String? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

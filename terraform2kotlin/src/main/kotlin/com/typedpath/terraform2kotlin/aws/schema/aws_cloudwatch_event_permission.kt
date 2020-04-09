@@ -21,4 +21,5 @@ enum class Type(val theValue: String ) {
 	override fun toString() = theValue
 	}
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

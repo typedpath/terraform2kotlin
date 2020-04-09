@@ -8,4 +8,5 @@ class aws_elb_service_account() :  com.typedpath.terraform2kotlin.Resource() {
 
 fun regionRef(subPath: String = "") = ref(this, "region", subPath)
 fun arnRef(subPath: String = "") = ref(this, "arn", subPath)
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

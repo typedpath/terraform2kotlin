@@ -5,4 +5,5 @@ class aws_iot_thing_principal_attachment(val principal : String, val thing : Str
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

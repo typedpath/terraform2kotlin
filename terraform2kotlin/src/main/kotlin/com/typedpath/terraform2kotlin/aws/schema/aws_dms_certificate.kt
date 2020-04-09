@@ -7,4 +7,5 @@ class aws_dms_certificate(val certificate_id : String) :  com.typedpath.terrafor
   var certificate_wallet: String? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

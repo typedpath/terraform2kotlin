@@ -6,4 +6,5 @@ class aws_dx_hosted_transit_virtual_interface_accepter(val dx_gateway_id : Strin
 	  var tags: Map<String, String>? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

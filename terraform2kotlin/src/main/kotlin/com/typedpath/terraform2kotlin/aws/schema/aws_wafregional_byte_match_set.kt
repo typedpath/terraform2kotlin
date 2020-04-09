@@ -35,4 +35,5 @@ class Field_to_match(val type : String) :  com.typedpath.terraform2kotlin.Resour
 
 }
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

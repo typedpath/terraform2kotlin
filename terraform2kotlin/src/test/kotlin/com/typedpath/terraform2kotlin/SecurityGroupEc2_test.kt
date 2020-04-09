@@ -18,7 +18,7 @@ class SecurityGroupEc2_test {
             outputs.forEach { println("'${it.key}'=>'${it.value}'") }
             val webaddressOutput = "webaddress"
             Assert.assertTrue("apply should return $webaddressOutput output", outputs.containsKey(webaddressOutput))
-            val webaddress = outputs.get(webaddressOutput)
+            val webaddress = outputs.get(webaddressOutput) as String?
             val response = waitForConnectionRead(webaddress!!, 120)
             println("response: $response")
             Assert.assertTrue(

@@ -9,4 +9,5 @@ class aws_s3_bucket_public_access_block(val bucket : String) :  com.typedpath.te
   var restrict_public_buckets: Boolean? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

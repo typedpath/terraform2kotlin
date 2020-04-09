@@ -27,23 +27,15 @@ enum class Type(val theValue: String ) {
 
 class Traffic_routing_config() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var type: Type? = null
+	  var time_based_linear: List<Time_based_linear>? = null
+  var type: Type? = null
   var time_based_canary: List<Time_based_canary>? = null
-  var time_based_linear: List<Time_based_linear>? = null
  
 
 enum class Type(val theValue: String ) {
 	 AllAtOnce ("AllAtOnce"), TimeBasedCanary ("TimeBasedCanary"), TimeBasedLinear ("TimeBasedLinear") ;
 	override fun toString() = theValue
 	}
-
-class Time_based_canary() :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	  var interval: Int? = null
-  var percentage: Int? = null
- 
-
-}
 
 class Time_based_linear() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
@@ -52,5 +44,14 @@ class Time_based_linear() :  com.typedpath.terraform2kotlin.Resource() {
  
 
 }
+
+class Time_based_canary() :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	  var interval: Int? = null
+  var percentage: Int? = null
+ 
+
 }
+}
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

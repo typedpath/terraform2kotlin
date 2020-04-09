@@ -5,4 +5,5 @@ class aws_lightsail_static_ip(val name : String) :  com.typedpath.terraform2kotl
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

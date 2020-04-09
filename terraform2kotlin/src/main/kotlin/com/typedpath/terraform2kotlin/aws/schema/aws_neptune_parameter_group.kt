@@ -19,4 +19,5 @@ enum class Apply_method(val theValue: String ) {
 	override fun toString() = theValue
 	}
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

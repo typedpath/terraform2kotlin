@@ -33,23 +33,24 @@ class Stage(val name : String, val action : List<Action>) :  com.typedpath.terra
 	 
 
 
-class Action(val owner : Owner, val version : String, val name : String, val category : Category, val provider : String) :  com.typedpath.terraform2kotlin.Resource() {
+class Action(val category : Category, val owner : Owner, val provider : String, val version : String, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var role_arn: String? = null
-  var input_artifacts: List<String>? = null
-  var output_artifacts: List<String>? = null
+	  var input_artifacts: List<String>? = null
+  var role_arn: String? = null
   var run_order: Int? = null
   var configuration: Map<String, String>? = null
+  var output_artifacts: List<String>? = null
  
 
-enum class Owner(val theValue: String ) {
-	 AWS ("AWS"), ThirdParty ("ThirdParty"), Custom ("Custom") ;
-	override fun toString() = theValue
-	}
 enum class Category(val theValue: String ) {
 	 Source ("Source"), Build ("Build"), Deploy ("Deploy"), Test ("Test"), Invoke ("Invoke"), Approval ("Approval") ;
 	override fun toString() = theValue
 	}
+enum class Owner(val theValue: String ) {
+	 AWS ("AWS"), ThirdParty ("ThirdParty"), Custom ("Custom") ;
+	override fun toString() = theValue
+	}
 }
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

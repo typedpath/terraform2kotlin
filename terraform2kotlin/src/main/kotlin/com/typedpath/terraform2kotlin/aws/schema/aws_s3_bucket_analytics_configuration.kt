@@ -51,4 +51,5 @@ enum class Format(val theValue: String ) {
 }
 }
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

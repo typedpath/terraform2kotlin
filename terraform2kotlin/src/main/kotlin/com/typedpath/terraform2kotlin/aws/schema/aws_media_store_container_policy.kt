@@ -5,4 +5,5 @@ class aws_media_store_container_policy(val policy : String, val container_name :
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

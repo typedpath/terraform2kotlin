@@ -5,4 +5,5 @@ class aws_iam_group_policy_attachment(val group : String, val policy_arn : Strin
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

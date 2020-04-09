@@ -6,4 +6,5 @@ class aws_ses_domain_mail_from(val domain : String, val mail_from_domain : Strin
 	  var behavior_on_mx_failure: String? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

@@ -14,4 +14,5 @@ class Notification(val events : List<String>, val sns_topic : String) :  com.typ
 	 
 
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

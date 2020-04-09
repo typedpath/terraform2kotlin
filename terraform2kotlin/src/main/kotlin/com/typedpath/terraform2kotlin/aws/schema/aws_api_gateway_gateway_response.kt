@@ -8,4 +8,5 @@ class aws_api_gateway_gateway_response(val rest_api_id : String, val response_ty
   var response_parameters: Map<String, String>? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

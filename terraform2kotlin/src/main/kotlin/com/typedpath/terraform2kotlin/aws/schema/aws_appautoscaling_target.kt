@@ -6,4 +6,5 @@ class aws_appautoscaling_target(val max_capacity : Int, val min_capacity : Int, 
 	  var role_arn: String? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

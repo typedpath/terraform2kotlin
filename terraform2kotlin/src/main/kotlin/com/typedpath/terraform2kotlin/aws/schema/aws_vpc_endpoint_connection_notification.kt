@@ -7,4 +7,5 @@ class aws_vpc_endpoint_connection_notification(val connection_notification_arn :
   var vpc_endpoint_id: String? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

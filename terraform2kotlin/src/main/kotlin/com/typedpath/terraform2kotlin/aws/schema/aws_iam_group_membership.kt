@@ -5,4 +5,5 @@ class aws_iam_group_membership(val users : List<String>, val group : String, val
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

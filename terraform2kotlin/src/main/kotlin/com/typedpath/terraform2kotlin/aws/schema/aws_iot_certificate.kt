@@ -6,4 +6,5 @@ class aws_iot_certificate(val active : Boolean) :  com.typedpath.terraform2kotli
 	  var csr: String? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

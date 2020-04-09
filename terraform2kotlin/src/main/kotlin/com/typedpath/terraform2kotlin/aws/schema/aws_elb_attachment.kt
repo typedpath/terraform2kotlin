@@ -5,4 +5,5 @@ class aws_elb_attachment(val elb : String, val instance : String) :  com.typedpa
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

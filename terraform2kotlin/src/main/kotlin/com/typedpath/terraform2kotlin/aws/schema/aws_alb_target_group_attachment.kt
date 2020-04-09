@@ -7,4 +7,5 @@ class aws_alb_target_group_attachment(val target_group_arn : String, val target_
   var availability_zone: String? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

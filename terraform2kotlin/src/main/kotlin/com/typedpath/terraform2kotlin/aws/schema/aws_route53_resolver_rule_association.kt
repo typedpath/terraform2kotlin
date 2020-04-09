@@ -6,4 +6,5 @@ class aws_route53_resolver_rule_association(val resolver_rule_id : String, val v
 	  var name: String? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

@@ -7,4 +7,5 @@ class aws_sagemaker_endpoint(val endpoint_config_name : String) :  com.typedpath
   var tags: Map<String, String>? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

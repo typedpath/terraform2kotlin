@@ -8,4 +8,5 @@ class aws_iam_policy_attachment(val name : String, val policy_arn : String) :  c
   var groups: List<String>? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

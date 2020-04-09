@@ -16,17 +16,17 @@ enum class State(val theValue: String ) {
 
 class Configuration() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var enforce_workgroup_configuration: Boolean? = null
+	  var bytes_scanned_cutoff_per_query: Int? = null
+  var enforce_workgroup_configuration: Boolean? = null
   var publish_cloudwatch_metrics_enabled: Boolean? = null
   var result_configuration: List<Result_configuration>? = null
-  var bytes_scanned_cutoff_per_query: Int? = null
  
 
 
 class Result_configuration() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var encryption_configuration: List<Encryption_configuration>? = null
-  var output_location: String? = null
+	  var output_location: String? = null
+  var encryption_configuration: List<Encryption_configuration>? = null
  
 
 
@@ -43,4 +43,5 @@ enum class Encryption_option(val theValue: String ) {
 }
 }
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

@@ -5,4 +5,5 @@ class aws_ses_receipt_filter(val name : String, val cidr : String, val policy : 
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

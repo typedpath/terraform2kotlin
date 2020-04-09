@@ -9,4 +9,5 @@ class aws_api_gateway_deployment(val rest_api_id : String) :  com.typedpath.terr
   var variables: Map<String, String>? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

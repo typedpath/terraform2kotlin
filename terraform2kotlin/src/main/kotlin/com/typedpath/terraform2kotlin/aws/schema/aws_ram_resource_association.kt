@@ -5,4 +5,5 @@ class aws_ram_resource_association(val resource_arn : String, val resource_share
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

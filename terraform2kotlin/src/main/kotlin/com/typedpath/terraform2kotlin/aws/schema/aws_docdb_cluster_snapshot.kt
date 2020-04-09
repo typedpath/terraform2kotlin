@@ -5,4 +5,5 @@ class aws_docdb_cluster_snapshot(val db_cluster_snapshot_identifier : String, va
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

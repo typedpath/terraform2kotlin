@@ -15,4 +15,5 @@ class Ingress() :  com.typedpath.terraform2kotlin.Resource() {
  
 
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

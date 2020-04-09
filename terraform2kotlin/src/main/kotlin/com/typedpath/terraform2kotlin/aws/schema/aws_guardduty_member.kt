@@ -8,4 +8,5 @@ class aws_guardduty_member(val account_id : String, val detector_id : String, va
   var invitation_message: String? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

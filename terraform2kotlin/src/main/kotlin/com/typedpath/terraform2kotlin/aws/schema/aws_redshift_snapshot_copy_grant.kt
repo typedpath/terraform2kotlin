@@ -7,4 +7,5 @@ class aws_redshift_snapshot_copy_grant(val snapshot_copy_grant_name : String) : 
   var tags: Map<String, String>? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

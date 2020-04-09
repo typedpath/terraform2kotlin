@@ -5,4 +5,5 @@ class aws_iam_openid_connect_provider(val url : String, val client_id_list : Lis
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

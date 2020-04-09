@@ -5,4 +5,5 @@ class aws_dx_connection_association(val connection_id : String, val lag_id : Str
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

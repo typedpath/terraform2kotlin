@@ -20,4 +20,5 @@ fun arnRef(subPath: String = "") = ref(this, "arn", subPath)
 fun invoke_arnRef(subPath: String = "") = ref(this, "invoke_arn", subPath)
 fun descriptionRef(subPath: String = "") = ref(this, "description", subPath)
 fun function_versionRef(subPath: String = "") = ref(this, "function_version", subPath)
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

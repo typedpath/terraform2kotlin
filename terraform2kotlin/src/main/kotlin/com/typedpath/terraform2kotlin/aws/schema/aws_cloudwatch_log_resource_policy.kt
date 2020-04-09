@@ -5,4 +5,5 @@ class aws_cloudwatch_log_resource_policy(val policy_document : String, val polic
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

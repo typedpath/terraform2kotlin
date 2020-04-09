@@ -20,7 +20,7 @@ class OutputTemplate(cluster: aws_eks_cluster, role: aws_iam_role, val clusterNa
         cluster.endpointRef()
     )
 
-    fun configMapAwsAuth(outputs: Map<String, String>) : String {
+    fun configMapAwsAuth(outputs: Map<String, Any?>) : String {
         val roleArn = outputs.get(::roleArn.name)
         return """
 apiVersion: v1
@@ -38,7 +38,7 @@ data:
 """.trimIndent()
 }
 
-    fun kubeconfig(outputs: Map<String, String>) : String {
+    fun kubeconfig(outputs: Map<String, Any?>) : String {
         val certificateAuthorityData = outputs.get(::certificateAuthorityData.name)
         val clusterEndPoint = outputs.get(::clusterEndPoint.name)
         return """

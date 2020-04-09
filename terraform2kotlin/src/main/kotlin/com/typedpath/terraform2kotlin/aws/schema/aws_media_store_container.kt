@@ -6,4 +6,5 @@ class aws_media_store_container(val name : String) :  com.typedpath.terraform2ko
 	  var tags: Map<String, String>? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

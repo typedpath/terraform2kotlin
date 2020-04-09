@@ -5,4 +5,5 @@ class aws_iot_policy_attachment(val target : String, val policy : String) :  com
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

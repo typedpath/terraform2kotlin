@@ -6,4 +6,5 @@ class aws_cognito_user_pool_domain(val domain : String, val user_pool_id : Strin
 	  var certificate_arn: String? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

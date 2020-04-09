@@ -7,4 +7,5 @@ class aws_api_gateway_client_certificate() :  com.typedpath.terraform2kotlin.Res
   var tags: Map<String, String>? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

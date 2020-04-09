@@ -5,4 +5,5 @@ class aws_ecr_repository_policy(val repository : String, val policy : String) : 
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

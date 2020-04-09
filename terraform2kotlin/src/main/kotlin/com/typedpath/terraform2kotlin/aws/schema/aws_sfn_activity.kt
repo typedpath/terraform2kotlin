@@ -9,4 +9,5 @@ class aws_sfn_activity(val name : String) :  com.typedpath.terraform2kotlin.Reso
 fun nameRef(subPath: String = "") = ref(this, "name", subPath)
 fun arnRef(subPath: String = "") = ref(this, "arn", subPath)
 fun creation_dateRef(subPath: String = "") = ref(this, "creation_date", subPath)
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

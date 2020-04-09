@@ -11,4 +11,5 @@ enum class Compute_platform(val theValue: String ) {
 	 ECS ("ECS"), Lambda ("Lambda"), Server ("Server") ;
 	override fun toString() = theValue
 	}
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

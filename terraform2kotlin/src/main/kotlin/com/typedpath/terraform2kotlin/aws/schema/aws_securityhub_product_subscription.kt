@@ -5,4 +5,5 @@ class aws_securityhub_product_subscription(val product_arn : String) :  com.type
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

@@ -6,4 +6,5 @@ class aws_pinpoint_adm_channel(val application_id : String, val client_id : Stri
 	  var enabled: Boolean? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

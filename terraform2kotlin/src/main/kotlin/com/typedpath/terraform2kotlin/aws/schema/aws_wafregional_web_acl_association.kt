@@ -5,4 +5,5 @@ class aws_wafregional_web_acl_association(val web_acl_id : String, val resource_
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

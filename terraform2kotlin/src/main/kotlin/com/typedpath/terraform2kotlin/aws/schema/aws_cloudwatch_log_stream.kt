@@ -5,4 +5,5 @@ class aws_cloudwatch_log_stream(val name : String, val log_group_name : String) 
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

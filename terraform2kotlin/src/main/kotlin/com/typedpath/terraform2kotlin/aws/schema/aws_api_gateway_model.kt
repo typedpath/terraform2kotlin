@@ -7,4 +7,5 @@ class aws_api_gateway_model(val rest_api_id : String, val name : String, val con
   var schema: String? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

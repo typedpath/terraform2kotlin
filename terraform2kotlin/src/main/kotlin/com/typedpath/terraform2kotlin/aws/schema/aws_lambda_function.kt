@@ -1,25 +1,25 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_lambda_function(val function_name : String, val handler : String, val role : String, val runtime : Runtime) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_lambda_function(val function_name : String, val role : String, val runtime : Runtime, val handler : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var layers: List<String>? = null
-  var source_code_hash: String? = null
-  var s3_bucket: String? = null
-  var description: String? = null
-  var reserved_concurrent_executions: Int? = null
-  var environment: List<Environment>? = null
-  var tags: Map<String, String>? = null
-  var s3_key: String? = null
-  var vpc_config: List<Vpc_config>? = null
-  var kms_key_arn: String? = null
-  var filename: String? = null
-  var dead_letter_config: List<Dead_letter_config>? = null
-  var tracing_config: List<Tracing_config>? = null
-  var timeout: Int? = null
-  var publish: Boolean? = null
+	  var publish: Boolean? = null
   var s3_object_version: String? = null
+  var s3_key: String? = null
   var memory_size: Int? = null
+  var timeout: Int? = null
+  var s3_bucket: String? = null
+  var environment: List<Environment>? = null
+  var description: String? = null
+  var layers: List<String>? = null
+  var filename: String? = null
+  var tracing_config: List<Tracing_config>? = null
+  var kms_key_arn: String? = null
+  var reserved_concurrent_executions: Int? = null
+  var vpc_config: List<Vpc_config>? = null
+  var dead_letter_config: List<Dead_letter_config>? = null
+  var source_code_hash: String? = null
+  var tags: Map<String, String>? = null
  
 
 enum class Runtime(val theValue: String ) {
@@ -27,15 +27,10 @@ enum class Runtime(val theValue: String ) {
 	override fun toString() = theValue
 	}
 
-class Vpc_config(val subnet_ids : List<String>, val security_group_ids : List<String>) :  com.typedpath.terraform2kotlin.Resource() {
+class Environment() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	 
-
-}
-
-class Dead_letter_config(val target_arn : String) :  com.typedpath.terraform2kotlin.Resource() {
-	override fun typestring() ="subresource"
-	 
+	  var variables: Map<String, String>? = null
+ 
 
 }
 
@@ -49,33 +44,39 @@ enum class Mode(val theValue: String ) {
 	}
 }
 
-class Environment() :  com.typedpath.terraform2kotlin.Resource() {
+class Vpc_config(val subnet_ids : List<String>, val security_group_ids : List<String>) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var variables: Map<String, String>? = null
- 
+	 
 
 }
-fun descriptionRef(subPath: String = "") = ref(this, "description", subPath)
-fun handlerRef(subPath: String = "") = ref(this, "handler", subPath)
-fun arnRef(subPath: String = "") = ref(this, "arn", subPath)
-fun invoke_arnRef(subPath: String = "") = ref(this, "invoke_arn", subPath)
-fun last_modifiedRef(subPath: String = "") = ref(this, "last_modified", subPath)
-fun source_code_hashRef(subPath: String = "") = ref(this, "source_code_hash", subPath)
-fun qualifierRef(subPath: String = "") = ref(this, "qualifier", subPath)
-fun memory_sizeRef(subPath: String = "") = ref(this, "memory_size", subPath)
-fun reserved_concurrent_executionsRef(subPath: String = "") = ref(this, "reserved_concurrent_executions", subPath)
-fun timeoutRef(subPath: String = "") = ref(this, "timeout", subPath)
-fun versionRef(subPath: String = "") = ref(this, "version", subPath)
-fun vpc_configRef(subPath: String = "") = ref(this, "vpc_config", subPath)
-fun environmentRef(subPath: String = "") = ref(this, "environment", subPath)
-fun dead_letter_configRef(subPath: String = "") = ref(this, "dead_letter_config", subPath)
-fun source_code_sizeRef(subPath: String = "") = ref(this, "source_code_size", subPath)
-fun kms_key_arnRef(subPath: String = "") = ref(this, "kms_key_arn", subPath)
-fun tagsRef(subPath: String = "") = ref(this, "tags", subPath)
-fun roleRef(subPath: String = "") = ref(this, "role", subPath)
-fun layersRef(subPath: String = "") = ref(this, "layers", subPath)
-fun runtimeRef(subPath: String = "") = ref(this, "runtime", subPath)
-fun qualified_arnRef(subPath: String = "") = ref(this, "qualified_arn", subPath)
-fun tracing_configRef(subPath: String = "") = ref(this, "tracing_config", subPath)
+
+class Dead_letter_config(val target_arn : String) :  com.typedpath.terraform2kotlin.Resource() {
+	override fun typestring() ="subresource"
+	 
+
+}
 fun function_nameRef(subPath: String = "") = ref(this, "function_name", subPath)
+fun roleRef(subPath: String = "") = ref(this, "role", subPath)
+fun source_code_sizeRef(subPath: String = "") = ref(this, "source_code_size", subPath)
+fun environmentRef(subPath: String = "") = ref(this, "environment", subPath)
+fun layersRef(subPath: String = "") = ref(this, "layers", subPath)
+fun versionRef(subPath: String = "") = ref(this, "version", subPath)
+fun last_modifiedRef(subPath: String = "") = ref(this, "last_modified", subPath)
+fun tagsRef(subPath: String = "") = ref(this, "tags", subPath)
+fun dead_letter_configRef(subPath: String = "") = ref(this, "dead_letter_config", subPath)
+fun handlerRef(subPath: String = "") = ref(this, "handler", subPath)
+fun memory_sizeRef(subPath: String = "") = ref(this, "memory_size", subPath)
+fun runtimeRef(subPath: String = "") = ref(this, "runtime", subPath)
+fun timeoutRef(subPath: String = "") = ref(this, "timeout", subPath)
+fun vpc_configRef(subPath: String = "") = ref(this, "vpc_config", subPath)
+fun arnRef(subPath: String = "") = ref(this, "arn", subPath)
+fun kms_key_arnRef(subPath: String = "") = ref(this, "kms_key_arn", subPath)
+fun qualifierRef(subPath: String = "") = ref(this, "qualifier", subPath)
+fun descriptionRef(subPath: String = "") = ref(this, "description", subPath)
+fun reserved_concurrent_executionsRef(subPath: String = "") = ref(this, "reserved_concurrent_executions", subPath)
+fun qualified_arnRef(subPath: String = "") = ref(this, "qualified_arn", subPath)
+fun invoke_arnRef(subPath: String = "") = ref(this, "invoke_arn", subPath)
+fun source_code_hashRef(subPath: String = "") = ref(this, "source_code_hash", subPath)
+fun tracing_configRef(subPath: String = "") = ref(this, "tracing_config", subPath)
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

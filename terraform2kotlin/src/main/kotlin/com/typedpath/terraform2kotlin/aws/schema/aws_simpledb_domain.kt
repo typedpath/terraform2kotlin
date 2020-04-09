@@ -5,4 +5,5 @@ class aws_simpledb_domain(val name : String) :  com.typedpath.terraform2kotlin.R
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

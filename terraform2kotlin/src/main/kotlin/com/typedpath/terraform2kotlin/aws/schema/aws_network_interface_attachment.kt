@@ -5,4 +5,5 @@ class aws_network_interface_attachment(val device_index : Int, val instance_id :
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

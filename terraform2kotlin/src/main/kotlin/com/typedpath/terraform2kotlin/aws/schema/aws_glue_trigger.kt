@@ -1,14 +1,14 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_glue_trigger(val actions : List<Actions>, val name : String, val type : Type) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_glue_trigger(val name : String, val actions : List<Actions>, val type : Type) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var predicate: List<Predicate>? = null
-  var tags: Map<String, String>? = null
-  var description: String? = null
-  var enabled: Boolean? = null
+	  var enabled: Boolean? = null
   var schedule: String? = null
   var workflow_name: String? = null
+  var description: String? = null
+  var predicate: List<Predicate>? = null
+  var tags: Map<String, String>? = null
  
 
 enum class Type(val theValue: String ) {
@@ -18,10 +18,10 @@ enum class Type(val theValue: String ) {
 
 class Actions() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var job_name: String? = null
-  var timeout: Int? = null
-  var arguments: Map<String, String>? = null
+	  var arguments: Map<String, String>? = null
   var crawler_name: String? = null
+  var job_name: String? = null
+  var timeout: Int? = null
  
 
 }
@@ -59,4 +59,5 @@ enum class Crawl_state(val theValue: String ) {
 	}
 }
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

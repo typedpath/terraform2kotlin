@@ -11,4 +11,5 @@ fun nameRef(subPath: String = "") = ref(this, "name", subPath)
 fun arnRef(subPath: String = "") = ref(this, "arn", subPath)
 fun target_key_arnRef(subPath: String = "") = ref(this, "target_key_arn", subPath)
 fun target_key_idRef(subPath: String = "") = ref(this, "target_key_id", subPath)
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

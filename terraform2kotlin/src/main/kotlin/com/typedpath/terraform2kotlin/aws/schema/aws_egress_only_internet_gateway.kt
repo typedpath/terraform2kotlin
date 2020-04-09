@@ -5,4 +5,5 @@ class aws_egress_only_internet_gateway(val vpc_id : String) :  com.typedpath.ter
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

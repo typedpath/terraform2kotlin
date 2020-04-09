@@ -5,4 +5,5 @@ class aws_ses_domain_dkim(val domain : String) :  com.typedpath.terraform2kotlin
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

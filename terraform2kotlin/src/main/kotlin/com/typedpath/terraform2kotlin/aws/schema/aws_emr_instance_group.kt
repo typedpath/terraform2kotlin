@@ -1,22 +1,22 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_emr_instance_group(val instance_type : String, val cluster_id : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_emr_instance_group(val cluster_id : String, val instance_type : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var autoscaling_policy: String? = null
-  var ebs_optimized: Boolean? = null
-  var ebs_config: List<Ebs_config>? = null
-  var bid_price: String? = null
+	  var bid_price: String? = null
   var configurations_json: String? = null
   var instance_count: Int? = null
   var name: String? = null
+  var autoscaling_policy: String? = null
+  var ebs_optimized: Boolean? = null
+  var ebs_config: List<Ebs_config>? = null
  
 
 
-class Ebs_config(val size : Int, val type : Type) :  com.typedpath.terraform2kotlin.Resource() {
+class Ebs_config(val type : Type, val size : Int) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var volumes_per_instance: Int? = null
-  var iops: Int? = null
+	  var iops: Int? = null
+  var volumes_per_instance: Int? = null
  
 
 enum class Type(val theValue: String ) {
@@ -24,4 +24,5 @@ enum class Type(val theValue: String ) {
 	override fun toString() = theValue
 	}
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

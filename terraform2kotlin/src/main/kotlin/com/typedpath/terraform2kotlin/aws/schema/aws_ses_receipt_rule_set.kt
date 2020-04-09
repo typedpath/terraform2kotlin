@@ -5,4 +5,5 @@ class aws_ses_receipt_rule_set(val rule_set_name : String) :  com.typedpath.terr
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

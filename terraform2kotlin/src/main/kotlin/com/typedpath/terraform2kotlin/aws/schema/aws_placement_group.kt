@@ -10,4 +10,5 @@ enum class Strategy(val theValue: String ) {
 	 cluster ("cluster"), partition ("partition"), spread ("spread") ;
 	override fun toString() = theValue
 	}
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

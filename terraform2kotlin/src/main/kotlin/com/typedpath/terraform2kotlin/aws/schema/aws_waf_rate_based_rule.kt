@@ -18,4 +18,5 @@ enum class Type(val theValue: String ) {
 	}
 }
 fun nameRef(subPath: String = "") = ref(this, "name", subPath)
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

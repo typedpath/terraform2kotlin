@@ -6,4 +6,5 @@ class aws_service_discovery_private_dns_namespace(val name : String, val vpc : S
 	  var description: String? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

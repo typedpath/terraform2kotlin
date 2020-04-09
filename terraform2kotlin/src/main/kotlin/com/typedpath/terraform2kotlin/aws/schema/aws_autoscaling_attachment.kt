@@ -7,4 +7,5 @@ class aws_autoscaling_attachment(val autoscaling_group_name : String) :  com.typ
   var alb_target_group_arn: String? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

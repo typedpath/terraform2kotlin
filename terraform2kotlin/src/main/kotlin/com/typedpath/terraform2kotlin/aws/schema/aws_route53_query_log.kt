@@ -5,4 +5,5 @@ class aws_route53_query_log(val cloudwatch_log_group_arn : String, val zone_id :
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

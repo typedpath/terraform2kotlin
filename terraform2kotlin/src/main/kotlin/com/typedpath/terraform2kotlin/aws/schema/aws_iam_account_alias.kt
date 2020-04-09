@@ -6,4 +6,5 @@ class aws_iam_account_alias(val account_alias : String) :  com.typedpath.terrafo
 	 
 
 fun account_aliasRef(subPath: String = "") = ref(this, "account_alias", subPath)
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

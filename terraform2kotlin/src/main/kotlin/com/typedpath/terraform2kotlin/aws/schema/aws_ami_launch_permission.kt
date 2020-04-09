@@ -5,4 +5,5 @@ class aws_ami_launch_permission(val image_id : String, val account_id : String) 
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

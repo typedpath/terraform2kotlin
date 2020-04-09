@@ -1,18 +1,18 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_storagegateway_nfs_file_share(val client_list : List<String>, val role_arn : String, val location_arn : String, val gateway_arn : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_storagegateway_nfs_file_share(val gateway_arn : String, val client_list : List<String>, val location_arn : String, val role_arn : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
 	  var default_storage_class: Default_storage_class? = null
-  var guess_mime_type_enabled: Boolean? = null
-  var kms_key_arn: String? = null
-  var nfs_file_share_defaults: List<Nfs_file_share_defaults>? = null
-  var requester_pays: Boolean? = null
   var object_acl: Object_acl? = null
+  var guess_mime_type_enabled: Boolean? = null
+  var kms_encrypted: Boolean? = null
+  var nfs_file_share_defaults: List<Nfs_file_share_defaults>? = null
+  var kms_key_arn: String? = null
   var read_only: Boolean? = null
+  var requester_pays: Boolean? = null
   var squash: Squash? = null
   var tags: Map<String, String>? = null
-  var kms_encrypted: Boolean? = null
  
 
 enum class Default_storage_class(val theValue: String ) {
@@ -37,4 +37,5 @@ class Nfs_file_share_defaults() :  com.typedpath.terraform2kotlin.Resource() {
  
 
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

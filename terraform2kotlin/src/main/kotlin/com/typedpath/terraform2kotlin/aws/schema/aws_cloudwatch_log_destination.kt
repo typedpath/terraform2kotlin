@@ -5,4 +5,5 @@ class aws_cloudwatch_log_destination(val name : String, val role_arn : String, v
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

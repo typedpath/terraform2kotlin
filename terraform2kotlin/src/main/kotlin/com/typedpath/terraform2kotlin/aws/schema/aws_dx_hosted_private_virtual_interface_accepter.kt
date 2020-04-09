@@ -8,4 +8,5 @@ class aws_dx_hosted_private_virtual_interface_accepter(val virtual_interface_id 
   var vpn_gateway_id: String? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

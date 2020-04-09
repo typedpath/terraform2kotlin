@@ -14,4 +14,5 @@ enum class Server_type(val theValue: String ) {
 	 GITHUB ("GITHUB"), BITBUCKET ("BITBUCKET"), GITHUB_ENTERPRISE ("GITHUB_ENTERPRISE") ;
 	override fun toString() = theValue
 	}
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

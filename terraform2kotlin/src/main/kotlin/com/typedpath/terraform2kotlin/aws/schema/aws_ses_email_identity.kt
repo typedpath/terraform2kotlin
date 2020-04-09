@@ -5,4 +5,5 @@ class aws_ses_email_identity(val email : String) :  com.typedpath.terraform2kotl
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

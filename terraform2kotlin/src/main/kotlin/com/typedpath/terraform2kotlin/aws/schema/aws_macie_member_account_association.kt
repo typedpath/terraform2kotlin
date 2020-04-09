@@ -5,4 +5,5 @@ class aws_macie_member_account_association(val member_account_id : String) :  co
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

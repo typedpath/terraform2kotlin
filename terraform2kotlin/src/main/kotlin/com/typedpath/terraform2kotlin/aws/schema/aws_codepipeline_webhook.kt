@@ -1,7 +1,7 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_codepipeline_webhook(val name : String, val target_action : String, val target_pipeline : String, val authentication : Authentication, val filter : List<Filter>) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_codepipeline_webhook(val authentication : Authentication, val filter : List<Filter>, val name : String, val target_action : String, val target_pipeline : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
 	  var tags: Map<String, String>? = null
   var authentication_configuration: List<Authentication_configuration>? = null
@@ -25,4 +25,5 @@ class Authentication_configuration() :  com.typedpath.terraform2kotlin.Resource(
  
 
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

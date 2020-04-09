@@ -3,8 +3,8 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_codebuild_webhook(val project_name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var filter_group: List<Filter_group>? = null
-  var branch_filter: String? = null
+	  var branch_filter: String? = null
+  var filter_group: List<Filter_group>? = null
  
 
 
@@ -25,4 +25,5 @@ enum class Type(val theValue: String ) {
 	}
 }
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

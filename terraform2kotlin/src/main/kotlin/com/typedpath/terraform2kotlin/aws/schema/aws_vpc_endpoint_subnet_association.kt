@@ -5,4 +5,5 @@ class aws_vpc_endpoint_subnet_association(val vpc_endpoint_id : String, val subn
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

@@ -6,4 +6,5 @@ class aws_dx_hosted_public_virtual_interface_accepter(val virtual_interface_id :
 	  var tags: Map<String, String>? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

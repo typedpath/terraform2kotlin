@@ -10,10 +10,11 @@ class aws_config_configuration_recorder(val role_arn : String) :  com.typedpath.
 
 class Recording_group() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var all_supported: Boolean? = null
+	  var resource_types: List<String>? = null
+  var all_supported: Boolean? = null
   var include_global_resource_types: Boolean? = null
-  var resource_types: List<String>? = null
  
 
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

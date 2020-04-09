@@ -6,4 +6,5 @@ class aws_dms_replication_subnet_group(val replication_subnet_group_description 
 	  var tags: Map<String, String>? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

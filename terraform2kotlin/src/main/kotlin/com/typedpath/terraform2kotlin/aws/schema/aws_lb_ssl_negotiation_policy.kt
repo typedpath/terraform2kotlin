@@ -12,4 +12,5 @@ class Attribute(val name : String, val value : String) :  com.typedpath.terrafor
 	 
 
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

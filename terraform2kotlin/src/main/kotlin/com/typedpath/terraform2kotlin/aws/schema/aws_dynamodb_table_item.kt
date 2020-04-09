@@ -6,4 +6,5 @@ class aws_dynamodb_table_item(val table_name : String, val hash_key : String, va
 	  var range_key: String? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

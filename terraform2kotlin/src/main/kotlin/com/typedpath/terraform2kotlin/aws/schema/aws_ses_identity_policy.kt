@@ -5,4 +5,5 @@ class aws_ses_identity_policy(val identity : String, val name : String, val poli
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

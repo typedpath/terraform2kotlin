@@ -9,4 +9,5 @@ enum class Format(val theValue: String ) {
 	 TXT ("TXT"), STIX ("STIX"), OTX_CSV ("OTX_CSV"), ALIEN_VAULT ("ALIEN_VAULT"), PROOF_POINT ("PROOF_POINT"), FIRE_EYE ("FIRE_EYE") ;
 	override fun toString() = theValue
 	}
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

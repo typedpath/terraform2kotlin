@@ -5,4 +5,5 @@ class aws_ssm_patch_group(val baseline_id : String, val patch_group : String) : 
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

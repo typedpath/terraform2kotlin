@@ -8,8 +8,9 @@ class aws_region() :  com.typedpath.terraform2kotlin.Resource() {
   var endpoint: String? = null
  
 
-fun nameRef(subPath: String = "") = ref(this, "name", subPath)
 fun currentRef(subPath: String = "") = ref(this, "current", subPath)
 fun endpointRef(subPath: String = "") = ref(this, "endpoint", subPath)
 fun descriptionRef(subPath: String = "") = ref(this, "description", subPath)
+fun nameRef(subPath: String = "") = ref(this, "name", subPath)
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

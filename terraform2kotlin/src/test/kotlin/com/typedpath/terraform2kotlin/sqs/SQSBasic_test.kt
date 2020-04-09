@@ -22,7 +22,7 @@ class SQSBasic_test {
             println("outputs:")
             outputs.forEach { println("'${it.key}'=>'${it.value}'") }
             val queueArn = outputs.get(SQSBasicTemplate::queueArn.name)
-            val queueUrl = outputs.get(SQSBasicTemplate::queueUrl.name)
+            val queueUrl = outputs.get(SQSBasicTemplate::queueUrl.name) as String
             Assert.assertNotNull(queueArn)
             val send_msg_request = SendMessageRequest()
                 .withQueueUrl(queueUrl)
@@ -45,4 +45,3 @@ class SQSBasic_test {
         }
     }
 }
-

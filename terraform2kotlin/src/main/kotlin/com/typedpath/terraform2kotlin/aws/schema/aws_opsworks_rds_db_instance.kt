@@ -5,4 +5,5 @@ class aws_opsworks_rds_db_instance(val stack_id : String, val rds_db_instance_ar
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

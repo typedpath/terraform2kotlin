@@ -35,4 +35,5 @@ class Sns_destination(val topic_arn : String) :  com.typedpath.terraform2kotlin.
 	 
 
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

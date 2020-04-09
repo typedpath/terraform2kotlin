@@ -3,9 +3,9 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_elastic_beanstalk_application(val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var tags: Map<String, String>? = null
-  var description: String? = null
+	  var description: String? = null
   var appversion_lifecycle: List<Appversion_lifecycle>? = null
+  var tags: Map<String, String>? = null
  
 
 
@@ -17,8 +17,9 @@ class Appversion_lifecycle(val service_role : String) :  com.typedpath.terraform
  
 
 }
+fun appversion_lifecycleRef(subPath: String = "") = ref(this, "appversion_lifecycle", subPath)
 fun arnRef(subPath: String = "") = ref(this, "arn", subPath)
 fun nameRef(subPath: String = "") = ref(this, "name", subPath)
 fun descriptionRef(subPath: String = "") = ref(this, "description", subPath)
-fun appversion_lifecycleRef(subPath: String = "") = ref(this, "appversion_lifecycle", subPath)
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

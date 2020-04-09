@@ -12,4 +12,5 @@ class On_prem_config(val agent_arns : List<String>) :  com.typedpath.terraform2k
 	 
 
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

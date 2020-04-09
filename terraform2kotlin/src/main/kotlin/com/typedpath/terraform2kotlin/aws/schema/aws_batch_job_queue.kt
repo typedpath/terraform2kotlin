@@ -9,11 +9,12 @@ enum class State(val theValue: String ) {
 	 DISABLED ("DISABLED"), ENABLED ("ENABLED") ;
 	override fun toString() = theValue
 	}
+fun nameRef(subPath: String = "") = ref(this, "name", subPath)
 fun arnRef(subPath: String = "") = ref(this, "arn", subPath)
 fun statusRef(subPath: String = "") = ref(this, "status", subPath)
 fun status_reasonRef(subPath: String = "") = ref(this, "status_reason", subPath)
 fun stateRef(subPath: String = "") = ref(this, "state", subPath)
 fun priorityRef(subPath: String = "") = ref(this, "priority", subPath)
 fun compute_environment_orderRef(subPath: String = "") = ref(this, "compute_environment_order", subPath)
-fun nameRef(subPath: String = "") = ref(this, "name", subPath)
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

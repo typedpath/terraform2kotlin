@@ -5,4 +5,5 @@ class aws_securityhub_standards_subscription(val standards_arn : String) :  com.
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

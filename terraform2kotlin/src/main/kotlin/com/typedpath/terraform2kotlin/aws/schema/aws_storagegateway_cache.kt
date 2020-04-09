@@ -5,4 +5,5 @@ class aws_storagegateway_cache(val disk_id : String, val gateway_arn : String) :
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

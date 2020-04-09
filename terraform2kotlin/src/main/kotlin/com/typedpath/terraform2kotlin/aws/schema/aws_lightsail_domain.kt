@@ -5,4 +5,5 @@ class aws_lightsail_domain(val domain_name : String) :  com.typedpath.terraform2
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

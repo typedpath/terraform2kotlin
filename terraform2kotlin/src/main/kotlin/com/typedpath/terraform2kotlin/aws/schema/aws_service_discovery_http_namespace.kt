@@ -6,4 +6,5 @@ class aws_service_discovery_http_namespace(val name : String) :  com.typedpath.t
 	  var description: String? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

@@ -1,19 +1,19 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_glue_job(val name : String, val role_arn : String, val command : List<Command>) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_glue_job(val command : List<Command>, val name : String, val role_arn : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
 	  var connections: List<String>? = null
-  var description: String? = null
+  var default_arguments: Map<String, String>? = null
+  var glue_version: String? = null
   var max_capacity: Float? = null
   var timeout: Int? = null
-  var allocated_capacity: Int? = null
-  var glue_version: String? = null
-  var execution_property: List<Execution_property>? = null
-  var max_retries: Int? = null
+  var description: String? = null
   var notification_property: List<Notification_property>? = null
+  var allocated_capacity: Int? = null
+  var max_retries: Int? = null
   var security_configuration: String? = null
-  var default_arguments: Map<String, String>? = null
+  var execution_property: List<Execution_property>? = null
   var tags: Map<String, String>? = null
   var worker_type: Worker_type? = null
   var number_of_workers: Int? = null
@@ -26,8 +26,8 @@ enum class Worker_type(val theValue: String ) {
 
 class Command(val script_location : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var python_version: Python_version? = null
-  var name: String? = null
+	  var name: String? = null
+  var python_version: Python_version? = null
  
 
 enum class Python_version(val theValue: String ) {
@@ -49,4 +49,5 @@ class Notification_property() :  com.typedpath.terraform2kotlin.Resource() {
  
 
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

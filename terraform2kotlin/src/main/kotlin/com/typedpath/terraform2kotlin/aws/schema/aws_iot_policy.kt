@@ -5,4 +5,5 @@ class aws_iot_policy(val name : String, val policy : String) :  com.typedpath.te
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

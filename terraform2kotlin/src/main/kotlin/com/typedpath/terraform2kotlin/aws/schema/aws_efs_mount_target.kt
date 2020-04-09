@@ -15,4 +15,5 @@ fun file_system_arnRef(subPath: String = "") = ref(this, "file_system_arn", subP
 fun file_system_idRef(subPath: String = "") = ref(this, "file_system_id", subPath)
 fun ip_addressRef(subPath: String = "") = ref(this, "ip_address", subPath)
 fun security_groupsRef(subPath: String = "") = ref(this, "security_groups", subPath)
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

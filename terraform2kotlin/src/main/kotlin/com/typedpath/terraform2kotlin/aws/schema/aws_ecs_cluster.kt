@@ -3,10 +3,10 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_ecs_cluster(val name : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var tags: Map<String, String>? = null
-  var capacity_providers: List<String>? = null
-  var default_capacity_provider_strategy: List<Default_capacity_provider_strategy>? = null
+	  var default_capacity_provider_strategy: List<Default_capacity_provider_strategy>? = null
   var setting: List<Setting>? = null
+  var tags: Map<String, String>? = null
+  var capacity_providers: List<String>? = null
  
 
 
@@ -34,4 +34,5 @@ fun running_tasks_countRef(subPath: String = "") = ref(this, "running_tasks_coun
 fun registered_container_instances_countRef(subPath: String = "") = ref(this, "registered_container_instances_count", subPath)
 fun settingRef(subPath: String = "") = ref(this, "setting", subPath)
 fun cluster_nameRef(subPath: String = "") = ref(this, "cluster_name", subPath)
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

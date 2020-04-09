@@ -9,4 +9,5 @@ class aws_docdb_subnet_group(val subnet_ids : List<String>) :  com.typedpath.ter
   var tags: Map<String, String>? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

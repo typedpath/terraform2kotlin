@@ -5,4 +5,5 @@ class aws_inspector_assessment_template(val duration : Int, val rules_package_ar
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

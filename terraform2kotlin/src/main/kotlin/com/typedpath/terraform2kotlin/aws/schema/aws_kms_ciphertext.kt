@@ -10,4 +10,5 @@ fun plaintextRef(subPath: String = "") = ref(this, "plaintext", subPath)
 fun key_idRef(subPath: String = "") = ref(this, "key_id", subPath)
 fun contextRef(subPath: String = "") = ref(this, "context", subPath)
 fun ciphertext_blobRef(subPath: String = "") = ref(this, "ciphertext_blob", subPath)
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

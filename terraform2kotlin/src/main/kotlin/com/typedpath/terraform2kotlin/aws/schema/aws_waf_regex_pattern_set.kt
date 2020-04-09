@@ -6,4 +6,5 @@ class aws_waf_regex_pattern_set(val name : String) :  com.typedpath.terraform2ko
 	  var regex_pattern_strings: List<String>? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

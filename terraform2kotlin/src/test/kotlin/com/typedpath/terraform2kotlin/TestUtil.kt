@@ -1,8 +1,9 @@
 package com.typedpath.terraform2kotlin
+import com.amazonaws.auth.AWSSessionCredentials
+import com.amazonaws.auth.BasicAWSCredentials
 import org.junit.Assert
 import java.io.File
 import kotlin.reflect.KFunction
-import kotlin.reflect.full.instanceParameter
 import kotlin.reflect.jvm.javaMethod
 
 
@@ -54,10 +55,12 @@ fun contextAsString(context: Any) : String {
 val accessKeyPropertyName = "awsTestAccessKey"
 val secretKeyPropertyName =   "awsTestSecretKey"
 val regionPropertyName    = "awsTestRegion"
+val accountIdPropertyName    = "awsTestAccountId"
 
 fun getTestAccessKey() = System.getenv(accessKeyPropertyName)
 fun getTestSecretKey() = System.getenv(secretKeyPropertyName)
 fun getTestRegion() = System.getenv(regionPropertyName)
+fun getTestAccountId() = System.getenv(accountIdPropertyName)
 
 fun terraformAwsRunnerFromEnvironment( context: Any, vararg templates: TerraformTemplate) : TerraformAWSRunner{
     val terraformTestDirPropertyName = "terraformTestDir"

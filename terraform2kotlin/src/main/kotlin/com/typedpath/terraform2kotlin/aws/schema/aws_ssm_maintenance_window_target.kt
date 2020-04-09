@@ -14,4 +14,5 @@ class Targets(val key : String, val values : List<String>) :  com.typedpath.terr
 	 
 
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

@@ -6,4 +6,5 @@ class aws_acm_certificate_validation(val certificate_arn : String) :  com.typedp
 	  var validation_record_fqdns: List<String>? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

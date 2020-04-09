@@ -7,4 +7,5 @@ class aws_opsworks_user_profile(val user_arn : String, val ssh_username : String
   var allow_self_management: Boolean? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

@@ -18,7 +18,7 @@ class TerraformAWSRunner( val accessKey: String,
     private fun toFileName(template: TerraformTemplate) =
         (if (template.scope!=null) (template.scope+"-") else "") + template.javaClass.simpleName + ".tf"
 
-    fun initApply() : Map<String, String> {
+    fun initApply() : Map<String, Any?> {
 
         println("running in directory ${runDir?.absolutePath}")
         File(runDir, "provider.tf").writeText(
@@ -47,11 +47,11 @@ class TerraformAWSRunner( val accessKey: String,
 
 }
 
-fun readOutputsFromTfState(tempDir: File) : Map<String, String> {
+fun readOutputsFromTfState(tempDir: File) : Map<String, Any?> {
     val strTfState = File(tempDir, "terraform.tfstate").readText()
     val json = stringToJson(strTfState)
     val outputs = json.get("outputs") as ScriptObjectMirror
-    return outputs.keys.map { Pair(it!!, ""+(outputs.get(it) as ScriptObjectMirror).get("value")) }.toMap()
+    return outputs.keys.map { Pair(it!!, (outputs.get(it) as ScriptObjectMirror).get("value")) }.toMap()
 }
 
 fun autoTag(resource: Resource, name: String) {

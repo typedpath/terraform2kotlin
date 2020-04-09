@@ -5,4 +5,5 @@ class aws_storagegateway_upload_buffer(val disk_id : String, val gateway_arn : S
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

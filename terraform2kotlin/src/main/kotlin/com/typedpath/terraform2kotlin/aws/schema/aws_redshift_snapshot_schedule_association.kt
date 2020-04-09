@@ -5,4 +5,5 @@ class aws_redshift_snapshot_schedule_association(val cluster_identifier : String
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

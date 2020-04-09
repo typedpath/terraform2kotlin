@@ -5,4 +5,5 @@ class aws_vpn_gateway_attachment(val vpc_id : String, val vpn_gateway_id : Strin
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

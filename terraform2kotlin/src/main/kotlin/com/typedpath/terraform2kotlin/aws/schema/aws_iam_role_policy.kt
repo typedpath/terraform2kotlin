@@ -7,4 +7,5 @@ class aws_iam_role_policy(val policy : String, val role : String) :  com.typedpa
   var name_prefix: String? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

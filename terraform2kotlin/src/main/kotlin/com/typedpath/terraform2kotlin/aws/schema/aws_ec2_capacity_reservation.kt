@@ -1,15 +1,15 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_ec2_capacity_reservation(val availability_zone : String, val instance_platform : Instance_platform, val instance_type : String, val instance_count : Int) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_ec2_capacity_reservation(val instance_type : String, val availability_zone : String, val instance_count : Int, val instance_platform : Instance_platform) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var tenancy: Tenancy? = null
+	  var ebs_optimized: Boolean? = null
   var end_date: String? = null
   var end_date_type: End_date_type? = null
+  var ephemeral_storage: Boolean? = null
   var instance_match_criteria: Instance_match_criteria? = null
   var tags: Map<String, String>? = null
-  var ebs_optimized: Boolean? = null
-  var ephemeral_storage: Boolean? = null
+  var tenancy: Tenancy? = null
  
 
 enum class Instance_platform(val theValue: String ) {
@@ -28,4 +28,5 @@ enum class Tenancy(val theValue: String ) {
 	 default ("default"), dedicated ("dedicated") ;
 	override fun toString() = theValue
 	}
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

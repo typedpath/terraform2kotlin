@@ -1,9 +1,10 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_pinpoint_baidu_channel(val secret_key : String, val application_id : String, val api_key : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_pinpoint_baidu_channel(val application_id : String, val api_key : String, val secret_key : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
 	  var enabled: Boolean? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

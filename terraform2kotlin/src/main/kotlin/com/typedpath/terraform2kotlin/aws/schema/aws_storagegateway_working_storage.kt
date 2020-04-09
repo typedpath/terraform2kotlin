@@ -5,4 +5,5 @@ class aws_storagegateway_working_storage(val disk_id : String, val gateway_arn :
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

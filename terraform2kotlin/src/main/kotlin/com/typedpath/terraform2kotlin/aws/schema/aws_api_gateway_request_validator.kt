@@ -7,4 +7,5 @@ class aws_api_gateway_request_validator(val rest_api_id : String, val name : Str
   var validate_request_parameters: Boolean? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

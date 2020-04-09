@@ -5,4 +5,5 @@ class aws_vpn_connection_route(val destination_cidr_block : String, val vpn_conn
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

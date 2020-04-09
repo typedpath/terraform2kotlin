@@ -5,4 +5,5 @@ class aws_elasticsearch_domain_policy(val domain_name : String, val access_polic
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

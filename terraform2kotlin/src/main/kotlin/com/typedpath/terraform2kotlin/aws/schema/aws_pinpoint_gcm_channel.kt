@@ -6,4 +6,5 @@ class aws_pinpoint_gcm_channel(val application_id : String, val api_key : String
 	  var enabled: Boolean? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

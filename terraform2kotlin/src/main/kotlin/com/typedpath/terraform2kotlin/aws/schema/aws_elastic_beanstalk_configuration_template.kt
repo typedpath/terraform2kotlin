@@ -16,4 +16,5 @@ class Setting(val namespace : String, val name : String, val value : String) :  
  
 
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

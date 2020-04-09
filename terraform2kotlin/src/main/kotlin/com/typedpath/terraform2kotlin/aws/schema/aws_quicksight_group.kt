@@ -12,4 +12,5 @@ enum class Namespace(val theValue: String ) {
 	 default ("default") ;
 	override fun toString() = theValue
 	}
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

@@ -6,4 +6,5 @@ class aws_service_discovery_public_dns_namespace(val name : String) :  com.typed
 	  var description: String? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

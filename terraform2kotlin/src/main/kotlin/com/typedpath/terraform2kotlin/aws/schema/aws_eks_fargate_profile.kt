@@ -14,4 +14,5 @@ class Selector(val namespace : String) :  com.typedpath.terraform2kotlin.Resourc
  
 
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

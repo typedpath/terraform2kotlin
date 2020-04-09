@@ -3,9 +3,9 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_availability_zones() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="data"
-	  var blacklisted_names: List<String>? = null
-  var blacklisted_zone_ids: List<String>? = null
+	  var blacklisted_zone_ids: List<String>? = null
   var state: State? = null
+  var blacklisted_names: List<String>? = null
  
 
 enum class State(val theValue: String ) {
@@ -17,4 +17,5 @@ fun blacklisted_zone_idsRef(subPath: String = "") = ref(this, "blacklisted_zone_
 fun namesRef(subPath: String = "") = ref(this, "names", subPath)
 fun stateRef(subPath: String = "") = ref(this, "state", subPath)
 fun zone_idsRef(subPath: String = "") = ref(this, "zone_ids", subPath)
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

@@ -5,4 +5,5 @@ class aws_ec2_transit_gateway_route_table_association(val transit_gateway_attach
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

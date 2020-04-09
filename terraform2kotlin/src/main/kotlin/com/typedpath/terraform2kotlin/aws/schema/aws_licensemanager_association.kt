@@ -5,4 +5,5 @@ class aws_licensemanager_association(val resource_arn : String, val license_conf
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

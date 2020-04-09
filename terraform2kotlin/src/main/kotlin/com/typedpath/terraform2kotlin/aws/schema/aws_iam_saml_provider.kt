@@ -5,4 +5,5 @@ class aws_iam_saml_provider(val name : String, val saml_metadata_document : Stri
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

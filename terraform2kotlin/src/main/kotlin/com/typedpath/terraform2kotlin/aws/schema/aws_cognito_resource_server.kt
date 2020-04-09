@@ -12,4 +12,5 @@ class Scope(val scope_description : String, val scope_name : String) :  com.type
 	 
 
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

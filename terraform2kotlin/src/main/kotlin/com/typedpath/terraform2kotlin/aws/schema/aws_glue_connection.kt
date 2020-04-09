@@ -1,13 +1,13 @@
 package com.typedpath.terraform2kotlin.aws.schema
 import com.typedpath.terraform2kotlin.ref
 
-class aws_glue_connection(val connection_properties : Map<String, String>, val name : String) :  com.typedpath.terraform2kotlin.Resource() {
+class aws_glue_connection(val name : String, val connection_properties : Map<String, String>) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var physical_connection_requirements: List<Physical_connection_requirements>? = null
-  var catalog_id: String? = null
+	  var catalog_id: String? = null
   var connection_type: Connection_type? = null
   var description: String? = null
   var match_criteria: List<String>? = null
+  var physical_connection_requirements: List<Physical_connection_requirements>? = null
  
 
 enum class Connection_type(val theValue: String ) {
@@ -23,4 +23,5 @@ class Physical_connection_requirements() :  com.typedpath.terraform2kotlin.Resou
  
 
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

@@ -6,4 +6,5 @@ class aws_config_aggregate_authorization(val account_id : String, val region : S
 	  var tags: Map<String, String>? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

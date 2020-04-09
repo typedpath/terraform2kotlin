@@ -20,10 +20,10 @@ enum class Managed_termination_protection(val theValue: String ) {
 
 class Managed_scaling() :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="subresource"
-	  var status: Status? = null
-  var target_capacity: Int? = null
-  var maximum_scaling_step_size: Int? = null
+	  var maximum_scaling_step_size: Int? = null
   var minimum_scaling_step_size: Int? = null
+  var status: Status? = null
+  var target_capacity: Int? = null
  
 
 enum class Status(val theValue: String ) {
@@ -32,4 +32,5 @@ enum class Status(val theValue: String ) {
 	}
 }
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

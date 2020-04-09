@@ -5,4 +5,5 @@ class aws_ram_resource_share_accepter(val share_arn : String) :  com.typedpath.t
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

@@ -5,4 +5,5 @@ class aws_config_configuration_recorder_status(val name : String, val is_enabled
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

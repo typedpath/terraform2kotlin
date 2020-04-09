@@ -13,4 +13,5 @@ class Ip_set_descriptor(val type : String, val value : String) :  com.typedpath.
 
 }
 fun nameRef(subPath: String = "") = ref(this, "name", subPath)
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

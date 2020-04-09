@@ -7,4 +7,5 @@ class aws_iam_service_linked_role(val aws_service_name : String) :  com.typedpat
   var description: String? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

@@ -12,4 +12,5 @@ class Geo_match_constraint(val type : String, val value : String) :  com.typedpa
 	 
 
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

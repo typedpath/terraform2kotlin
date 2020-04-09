@@ -33,4 +33,5 @@ class Virtual_router(val virtual_router_name : String) :  com.typedpath.terrafor
 }
 }
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

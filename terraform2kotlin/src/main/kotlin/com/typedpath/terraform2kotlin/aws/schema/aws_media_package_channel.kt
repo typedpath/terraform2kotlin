@@ -7,4 +7,5 @@ class aws_media_package_channel(val channel_id : String) :  com.typedpath.terraf
   var tags: Map<String, String>? = null
  
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

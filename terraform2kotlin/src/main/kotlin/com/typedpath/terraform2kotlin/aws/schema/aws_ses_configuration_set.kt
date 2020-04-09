@@ -5,4 +5,5 @@ class aws_ses_configuration_set(val name : String) :  com.typedpath.terraform2ko
 	override fun typestring() ="resource"
 	 
 
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }

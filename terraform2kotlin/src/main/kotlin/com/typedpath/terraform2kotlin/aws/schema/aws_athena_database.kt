@@ -3,8 +3,8 @@ import com.typedpath.terraform2kotlin.ref
 
 class aws_athena_database(val name : String, val bucket : String) :  com.typedpath.terraform2kotlin.Resource() {
 	override fun typestring() ="resource"
-	  var encryption_configuration: List<Encryption_configuration>? = null
-  var force_destroy: Boolean? = null
+	  var force_destroy: Boolean? = null
+  var encryption_configuration: List<Encryption_configuration>? = null
  
 
 
@@ -18,4 +18,5 @@ enum class Encryption_option(val theValue: String ) {
 	override fun toString() = theValue
 	}
 }
+	fun idRef(subPath: String = "") = ref(this, "id", subPath)
 }
