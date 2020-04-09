@@ -14,6 +14,7 @@ For the tests to work you need to:
    *  __awsTestAccessKey__ (format: AKIA42VZ2QKNI5LJAYWV)
    * __awsTestSecretKey__ (format: 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)
    * __awsTestRegion__ (format: eu-west-2)
+   * __awsTestAccountId__ (format: 890123456789)
 
 
 ## Tests
