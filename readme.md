@@ -18,8 +18,6 @@ For the tests to work you need to:
 
 
 ## Tests
-### (More coming soon !!)
-
 
 | Test | Kotlin Template, Generated .tf | Test Description |
 | --- | --- | ----- |
