@@ -46,8 +46,7 @@ dependencies {
     testCompile("com.amazonaws:aws-java-sdk-sns:1.11.759")
     testCompile("com.amazonaws:aws-java-sdk-sqs:1.11.759")
     testCompile("com.amazonaws:aws-java-sdk-lambda:1.11.759")
-
-
+    testCompile("com.amazonaws:aws-java-sdk-dynamodb:1.11.759")
 }
 
 tasks.dokka {
