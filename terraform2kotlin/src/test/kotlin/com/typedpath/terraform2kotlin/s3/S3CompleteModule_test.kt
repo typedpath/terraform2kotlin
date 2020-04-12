@@ -44,8 +44,7 @@ class S3CompleteModule_test {
             }
             } finally {
             println("destroying")
-            runner.destroy()
-            println("destroyed")
+            println(runner.destroy())
         }
     }
 

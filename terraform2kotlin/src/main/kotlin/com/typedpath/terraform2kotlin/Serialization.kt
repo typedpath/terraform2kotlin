@@ -10,6 +10,7 @@ private const val dependsOnPropertyName = "depends_on"
 private const val dataTypeString ="data"
 
 private val stringToRef = mutableMapOf<String, Pair<Any, String>>()
+//TODO consider making into a class
 //TODO enforce names are globally unique
 private val object2Name = mutableMapOf<Any, String>()
 

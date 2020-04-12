@@ -40,10 +40,7 @@ class TerraformAWSRunner( val accessKey: String,
         return readOutputsFromTfState(runDir!!)
     }
 
-    fun destroy() {
-        val destroyResult  = "terraform destroy -auto-approve".runCommand(runDir!!)
-        println(destroyResult)
-    }
+    fun destroy() : String? =  "terraform destroy -auto-approve".runCommand(runDir!!)
 
 }
 

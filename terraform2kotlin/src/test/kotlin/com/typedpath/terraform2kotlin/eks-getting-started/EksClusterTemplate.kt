@@ -1,6 +1,7 @@
 package com.typedpath.terraform2kotlin.`eks-getting-started`
 
 import com.typedpath.terraform2kotlin.TerraformTemplate
+import com.typedpath.terraform2kotlin.assumeRolePolicyDocumentForService
 import com.typedpath.terraform2kotlin.aws.schema.*
 import com.typedpath.terraform2kotlin.aws.schema.aws_iam_policy_document.Statement.Effect.Allow
 import com.typedpath.terraform2kotlin.aws.schema.aws_iam_policy_document.Version._2012_10_17
@@ -13,23 +14,7 @@ import com.typedpath.terraform2kotlin.getMyExternalIp
 class EksClusterTemplate(clusterName: String, vpc: aws_vpc, subnets: List<aws_subnet>) :
     TerraformTemplate() {
 
-    val demoClusterRolePolicyDocument = aws_iam_policy_document().apply {
-        version = _2012_10_17
-        statement = listOf(
-            Statement().apply {
-                effect = Allow
-                // review this
-                principals =
-                    listOf(
-                        Principals(
-                            type = "Service",
-                            identifiers = listOf("eks.amazonaws.com")
-                        )
-                    )
-                actions = listOf("sts:AssumeRole")
-            }
-        )
-    }
+    val demoClusterRolePolicyDocument = assumeRolePolicyDocumentForService("eks.amazonaws.com")
 
     val demoClusterRole =
         aws_iam_role(demoClusterRolePolicyDocument.jsonRef())

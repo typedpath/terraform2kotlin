@@ -49,8 +49,7 @@ fun test() {
 
     } finally {
         println("destroying")
-        runner.destroy()
-        println("destroyed")
+        println(runner.destroy())
     }
 
 }

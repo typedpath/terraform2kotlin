@@ -1,5 +1,8 @@
-package com.typedpath.terraform2kotlin
+package com.typedpath.terraform2kotlin.iam
 
+import com.typedpath.terraform2kotlin.autoTag
+import com.typedpath.terraform2kotlin.terraformAwsRunnerFromEnvironment
+import com.typedpath.terraform2kotlin.toTerraform
 import org.junit.Assert
 import org.junit.Test
 
@@ -15,7 +18,7 @@ fun test() {
         Assert.assertTrue(outputs.containsKey("roleArn"))
         println("created role: " + outputs.get("roleArn"))
     } finally {
-        runner.destroy()
+        println(runner.destroy())
     }
 
 }

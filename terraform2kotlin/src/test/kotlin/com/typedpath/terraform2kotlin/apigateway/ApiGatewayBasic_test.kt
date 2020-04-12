@@ -17,7 +17,6 @@ class ApiGatewayBasic_test {
     fun test() {
         val functionName = "hello" + "1586384721223"//System.currentTimeMillis()
         val f = File(helloLambdaBinary)
-//        println("now i am here $here exists = ${f.exists()}")
         Assert.assertTrue("file should exist ${f.absolutePath}", f.exists())
 
         val greetingEnvValue = "Hewooooooo"

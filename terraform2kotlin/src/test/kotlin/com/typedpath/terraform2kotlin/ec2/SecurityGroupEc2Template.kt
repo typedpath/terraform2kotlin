@@ -1,8 +1,19 @@
-package com.typedpath.terraform2kotlin
+package com.typedpath.terraform2kotlin.ec2
 
+import com.typedpath.terraform2kotlin.Output
+import com.typedpath.terraform2kotlin.TerraformTemplate
 import com.typedpath.terraform2kotlin.aws.schema.*
 import com.typedpath.terraform2kotlin.aws.schema.aws_security_group.Ingress
 import com.typedpath.terraform2kotlin.aws.schema.aws_security_group.Egress
+
+fun port2Ingress(port: Int) =  Ingress(to_port = port, from_port = port, protocol = "TCP").apply {
+    cidr_blocks = listOf("0.0.0.0/0")
+}
+
+
+fun port2Egress(port: Int) = Egress(from_port = port, to_port = port, protocol = "TCP").apply {
+    cidr_blocks = listOf("0.0.0.0/0")
+}
 
 
 class SecurityGroupEc2Template(webgreeting: String) : TerraformTemplate() {
@@ -24,23 +35,11 @@ echo '<h1>$webgreeting</h1>' | sudo tee /var/www/html/index.html""")
 
     val web_traffic = aws_security_group().apply {
         name = securityGroupName
-        ingress = listOf(
-            Ingress(to_port = 443, from_port = 443, protocol = "TCP").apply {
-                cidr_blocks = listOf("0.0.0.0/0")
-            },
-            Ingress(to_port = 80, from_port = 80, protocol = "TCP").apply {
-                cidr_blocks = listOf("0.0.0.0/0")
-            })
-        egress = listOf(
-            Egress(from_port = 443, to_port = 443, protocol = "TCP").apply {
-                cidr_blocks = listOf("0.0.0.0/0")
-            },
-            Egress(from_port = 80, to_port = 80, protocol = "TCP").apply {
-                cidr_blocks = listOf("0.0.0.0/0")
-            })
+        ingress = listOf( port2Ingress(443), port2Ingress(80))
+        egress = listOf( port2Egress(443), port2Egress(80))
     }
 
-    val public_ip = Output("\${aws_instance.myec2.public_ip}")
+    val public_ip = Output(myec2.public_ipRef())
     val webaddress = Output("http://\${aws_instance.myec2.public_ip}:80")
 
 }

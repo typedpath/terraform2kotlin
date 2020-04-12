@@ -40,8 +40,7 @@ class SQSBasic_test {
 
         } finally {
             println("destroying")
-            val destroyresult = runner.destroy()
-            println(destroyresult)
+            println(runner.destroy())
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.typedpath.terraform2kotlin.s3
 
+import com.typedpath.terraform2kotlin.assumeRolePolicyDocumentForService
 import com.typedpath.terraform2kotlin.aws.schema.aws_iam_policy_document
 import com.typedpath.terraform2kotlin.aws.schema.aws_iam_role
 import com.typedpath.terraform2kotlin.aws.schema.aws_kms_key
@@ -20,23 +21,7 @@ class S3CompleteFeatures(bucketName: String, logBucketName: String) {
         deletion_window_in_days = 7
     }
 
-    val assumeRolePolicyDocument = aws_iam_policy_document().apply {
-        version = aws_iam_policy_document.Version._2012_10_17
-        statement = listOf(
-            aws_iam_policy_document.Statement().apply {
-                effect = aws_iam_policy_document.Statement.Effect.Allow
-                sid = ""
-                principals =
-                    listOf(
-                        aws_iam_policy_document.Statement.Principals(
-                            type = "Service",
-                            identifiers = listOf("ec2.amazonaws.com")
-                        )
-                    )
-                actions = listOf("sts:AssumeRole")
-            }
-        )
-    }
+    val assumeRolePolicyDocument = assumeRolePolicyDocumentForService("ec2.amazonaws.com")
 
     val role = aws_iam_role(assumeRolePolicyDocument.jsonRef())
 

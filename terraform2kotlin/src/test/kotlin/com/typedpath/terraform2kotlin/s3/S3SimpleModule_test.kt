@@ -42,14 +42,6 @@ class S3SimpleModule_test {
         test(::testLogBucket, template)
     }
 
-    @Test
-    fun completeFeaturesTest() {
-
-        val completeFeatures =  S3CompleteFeatures(defaultBucketName, defaultLogBucketName)
-        println(toTerraform(completeFeatures.logBucketTemplate))
-        test(::completeFeaturesTest, completeFeatures.logBucketTemplate)
-    }
-
     private fun test(context: Any, template: S3UtilMainTemplate) {
         val outputsTemplate = S3UtilOutputsTemplate(template)
         //TODO do this in constructor
@@ -71,8 +63,7 @@ class S3SimpleModule_test {
             }
         } finally {
             println("destroying")
-            runner.destroy()
-            println("destroyed")
+            println(runner.destroy())
         }
     }
 

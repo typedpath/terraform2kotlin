@@ -1,27 +1,12 @@
 package com.typedpath.terraform2kotlin.`eks-getting-started`
 
 import com.typedpath.terraform2kotlin.TerraformTemplate
+import com.typedpath.terraform2kotlin.assumeRolePolicyDocumentForService
 import com.typedpath.terraform2kotlin.aws.schema.*
 
 class EksWorkerNodesTemplate(cluster:aws_eks_cluster,  subnets: List<aws_subnet>) : TerraformTemplate() {
 
-    val demoClusterNodeRolePolicyDocument = aws_iam_policy_document().apply {
-        version = aws_iam_policy_document.Version._2012_10_17
-        statement = listOf(
-            aws_iam_policy_document.Statement().apply {
-                effect = aws_iam_policy_document.Statement.Effect.Allow
-                // review this
-                principals =
-                    listOf(
-                        aws_iam_policy_document.Statement.Principals(
-                            type = "Service",
-                            identifiers = listOf("ec2.amazonaws.com")
-                        )
-                    )
-                actions = listOf("sts:AssumeRole")
-            }
-        )
-    }
+    val demoClusterNodeRolePolicyDocument = assumeRolePolicyDocumentForService("ec2.amazonaws.com")
 
     val roleName = "terraformEksDemoNodeRole"
     val terraformEksDemoNodeRole =

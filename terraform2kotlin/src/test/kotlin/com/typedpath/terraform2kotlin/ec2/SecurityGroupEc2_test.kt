@@ -1,9 +1,9 @@
 import com.typedpath.terraform2kotlin.*
+import com.typedpath.terraform2kotlin.ec2.SecurityGroupEc2Template
 import org.junit.Assert
 import org.junit.Test
 
 //TODO use unique names for resources so that previous test runs cant interfere
-//TODO auto clean up - terraform destroy
 class SecurityGroupEc2_test {
     @Test
     fun test() {
@@ -22,12 +22,12 @@ class SecurityGroupEc2_test {
             val response = waitForConnectionRead(webaddress!!, 120)
             println("response: $response")
             Assert.assertTrue(
-                "web response should contain '$webGreeting' : '$response' ",
-                response != null && response!!.contains(webGreeting)
+                    "web response should contain '$webGreeting' : '$response' ",
+                    response != null && response!!.contains(webGreeting)
             )
         } finally {
-            val destroyresult = runner.destroy()
-            println(destroyresult)
+            println("destroying")
+            println(runner.destroy())
         }
     }
 }
